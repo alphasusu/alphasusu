@@ -1,0 +1,10 @@
+* Users
+** Student
+** Officer
+** Staff
+* Issue Types
+** Discussion Point
+** Idea
+** Proposal
+** Motion
+** Policy
