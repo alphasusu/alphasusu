@@ -1,4 +1,6 @@
 IssueTracker::Application.routes.draw do
+  resources :societies
+
   resources :issues
   resources :blog_posts
   resources :events
