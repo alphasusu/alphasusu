@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vacation: false
+  day: 1
+  open: 1
+  close: 1
+
+two:
+  vacation: false
+  day: 1
+  open: 1
+  close: 1
