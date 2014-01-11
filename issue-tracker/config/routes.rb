@@ -1,5 +1,6 @@
 IssueTracker::Application.routes.draw do
   resources :issues
+  resources :blog_posts
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
