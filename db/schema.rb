@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140111211447) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "blog_posts", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -86,6 +89,6 @@ ActiveRecord::Schema.define(version: 20140111211447) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["login"], name: "index_users_on_login", unique: true
+  add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
 
 end
