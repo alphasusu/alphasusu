@@ -8,7 +8,7 @@ class IssuesController < ApplicationController
   end
 
   def create
-    @issue = Issue.new(params[:post])
+    @issue = Issue.new(post_params)
     
     if @issue.save
       redirect_to @issue
@@ -24,7 +24,7 @@ class IssuesController < ApplicationController
 private
 
   def post_params
-    params.require(:post).permit(:title, :description)
+    params.require(:issue).permit(:title, :description)
   end
 
 end

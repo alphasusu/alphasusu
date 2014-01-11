@@ -1,100 +1,3 @@
-
-    <nav class="top-bar" data-topbar>
-      <ul class="title-area">
-        <li class="name">
-    	    <a href="#">
-            <h1><span class="pink">S</span><span class="blue">U</span><span class="pink">SU</span></h1>
-          </a>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-      </ul>
-
-      <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="left">
-          <li class="has-dropdown">
-            <a href="#" class="whatson">What's On</a>
-            <ul class="dropdown">
-              <li><a href="#" class="whatson">Box Office</a></li>
-              <li><a href="#" class="whatson">Calendar</a></li>
-              <li><a href="#" class="whatson">Eat, Drink &amp; Shop</a></li>
-              <li><a href="#" class="whatson">Feeds</a></li>
-              <li><a href="#" class="whatson">Graduation Ball</a></li>
-              <li><a href="#" class="whatson">Opening Times</a></li>
-              <li><a href="#" class="whatson">Room Bookings</a></li>
-              <li><a href="#" class="whatson">Safety Bus</a></li>
-              <li><a href="#" class="whatson">Union Films</a></li>
-            </ul>
-          </li>
-          <li class="has-dropdown">
-            <a href="#" class="education">Education</a>
-            <ul class="dropdown">
-              <li><a href="#" class="education">My Education</a></li>
-              <li><a href="#" class="education">Finding Your Rep</a></li>
-              <li><a href="#" class="education">Academic Advice</a></li>
-              <li><a href="#" class="education">Student Representation</a></li>
-              <li><a href="#" class="education">Run in an Election</a></li>
-              <li><a href="#" class="education">Nominate Yourself</a></li>
-            </ul>
-          </li>
-          <li class="has-dropdown">
-            <a href="#" class="union">Union</a>
-            <ul class="dropdown">
-              <li><a href="#" class="union">General Meeting</a></li>
-              <li><a href="#" class="union">Union Council</a></li>
-              <li><a href="#" class="union">Committee Meetings</a></li>
-              <li><a href="#" class="union">Union Awards</a></li>
-              <li><a href="#" class="union">Elections</a></li>
-              <li><a href="#" class="union">Policy</a></li>
-              <li><a href="#" class="union">Your Officers</a></li>
-              <li><a href="#" class="union">Zones</a></li>
-            </ul>
-          </li>
-          <li class="has-dropdown">
-            <a href="#" class="clubssocs">Clubs &amp; Socs</a>
-            <ul class="dropdown">
-              <li><a href="#" class="clubssocs">Halls Life</a></li>
-              <li><a href="#" class="clubssocs">Media</a></li>
-              <li><a href="#" class="clubssocs">Performing Arts</a></li>
-              <li><a href="#" class="clubssocs">Pre Sessional</a></li>
-              <li><a href="#" class="clubssocs">Rag</a></li>
-              <li><a href="#" class="clubssocs">Societies</a></li>
-              <li><a href="#" class="clubssocs">Sports</a></li>
-              <li><a href="#" class="clubssocs">Union Films</a></li>
-              <li><a href="#" class="clubssocs">Your Skills</a></li>
-            </ul>
-          </li>
-          <li class="has-dropdown">
-            <a href="#" class="helpsupport">Help &amp; Support</a>
-            <ul class="dropdown">
-              <li><a href="#" class="helpsupport">Advice Centre</a></li>
-              <li><a href="#" class="helpsupport">Overseas Students</a></li>
-              <li><a href="#" class="helpsupport">Finances</a></li>
-              <li><a href="#" class="helpsupport">Nightline</a></li>
-              <li><a href="#" class="helpsupport">Housing</a></li>
-              <li><a href="#" class="helpsupport">Staying Safe</a></li>
-              <li><a href="#" class="helpsupport">Safety Bus</a></li>
-            </ul>
-          </li>
-          <li class="has-dropdown">
-            <a href="#" class="elections">Elections</a>
-            <ul class="dropdown">
-              <li><a href="#" class="elections">Spring</a></li>
-              <li><a href="#" class="elections">Your JCR</a></li>
-              <li><a href="#" class="elections">Autumn</a></li>
-              <li><a href="#" class="elections">Course Reps</a></li>
-            </ul>
-          </li>
-        </ul>
-
-        <!-- Left Nav Section -->
-        <ul class="right">
-          <li class="divider"></li>
-          <li><a href="#">John Smith</a></li>
-        </ul>
-      </section>
-    </nav>
-    
     <div class="banner">
       <div class="row">
         <div class="medium-5 columns">
@@ -116,40 +19,17 @@
     <div class="row">
       <div class="small-4 columns">
 	<div class="row">
-  <h3>Blogs</h3>
-	  <h4><img class="sabb-avatar" src="http://www.avatarpro.biz/avatar?s=32" />Something Something Union Council</h4>
-    <small>By <a href="#">Joe Bloggs</a></small>
-	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis hendrerit magna sit amet velit consectetur euismod. Aliquam mollis malesuada nibh vel imperdiet.</p>
+	  <h3>Blogs</h3>
 	</div>
-	<div class="row">
-	  <h4><img class="sabb-avatar" src="http://www.avatarpro.biz/avatar?s=32" />Something Something Sport</h4>
-    <small>By <a href="#">Joe Bloggs</a></small>
-	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis hendrerit magna sit amet velit consectetur euismod. Aliquam mollis malesuada nibh vel imperdiet.</p>
-	</div>
+	  <%= render @posts %>
       </div>
       <div class="small-4 columns">
 	<h3>What's On</h3>
 	<div class="row">
-	  <div class="small-12 columns">
-	    <h5>Event 2</h5>
-	    <h6>Tuesday 21th January</h6>
-	    <p>Description of the Event</p>
-	  </div>
-	  <div class="small-12 columns">
-	    <h5>Event 1</h5>
-	    <h6>Monday 20th January</h6>
-	    <p>Description of the Event</p>
-	  </div>
+	  <%= render @events %>
 	</div>
       </div>
       <div class="small-4 columns">
         <h3>SUSU Media</h3>
       </div>
     </div>
-
-    <footer class="row">
-      <div class="small-1 columns">Email</div>
-      <div class="small-1 columns">Facebook</div>
-      <div class="small-1 columns">Twitter</div>
-      <div class="small-1 columns">Youtube</div>
-    </footer>

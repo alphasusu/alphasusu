@@ -1,0 +1,12 @@
+<div class="row">
+  <h1><%= @service.name %></h1>
+  <p><%= @service.description %></p>
+  <% if @service.contact_elements.length > 0 %>
+  <h2>Contact Details</h2>
+  <%= render @service.contact_elements %>
+  <% end %>
+  <% if @service.opening_times.length > 0 %>
+  <h2>Opening Hours</h2>
+  <%= render @service.opening_times %>
+  <% end %>
+</div>

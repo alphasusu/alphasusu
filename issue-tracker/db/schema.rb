@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140111175855) do
+ActiveRecord::Schema.define(version: 20140111211447) do
+
+  create_table "blog_posts", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contact_elements", force: true do |t|
+    t.string   "type"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "service_id"
+  end
+
+  create_table "events", force: true do |t|
+    t.text     "title"
+    t.text     "description"
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ideas", force: true do |t|
     t.string "type"
@@ -21,6 +44,31 @@ ActiveRecord::Schema.define(version: 20140111175855) do
 
   create_table "issues", force: true do |t|
     t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "opening_times", force: true do |t|
+    t.boolean  "vacation"
+    t.integer  "day"
+    t.integer  "open"
+    t.integer  "close"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "service_id"
+  end
+
+  create_table "services", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "societies", force: true do |t|
+    t.text     "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
