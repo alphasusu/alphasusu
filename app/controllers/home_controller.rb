@@ -3,5 +3,11 @@ class HomeController < ApplicationController
     @headlines = Headline.all
     @posts = BlogPost.all
     @events = Event.all
-  end	
+  end
+
+  def activities
+  end
+
+  def democracy
+  end
 end
