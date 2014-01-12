@@ -18,3 +18,19 @@
 	margin-bottom: 0px;
 	border: none;
 }
+
+@font-face {
+	font-family: 'MuseoSlab-500';
+	src: font-url('298C28_0_0.eot');
+	src: font-url('298C28_0_0.eot?#iefix') format('embedded-opentype'),
+		 font-url('298C28_0_0.woff') format('woff'),
+		 font-url('298C28_0_0.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'MuseoSlab-500Italic';
+	src: font-url('298C28_1_0.eot');
+	src: font-url('298C28_1_0.eot?#iefix') format('embedded-opentype'),
+	     font-url('298C28_1_0.woff') format('woff'),
+	     font-url('298C28_1_0.ttf') format('truetype');
+}
