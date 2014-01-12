@@ -1,24 +1,16 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="small-12 columns">
+    <h2><%= @place.name %></h2>
+    <p><%= @place.description %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 large-6 columns">
+    <p><%= @place.latitude %>, <%= @place.longitude %> </p>
+  </div>
+  <div class="small-12 large-6 columns">
+    <%= render @place.schedule %>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @place.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @place.description %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @place.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @place.longitude %>
-</p>
-
-<%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Back', places_path %>
