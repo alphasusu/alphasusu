@@ -1,5 +1,9 @@
 IssueTracker::Application.routes.draw do
 
+  resources :places
+
+  resources :articles
+
   resources :headlines
 
   devise_for :users
