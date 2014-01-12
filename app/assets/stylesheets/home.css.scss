@@ -72,3 +72,19 @@
 	width: 32px;
 	height: 32px;
 }
+
+.orbit-container {
+	height: 100%;
+	
+	.orbit-slides-container {
+	    height: 100%;
+
+	    .content {
+	    	padding: 50px 50px 50px 115px;
+	    	height: 200px;
+	    }
+
+	    h2 { color: white; }
+	    h3 { color: white; }
+	}
+}

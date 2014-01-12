@@ -1,34 +1,40 @@
-    <div class="banner">
-      <div class="row">
-        <div class="medium-5 columns">
-          <dl class="today">
-            <dt>Prisoners at <em>Union Films</em></dt>
-            <dd>7pm &mdash; Tickets on the <a href="#">Box Office</a></dd>
-            <dt>SUSU Market on the Concourse</dt>
-            <dd>9am &ndash; 3pm</dd>
-            <dt>Zumba+ Society Class</dt>
-            <dd>2pm in The Cube</dd>
-          </dl>
-        </div>
-        <div class="medium-7 columns">
-        </div>
+<div class="banner">
+  <ul class="" data-orbit data-options="bullets: false">
+    <li data-orbit-slide="headline-1">
+      <div class="content">
+        <h2>Headline 2</h2>
+        <h3>Subheadline</h3>
       </div>
-    </div>
+    </li>
+    <li data-orbit-slide="headline-2">
+      <div class="content">
+        <h2>Headline 2</h2>
+        <h3>Subheadline</h3>
+      </div>
+    </li>
+    <li data-orbit-slide="headline-3">
+      <div class="content">
+        <h2>Headline 2</h2>
+        <h3>Subheadline</h3>
+      </div>
+    </li>
+  </ul>
+</div>
 
+<div class="row">
+  <div class="small-4 columns">
     <div class="row">
-      <div class="small-4 columns">
-	<div class="row">
-	  <h3>Blogs</h3>
-	</div>
-	  <%= render @posts %>
-      </div>
-      <div class="small-4 columns">
-	<h3>What's On</h3>
-	<div class="row">
-	  <%= render @events %>
-	</div>
-      </div>
-      <div class="small-4 columns">
-        <h3>SUSU Media</h3>
-      </div>
+      <h3>Blogs</h3>
     </div>
+    <%= render @posts %>
+  </div>
+  <div class="small-4 columns">
+    <h3>What's On</h3>
+    <div class="row">
+      <%= render @events %>
+    </div>
+  </div>
+  <div class="small-4 columns">
+    <h3>SUSU Media</h3>
+  </div>
+</div>
