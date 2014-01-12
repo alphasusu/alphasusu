@@ -1,0 +1,16 @@
+<% if @first_visit %>
+	<div id="first-run-modal" class="reveal-modal" data-reveal>
+		<h2>Welcome to SUSU Alpha</h2>
+		<p class="lead">Your couch.  It is mine.</p>
+		<p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
+		<a class="button success right" onclick="closeFirstRunModal()">Ok, I Understand</a>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	<script>
+		$('#first-run-modal').foundation('reveal', 'open', {});
+
+		function closeFirstRunModal() {
+			$('#first-run-modal').foundation('reveal', 'close', {});
+		}
+	</script>
+<% end %>
