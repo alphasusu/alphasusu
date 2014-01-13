@@ -115,7 +115,7 @@ open(whats_on) do |rss|
     event = Event.new
     title_split = item.title.split(/((?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday), [0-9]{1,2}(?:st|nd|th) (?:January|Feburary|March|April|May|June|July|August|September|October|November|December) [0-9]{4} - [0-9]{1,2}:[0-9]{2}(?:a|p)m)(?: )(.*)/)
     event.title = title_split[2]
-    event.date = Date.parse(title_split[1])
+    event.date = DateTime.parse(title_split[1])
     event.description = item.description
     event.save
   end
