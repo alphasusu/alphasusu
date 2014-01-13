@@ -1,6 +1,7 @@
 IssueTracker::Application.routes.draw do
 
-  devise_for :ldapusers
+  devise_for :ldap_users
+  devise_for :local_users
 
   resources :societies
   resources :issues
