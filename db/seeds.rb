@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -5,6 +6,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'rss'
 
 cafe = Place.create({
 	name: "The Café",
@@ -89,3 +92,16 @@ OpeningTime.create({ vacation: true, day: 2, open:  830, close: 1630, schedule: 
 OpeningTime.create({ vacation: true, day: 3, open:  830, close: 1630, schedule: shop_schedule })
 OpeningTime.create({ vacation: true, day: 4, open:  830, close: 1630, schedule: shop_schedule })
 OpeningTime.create({ vacation: true, day: 5, open:  830, close: 1630, schedule: shop_schedule })
+
+sabb_blog = 'http://blogs.susu.org/sabbs/feed/'
+
+open(sabb_blog) do |rss|
+  feed = RSS::Parser.parse(rss)
+  
+  feed.items.each do |item|
+    blog_post = BlogPost.new
+    blog_post.title = item.title
+    blog_post.body = item.content_encoded
+    blog_post.save
+  end
+end
