@@ -20,11 +20,19 @@ authorizations: &AUTHORIZATIONS
 
 ## Environment
 
+# development:
+#   host: localhost
+#   port: 10389
+#   attribute: cn
+#   base: ou=People,dc=nodomain
+#   ssl: false
+#   # <<: *AUTHORIZATIONS
+
 development:
-  host: localhost
-  port: 10389
+  host: nlbldap.soton.ac.uk
+  port: 389
   attribute: cn
-  base: ou=People,dc=nodomain
+  base: dc=soton,dc=ac,dc=uk
   ssl: false
   # <<: *AUTHORIZATIONS
 

@@ -1,6 +1,7 @@
 IssueTracker::Application.routes.draw do
 
-  devise_for :users
+  devise_for :ldap_users
+  devise_for :local_users
 
   resources :societies
   resources :issues
@@ -16,7 +17,7 @@ IssueTracker::Application.routes.draw do
   get '/democracy', to: 'home#democracy'
   
   root 'home#index'
-  
+
   # LEGACY REDIRECTS
 
   # What's On
