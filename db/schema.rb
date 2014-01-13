@@ -144,6 +144,15 @@ ActiveRecord::Schema.define(version: 20140113221622) do
     t.datetime "updated_at"
   end
 
+  create_table "tag_links", force: true do |t|
+    t.integer "article_id"
+    t.integer "tag_id"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
+
   create_table "users", force: true do |t|
     t.string   "login",                default: "", null: false
     t.datetime "remember_created_at"
