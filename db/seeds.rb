@@ -105,3 +105,16 @@ open(sabb_blog) do |rss|
     blog_post.save
   end
 end
+
+whats_on = 'http://www.susu.org/feeds/whatson.xml'
+
+open(whats_on) do |rss|
+  feed = RSS::Parser.parse(rss)
+
+  feed.items.each do |item|
+    event = Event.new
+    event.title = item.title
+    event.description = item.description
+    event.save
+  end
+end

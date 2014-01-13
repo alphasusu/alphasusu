@@ -14,7 +14,7 @@
   <div class="small-4 columns">
     <h3>What's On</h3>
     <div class="row">
-      <%= render @events %>
+      <%= render partial: "events/preview", collection: @events %>
     </div>
   </div>
   <div class="small-4 columns">
