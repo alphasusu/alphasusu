@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
       cookies.permanent[:returning_user] = true
     end
   end
+  
+  def set_site_area
+    params[:site_area] = :generic
+  end
 end

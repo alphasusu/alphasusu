@@ -1,4 +1,6 @@
 class IssuesController < ApplicationController
+  before_action :set_site_area
+  
   def index
     @issues = Issue.all
   end

@@ -1,5 +1,6 @@
 class HeadlinesController < ApplicationController
   before_action :set_headline, only: [:show, :edit, :update, :destroy]
+  before_action :set_site_area
 
   # GET /headlines
   # GET /headlines.json

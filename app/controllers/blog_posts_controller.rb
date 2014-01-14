@@ -1,4 +1,6 @@
 class BlogPostsController < ApplicationController
+  before_action :set_site_area
+  
   def show
     @post = BlogPost.friendly.find(params[:id])
   end

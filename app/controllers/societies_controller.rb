@@ -1,5 +1,6 @@
 class SocietiesController < ApplicationController
   before_action :set_society, only: [:show, :edit, :update, :destroy]
+  before_action :set_site_area
 
   # GET /societies
   # GET /societies.json
@@ -70,5 +71,9 @@ class SocietiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def society_params
       params.require(:society).permit(:name, :description)
+    end
+    
+    def set_site_area
+      params[:site_area] = :activities
     end
 end

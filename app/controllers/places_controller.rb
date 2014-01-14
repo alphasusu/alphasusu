@@ -1,6 +1,7 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_site_area
+  
   # GET /places
   # GET /places.json
   def index
@@ -73,5 +74,9 @@ class PlacesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
       params.require(:place).permit(:name, :description, :latitude, :longitude)
+    end
+    
+    def set_site_area
+      params[:site_area] = :places
     end
 end

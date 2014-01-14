@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :set_site_area
+  
   def show
     @event = Event.friendly.find(params[:id])
   end
@@ -21,6 +23,10 @@ class EventsController < ApplicationController
 private
   def post_params
     params.require(:event).permit(:title, :description, :date)
+  end
+  
+  def set_site_area
+    params[:site_area] = :events
   end
     
 end

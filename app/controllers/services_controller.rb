@@ -1,5 +1,6 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_site_area
 
   # GET /services
   # GET /services.json
@@ -70,5 +71,9 @@ class ServicesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
       params[:service]
+    end
+    
+    def set_site_area
+      params[:site_area] = :services
     end
 end

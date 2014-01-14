@@ -4,6 +4,7 @@
 		<title>Alpha SUSU</title>
 		<%= stylesheet_link_tag "application", media: "all" %>
 		<%= stylesheet_link_tag params[:controller] %>
+		<%= stylesheet_link_tag "site_area_specific/#{params[:site_area]}" %>
 		
 		<%= csrf_meta_tags %>
 	</head>
