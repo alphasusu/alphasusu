@@ -10,7 +10,7 @@
 	margin: 10px 20px 10px 20px;
 	
 	.opening_time {
-		margin-top: 5px;
+		margin-top: 5px !important;
 		
 		.time {
 			text-align: right;
@@ -29,6 +29,8 @@
 
 .menu_link {
 	margin-top: 30px;
-	border-color: #faa61a !important;
-	background: fade-out(#faa61a, 0.7) !important;
+	
+	h3 {
+		font-weight: 500 !important;
+	}
 }

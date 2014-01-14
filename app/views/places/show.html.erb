@@ -2,9 +2,9 @@
   <div class="large-6 medium-6 small-12 columns">
     <h2><%= @place.name %></h2>
     <p><%= @place.description %></p>
+    <%= render @place.schedule %>
   </div>
   <div class="large-6 medium-6 small-12 columns">
-    <%= render @place.schedule %>
     <%=
       map(:container_id => "map",
           :center => {
@@ -14,5 +14,10 @@
           :latlng => [@place.latitude, @place.longitude]
       ])
     %>
+    <% if @place.menu %>
+      <div class="menu_link">
+        <h3><%= link_to "View Menu \u2192", menu_path(@place.menu) %></h3>
+      </div>
+    <% end %>
   </div>
 </div>
