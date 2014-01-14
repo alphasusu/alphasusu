@@ -1,8 +1,25 @@
-<table>
-  <thead>
-    <tr><th>Day</th><th>Times</th></tr>
-  </thead>
-  <tbody>
-    <%= render schedule.opening_times %>
-  </tbody>
-</table>
+<% schedule = renderable_schedule schedule %>
+<div class="schedule">
+  <h5>Term Opening Hours</h5>
+  <table>
+    <% schedule[:term_times].each do |time| %>
+      <tr>
+        <td><%= time[:text_display] %></td>
+        <td><%= time[:opening_time].open %></td>
+        <td><%= time[:opening_time].close %></td>
+      </tr>    
+    <% end %>
+  </table>
+  <% if schedule[:vacation_times].length != 0 %>
+    <h5>Vacation Opening Hours</h5>
+    <table>
+      <% schedule[:vacation_times].each do |time| %>
+        <tr>
+          <td><%= time[:text_display] %></td>
+          <td><%= format_open_close_time time[:opening_time].open %></td>
+          <td><%= format_open_close_time time[:opening_time].close %></td>
+        </tr>    
+      <% end %>
+    </table>
+  <% end %>
+</div>
