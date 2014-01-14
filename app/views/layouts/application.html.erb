@@ -3,10 +3,14 @@
 	<head>
 		<title>Alpha SUSU</title>
 		<%= stylesheet_link_tag "application", media: "all" %>
+		<%= stylesheet_link_tag params[:controller] %>
+		
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
 		<%= javascript_include_tag "application" %>
+		<%= javascript_include_tag params[:controller] %>
+		
 	  	<%= render "shared/topnav" %>
 	  	<%= render "shared/flash_messages" %>
 	  	<%= yield %>

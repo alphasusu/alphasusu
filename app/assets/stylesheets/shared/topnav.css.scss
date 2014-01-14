@@ -1,0 +1,32 @@
+.top-bar-section li a {
+	font-family: 'MuseoSlab-500', 'Helvetica', 'Arial', sans-serif !important;
+	font-size: 18px !important;
+}
+
+.places 	{	background: #faa61a !important;		}
+.events 	{	background: #ee5823 !important;		}
+.activities	{	background: #ed0677 !important;		}
+.services 	{	background: #a3238e !important;		}
+.democracy 	{	background: #00aeff !important;		}
+.help 		{	background: #7ac142 !important;		}
+
+.susu-logo {
+	background: white !important;
+	font-weight: bold !important;
+	font-size: 20px !important;
+
+	.blue {
+		color: #262783;
+	}
+
+	.pink {
+		color: #db1572;
+	}
+
+	img {
+		width: 23px;
+		height: 13px;
+		margin-top: -3px;
+	}
+}
+
