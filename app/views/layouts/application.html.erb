@@ -6,11 +6,11 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
+		<%= javascript_include_tag "application" %>
 	  	<%= render "shared/topnav" %>
 	  	<%= render "shared/flash_messages" %>
 	  	<%= yield %>
 	  
-	  	<%= javascript_include_tag "application" %>
   		<%= render "shared/alpha_modal" %>
   		<script>
 			!function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(

@@ -5,3 +5,23 @@
 	height: 300px;
 	margin-bottom: 30px;
 }
+
+.opening_times {
+	font-weight: bold;
+	margin: 10px 20px 10px 20px;
+	
+	.opening_time {
+		.time {
+			text-align: right;
+		}
+	}	
+}
+
+.service_times {
+	font-style: italic;
+	margin: 10px 20px 10px 20px;
+	
+	.service_time {
+		
+	}	
+}
