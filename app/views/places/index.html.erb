@@ -24,7 +24,7 @@
 
 <div class="row">
   <% @places.each do |place| %>
-    <div class="small-12 medium-6 large-4 columns">
+    <div class="small-12 medium-6 large-6 columns">
       <h3><%= place.name %></h3>
       <p><%= place.description %></p>
       <%= render place.schedule %>
