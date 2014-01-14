@@ -11,6 +11,7 @@ IssueTracker::Application.routes.draw do
   resources :places
   resources :articles
   resources :headlines
+  resources :menus
 
   get '/help', to: 'articles#index'
   get '/activities', to: 'home#activities'
