@@ -5,8 +5,8 @@
     <% schedule[:term_times].each do |time| %>
       <tr>
         <td><%= time[:text_display] %></td>
-        <td><%= time[:opening_time].open %></td>
-        <td><%= time[:opening_time].close %></td>
+        <td><%= format_open_close_time time[:opening_time].open %></td>
+        <td><%= format_open_close_time time[:opening_time].close %></td>
       </tr>    
     <% end %>
   </table>

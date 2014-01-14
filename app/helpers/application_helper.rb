@@ -67,6 +67,9 @@ module ApplicationHelper
 	end
 	
 	def format_open_close_time(time)
-		time
+		hours = time / 100
+		minutes = time - (100 * hours)
+		time = Time.new(0, nil, nil, hours, minutes)
+		time.strftime "%l:%M%P"
 	end
 end
