@@ -1,7 +1,7 @@
 <% schedule = renderable_schedule schedule %>
 <div class="schedule">
   <h5>Term Opening Hours</h5>
-  <div>
+  <div class="opening_times">
     <% schedule[:term_times].each do |time| %>
       <div class="row opening_time">
         <div class="large-6 columns days"><%= time[:text_display] %></div>
@@ -10,7 +10,7 @@
       </div>
     <% end %>
   </div>
-  <div>
+  <div class="service_times">
     <% schedule[:term_service].each do |time| %>
       <p class="service_time">
         <%= time[:text_display] %>,
@@ -31,7 +31,7 @@
   </div>
   <% if schedule[:vacation_times].length != 0 %>
     <h5>Vacation Opening Hours</h5>
-    <div>
+    <div class="opening_times">
       <% schedule[:vacation_times].each do |time| %>
         <div class="row opening_time">
           <div class="large-6 columns days"><%= time[:text_display] %></div>
@@ -40,7 +40,7 @@
         </div>
       <% end %>
     </div>
-    <div>
+    <div class="service_times">
       <% schedule[:vacation_service].each do |time| %>
         <p class="service_time">
           <%= time[:text_display] %>,
