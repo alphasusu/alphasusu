@@ -5,6 +5,9 @@ class PlacesController < ApplicationController
   # GET /places.json
   def index
     @places = Place.all
+    @markers = @places.map do |p|
+      { latlng: [p.latitude, p.longitude], popup: p.name }
+    end
   end
 
   # GET /places/1

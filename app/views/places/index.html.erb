@@ -1,3 +1,27 @@
+<!--
+  map(:center => {
+      :latlng => [50.93452, -1.39714],
+      :zoom => 12
+  },
+  :markers => @markers)
+-->
+
+<div id="map"></div>
+<script>
+  setTimeout(function() {
+    var map = L.map('map');
+    map.setView([50.93452, -1.39714], 18);
+    <% @markers.each do |marker| %>
+    marker = L.marker([<%= marker[:latlng][0] %>, <%= marker[:latlng][1] %>]).addTo(map);
+    marker.bindPopup('<%= marker[:popup] %>')
+    <% end %>
+    L.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png', {
+              attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.',
+              maxZoom: 18
+          }).addTo(map);
+  }, 1000);
+</script>
+
 <h1>Listing places</h1>
 
 <table>
