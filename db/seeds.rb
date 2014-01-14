@@ -124,3 +124,125 @@ open(whats_on) do |rss|
     event.save
   end
 end
+
+bridgeMenu = Menu.new(:place => bridge)
+starters = MenuCategory.new(:menu => bridgeMenu,
+                            :name => "Starters")
+salads = MenuCategory.new(:menu => bridgeMenu,
+                          :name => "Salads")
+mains = MenuCategory.new(:menu => bridgeMenu,
+                         :name => "Mains")
+favourites = MenuCategory.new(:menu => bridgeMenu,
+                              :name => "Favourites")
+sides = MenuCategory.new(:menu => bridgeMenu,
+                         :name => "Sides")
+desserts = MenuCategory.new(:menu => bridgeMenu,
+                            :name => "Desserts")
+
+bridgeMenu.menu_categories.append(starters)
+bridgeMenu.menu_categories.append(salads)
+bridgeMenu.menu_categories.append(mains)
+bridgeMenu.menu_categories.append(favourites)
+bridgeMenu.menu_categories.append(sides)
+bridgeMenu.menu_categories.append(desserts)
+
+
+starters.menu_items
+  .append(MenuItem.new(:name => "Freshly Made Soup of the Day",
+                       :additional_info => "Served with roll & butter",
+                       :price => 2.50))
+  .append(MenuItem.new(:name => "Sustainably Sourced Smoked Makerel Fillet",
+                       :additional_info => "Served with celeriac & pear remoulade & toasted bread.",
+                       :price => 2.95))
+  .append(MenuItem.new(:name => "Crisp Battered Prawns with Lemon & Chilli",
+                       :price => 3.50))
+  .append(MenuItem.new(:name => "Warm Seasonal Salad",
+                       :additional_info => "Please ask for option.",
+                       :price => 3.25))
+  .append(MenuItem.new(:name => "Garlic Cheese Ciabatta",
+                       :description => "Garlic toasted ciabatta bread with cheese.",
+                       :price => 3.25))
+          
+salads.menu_items
+  .append(MenuItem.new(:name => "Bridge Salad",
+                       :description => "A great mix of fresh salad served with pine nuts and a balsamic glaze",
+                       :price => 4.10))
+  .append(MenuItem.new(:name => "Bridge Salad with Smoked Mackeral",
+                       :price => 5.25))
+  .append(MenuItem.new(:name => "Bridge Salad with Seared Chicken",
+                       :price => 5.25))
+  .append(MenuItem.new(:name => "Bridge Salad with Greek Feta Cheese & Olives",
+                       :price => 5.25))
+
+mains.menu_items
+  .append(MenuItem.new(:name => "Warm Seasonal Salad",
+                       :price => 4.45))
+  .append(MenuItem.new(:name => "Chicken Español",
+                       :description => "Sautéed chicken bread with chorizo, peppers, onions & olives in basil oil.",
+                       :additional_info => "Plus choice of 2 sides.",
+                       :price => 6.50))
+  .append(MenuItem.new(:name => "Sizzling Platter",
+                       :description => "Prime 4oz rump steak, chicken breast, fresh local sausage, mushrooms & cherry tomato.",
+                       :additional_info => "Served with chips, onion rings & house salad.",
+                       :price => 8.60))
+  .append(MenuItem.new(:name => "Prime Local 6oz Rump Steak",
+                       :additional_info => "Served with locally produced mushroms, roasted cherry tomatoes & tarragon and either chips or crushed new potatoes.",
+                       :price => 7.00))
+  .append(MenuItem.new(:name => "Fresh Poached Salmon",
+                       :description => "Fresh salmon steak poached in a chilli & lime sauce.",
+                       :additional_info => "Choice of 2 sides.",
+                       :price => 6.00))
+  .append(MenuItem.new(:name => "Trio of Locally Sourced Sausages",
+                       :additional_info => "Served with mustard mashed potato, rich onion gravy & seasonal vegetables",
+                       :price => 5.30))
+  .append(MenuItem.new(:name => "Fresh Fish of the Day",
+                       :additional_info => "Served with chips & minted peas.",
+                       :description => "Freshly battered sustainably sourced white fish.",
+                       :price => 5.00))
+  .append(MenuItem.new(:name => "Pan Seared Duck Breast with Raspberry",
+                       :additional_info => "With raspberries, roasted sweet potatoes & split green beans.",
+                       :price => 7.50))
+
+favourites.menu_items
+  .append(MenuItem.new(:name => "Bridge Open Kebab",
+                       :description => "Succulent marinated chicken served in an open pitta with house salad and sweet chilli sauce",
+                       :price => 4.00))
+  .append(MenuItem.new(:name => "Chip Butty",
+                       :description => "Chunky chips with a large crusty baguette.",
+                       :price => 2.25))
+  .append(MenuItem.new(:name => "Bridge Beef Burger",
+                       :description => "Locally farm produced 6oz burger",
+                       :additional_info => "Layered with salad and tomato relish. Served with House Salad",
+                       :price => 3.95))
+  .append(MenuItem.new(:name => "Bridge Vegetable Burger",
+                       :additional_info => "Layered with salad and tomato relish. Served with House Salad",
+                       :price => 3.95))
+  .append(MenuItem.new(:name => "Bridge Thai Chicken Burger",
+                       :additional_info => "Layered with basil and coriander mayonnaise. Served with House Salad",
+                       :price => 3.95))
+  .append(MenuItem.new(:name => "Ultimate Burger Upgrade",
+                       :description => "Add Cheese, Jalapenos and Bacon or Sundried Tomatoes to any burger",
+                       :price => 1.50))
+
+sides.menu_items
+  .append(MenuItem.new(:name => "Sweet Potato Fries",
+                       :price => 2.50))
+  .append(MenuItem.new(:name => "Fresh Seasonal Vegetables",
+                       :price => 1.60))
+  .append(MenuItem.new(:name => "Crushed New Potatoes",
+                       :price => 1.60))
+  .append(MenuItem.new(:name => "Chunky Chips",
+                       :price => 1.60))
+  .append(MenuItem.new(:name => "House Salad",
+                       :price => 1.60))
+  .append(MenuItem.new(:name => "Onion Rings",
+                       :price => 2.50))
+
+desserts.menu_items
+  .append(MenuItem.new(:name => "Chocolate Surprise",
+                       :price => 3.00))
+  .append(MenuItem.new(:name => "Apple Parfait with Blackberries",
+                       :price => 3.00))
+  .append(MenuItem.new(:name => "Sticky Toffee Pudding, Salted Caramel and Cinder Toffee",
+                       :price => 3.00))
+bridgeMenu.save
