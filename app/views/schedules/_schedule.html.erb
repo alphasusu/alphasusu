@@ -4,9 +4,9 @@
   <div class="opening_times">
     <% schedule[:term_times].each do |time| %>
       <div class="row opening_time">
-        <div class="large-6 columns days"><%= time[:text_display] %></div>
-        <div class="large-3 columns time"><%= format_open_close_time time[:opening_time].open %></div>
-        <div class="large-3 columns time"><%= format_open_close_time time[:opening_time].close %></div>
+        <div class="large-6 small-6 columns days"><%= time[:text_display] %></div>
+        <div class="large-3 small-3 columns time"><%= format_open_close_time time[:opening_time].open %></div>
+        <div class="large-3 small-3 columns time"><%= format_open_close_time time[:opening_time].close %></div>
       </div>
     <% end %>
   </div>
@@ -34,9 +34,9 @@
     <div class="opening_times">
       <% schedule[:vacation_times].each do |time| %>
         <div class="row opening_time">
-          <div class="large-6 columns days"><%= time[:text_display] %></div>
-          <div class="large-3 columns time"><%= format_open_close_time time[:opening_time].open %></div>
-          <div class="large-3 columns time"><%= format_open_close_time time[:opening_time].close %></div>
+          <div class="large-6 small-6 columns days"><%= time[:text_display] %></div>
+          <div class="large-3 small-3 columns time"><%= format_open_close_time time[:opening_time].open %></div>
+          <div class="large-3 small-3 columns time"><%= format_open_close_time time[:opening_time].close %></div>
         </div>
       <% end %>
     </div>
