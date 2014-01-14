@@ -35,6 +35,9 @@ gem 'jbuilder', '~> 1.2'
 # Foundation for Views
 gem 'foundation-rails'
 
+# For slug-like URLs
+gem 'friendly_id'
+
 # User Authentication
 gem 'devise'
 gem 'devise_ldap_authenticatable'
