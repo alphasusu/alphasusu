@@ -12,8 +12,6 @@
  *= require_tree ./shared
  */
 
-@import "foundation";
-
 .alert-box {
 	margin-bottom: 0px;
 	border: none;
@@ -36,7 +34,7 @@
 }
 
 .banner-offset {
-	margin-top: 30px;
+	margin-top: 30px !important;
 }
 
 .avatar {
