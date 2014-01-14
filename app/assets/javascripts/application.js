@@ -18,3 +18,12 @@
 $(function() {
   $(document).foundation();
 });
+
+var colour_wheel = [
+    '#faa61a',
+    '#ee5823',
+    '#ed0677',
+    '#a3238e',
+    '#00aeff',
+    '#7ac142'
+];
