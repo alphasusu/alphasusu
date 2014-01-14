@@ -1,51 +1,63 @@
 <% schedule = renderable_schedule schedule %>
 <div class="schedule">
   <h5>Term Opening Hours</h5>
-  <table>
+  <div>
     <% schedule[:term_times].each do |time| %>
-      <tr>
-        <td><%= time[:text_display] %></td>
-        <td><%= format_open_close_time time[:opening_time].open %></td>
-        <td><%= format_open_close_time time[:opening_time].close %></td>
-      </tr>
+      <div class="row opening_time">
+        <div class="large-6 columns days"><%= time[:text_display] %></div>
+        <div class="large-3 columns time"><%= format_open_close_time time[:opening_time].open %></div>
+        <div class="large-3 columns time"><%= format_open_close_time time[:opening_time].close %></div>
+      </div>
     <% end %>
-  </table>
-  <table>
+  </div>
+  <div>
     <% schedule[:term_service].each do |time| %>
-      <tr>
-        <td><%= time[:text_display] %></td>
-        <% if time[:opening_time].service_start %>
-          <td><%= format_open_close_time time[:opening_time].service_start %></td>
+      <p class="service_time">
+        <%= time[:text_display] %>,
+        <% if time[:opening_time].service_start && time[:opening_time].service_end %>
+          service between
+          <%= format_open_close_time time[:opening_time].service_start %>
+          and
+          <%= format_open_close_time time[:opening_time].service_end %>
+        <% elsif time[:opening_time].service_start %>
+          service starts
+          <%= format_open_close_time time[:opening_time].service_start %>
+        <% elsif time[:opening_time].service_start %>
+          service ends
+          <%= format_open_close_time time[:opening_time].service_end %>
         <% end %>
-        <% if time[:opening_time].service_end %>
-          <td><%= format_open_close_time time[:opening_time].service_end %></td>
-        <% end %>
-      </tr>
+      </p>
     <% end %>
-  </table>
+  </div>
   <% if schedule[:vacation_times].length != 0 %>
     <h5>Vacation Opening Hours</h5>
-    <table>
+    <div>
       <% schedule[:vacation_times].each do |time| %>
-        <tr>
-          <td><%= time[:text_display] %></td>
-          <td><%= format_open_close_time time[:opening_time].open %></td>
-          <td><%= format_open_close_time time[:opening_time].close %></td>
-        </tr>
+        <div class="row opening_time">
+          <div class="large-6 columns days"><%= time[:text_display] %></div>
+          <div class="large-3 columns time"><%= format_open_close_time time[:opening_time].open %></div>
+          <div class="large-3 columns time"><%= format_open_close_time time[:opening_time].close %></div>
+        </div>
       <% end %>
-    </table>
-    <table>
+    </div>
+    <div>
       <% schedule[:vacation_service].each do |time| %>
-        <tr>
-          <td><%= time[:text_display] %></td>
-          <% if time[:opening_time].service_start %>
-            <td><%= format_open_close_time time[:opening_time].service_start %></td>
+        <p class="service_time">
+          <%= time[:text_display] %>,
+          <% if time[:opening_time].service_start && time[:opening_time].service_end %>
+            service between
+            <%= format_open_close_time time[:opening_time].service_start %>
+            and
+            <%= format_open_close_time time[:opening_time].service_end %>
+          <% elsif time[:opening_time].service_start %>
+            service starts
+            <%= format_open_close_time time[:opening_time].service_start %>
+          <% elsif time[:opening_time].service_start %>
+            service ends
+            <%= format_open_close_time time[:opening_time].service_end %>
           <% end %>
-          <% if time[:opening_time].service_end %>
-            <td><%= format_open_close_time time[:opening_time].service_end %></td>
-          <% end %>
-        </tr>
+        </p>
       <% end %>
-    </table>
+    </div>
   <% end %>
 </div>
