@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
   def index
-    @places = Place.all
+    @places = Place.where(shown: true)
     @markers = @places.map do |p|
       { latlng: [p.latitude, p.longitude], popup: p.name }
     end

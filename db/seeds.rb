@@ -15,7 +15,8 @@ cafe = Place.create({
 
 It's conveniently located right in the middle of Highfield Campus in The Union (Building 42), and serves a great variety of tasty meals, snacks and drinks throughout the day at student-friendly prices.",
 	latitude: 50.93434,
-	longitude: -1.39749
+	longitude: -1.39749,
+        shown: true
 })
 
 bridge = Place.create({
@@ -24,14 +25,16 @@ bridge = Place.create({
 
 There's a varied offering of great entertainment, including fortnightly stand-up from Comedy Central Live, live music every Monday and a popular quiz night on Sundays.",
 	latitude: 50.93445,
-	longitude: -1.39776
+	longitude: -1.39776,
+        shown:true
 })
 
 stags = Place.create({
 	name: "The Stags",
 	description: "Showing as much as live sport as we can fit in, plus the occasional Karaoke session on Thursday evenings, The Stag's is the perfect place to relax after a day of lectures. Friday evenings feature live music to end the week.",
 	latitude: 50.93475,
-	longitude: -1.39739
+	longitude: -1.39739,
+        shown:true
 })
 
 shop = Place.create({
@@ -42,7 +45,8 @@ It's right in the middle of Highfield Campus, and stocks a range of essentials f
 
 You can also buy a selection of University of Southampton gifts and products from The Shop online.",
 	latitude: 50.93446,
-	longitude: -1.39688
+	longitude: -1.39688,
+        shown:true
 })
 
 cafe_schedule = Schedule.create({ place: cafe })
