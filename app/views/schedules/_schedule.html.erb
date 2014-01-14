@@ -7,7 +7,20 @@
         <td><%= time[:text_display] %></td>
         <td><%= format_open_close_time time[:opening_time].open %></td>
         <td><%= format_open_close_time time[:opening_time].close %></td>
-      </tr>    
+      </tr>
+    <% end %>
+  </table>
+  <table>
+    <% schedule[:term_service].each do |time| %>
+      <tr>
+        <td><%= time[:text_display] %></td>
+        <% if time[:opening_time].service_start %>
+          <td><%= format_open_close_time time[:opening_time].service_start %></td>
+        <% end %>
+        <% if time[:opening_time].service_end %>
+          <td><%= format_open_close_time time[:opening_time].service_end %></td>
+        <% end %>
+      </tr>
     <% end %>
   </table>
   <% if schedule[:vacation_times].length != 0 %>
@@ -18,7 +31,20 @@
           <td><%= time[:text_display] %></td>
           <td><%= format_open_close_time time[:opening_time].open %></td>
           <td><%= format_open_close_time time[:opening_time].close %></td>
-        </tr>    
+        </tr>
+      <% end %>
+    </table>
+    <table>
+      <% schedule[:vacation_service].each do |time| %>
+        <tr>
+          <td><%= time[:text_display] %></td>
+          <% if time[:opening_time].service_start %>
+            <td><%= format_open_close_time time[:opening_time].service_start %></td>
+          <% end %>
+          <% if time[:opening_time].service_end %>
+            <td><%= format_open_close_time time[:opening_time].service_end %></td>
+          <% end %>
+        </tr>
       <% end %>
     </table>
   <% end %>

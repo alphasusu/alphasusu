@@ -16,16 +16,42 @@ module ApplicationHelper
 		term_times = schedule.opening_times.find_all { |o| !o.vacation }
 		vacation_times = schedule.opening_times.find_all { |o| o.vacation }
 		
+		term_service_times = term_times.find_all { |o| o.service_start || o.service_end }
+		vacation_service_times = vacation_times.find_all { |o| o.service_start || o.service_end }
+		
 		term_times = collapse_opening_times(term_times)
 		vacation_times = collapse_opening_times(vacation_times)
 		
-		{
-			term_times: term_times,
-			vacation_times: vacation_times
-		}
+		term_service_times = collapse_service_times(term_service_times)
+		vacation_service_times = collapse_service_times(vacation_service_times)
+		
+		{ term_times: term_times, vacation_times: vacation_times,
+		  term_service: term_service_times, vacation_service: vacation_service_times	}
 	end
 	
+	def format_open_close_time(time)
+		hours = time / 100
+		minutes = time - (100 * hours)
+		time = Time.new(0, nil, nil, hours, minutes)
+		time.strftime "%l:%M%P"
+	end
+	
+	
+private
+
+	###
+	# Helper methods for opening times formatting
+	###
+	
 	def collapse_opening_times(opening_times)
+		collapse_times(opening_times, compare = :opening)	
+	end
+	
+	def collapse_service_times(opening_times)
+		collapse_times(opening_times, compare = :service)	
+	end
+	
+	def collapse_times(opening_times, compare = :opening)
 		if !opening_times || opening_times.length == 0
 			return [] # Return empty for no times
 		end
@@ -38,8 +64,17 @@ module ApplicationHelper
 		collapsed_times = [opening_times.shift]
 		day_names = [day_name(collapsed_times.first.day)]
 		
+		comparator = nil
+		if compare == :opening
+			comparator = lambda { |t1, t2| t1.has_same_times(t2) }
+		elsif compare == :service
+			comparator = lambda { |t1, t2| t1.has_same_service(t2) }
+		else
+			return []
+		end
+		
 		opening_times.each do |time|
-			if collapsed_times.last.has_same_times(time)
+			if comparator.call(collapsed_times.last, time)
 				day_names << (day_names.pop + ',' + day_name(time.day))
 			else
 				collapsed_times << time
@@ -66,10 +101,4 @@ module ApplicationHelper
 		end
 	end
 	
-	def format_open_close_time(time)
-		hours = time / 100
-		minutes = time - (100 * hours)
-		time = Time.new(0, nil, nil, hours, minutes)
-		time.strftime "%l:%M%P"
-	end
 end
