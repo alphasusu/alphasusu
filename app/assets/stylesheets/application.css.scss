@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require_tree ./shared
  */
 
 @import "foundation";
@@ -33,4 +33,16 @@
 	src: font-url('298C28_1_0.eot?#iefix') format('embedded-opentype'),
 	     font-url('298C28_1_0.woff') format('woff'),
 	     font-url('298C28_1_0.ttf') format('truetype');
+}
+
+.banner-offset {
+	margin-top: 30px;
+}
+
+.avatar {
+	display:inline-block;
+	margin-right: 5px;
+	border-radius: 16px;
+	width: 32px;
+	height: 32px;
 }

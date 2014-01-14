@@ -1,16 +1,18 @@
-<p id="notice"><%= notice %></p>
-<div class="row">
-  <div class="small-12 columns">
+<div class="row place banner-offset">
+  <div class="large-6 medium-6 small-12 columns">
     <h2><%= @place.name %></h2>
     <p><%= @place.description %></p>
   </div>
-</div>
-<div class="row">
-  <div class="small-12 large-6 columns">
-    <p><%= @place.latitude %>, <%= @place.longitude %> </p>
-  </div>
-  <div class="small-12 large-6 columns">
+  <div class="large-6 medium-6 small-12 columns">
     <%= render @place.schedule %>
+    <%=
+      map(:container_id => "map",
+          :center => {
+          :latlng => [50.93452, -1.39714],
+          :zoom => 18
+      }, :markers => [
+          :latlng => [@place.latitude, @place.longitude]
+      ])
+    %>
   </div>
 </div>
-
