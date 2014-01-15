@@ -247,14 +247,29 @@ desserts.menu_items
                        :price => 3.00))
 bridgeMenu.save
 
-Officer.new(:title => "Union President").save
-Officer.new(:title => "Vice-President Education").save
-Officer.new(:title => "Vice-President Engagement").save
-Officer.new(:title => "Vice-President Sports Development").save
-Officer.new(:title => "Vice-President Welfare").save
-Officer.new(:title => "Vice-President Student Communities").save
-Officer.new(:title => "Vice-President Democracy & Creative Industries").save
+president = Officer.new(:title => "Union President").save
+vp_education = Officer.new(:title => "Vice-President Education").save
+vp_engagement = Officer.new(:title => "Vice-President Engagement").save
+vp_sports = Officer.new(:title => "Vice-President Sports Development").save
+vp_welfare = Officer.new(:title => "Vice-President Welfare").save
+vp_community = Officer.new(:title => "Vice-President Student Communities").save
+vp_democracy = Officer.new(:title => "Vice-President Democracy & Creative Industries").save
 
-
-
-
+Zone.new(:name => "Trustee"
+         :officer => president).save
+Zone.new(:name => "Democracy"
+         :officer => vp_democracy).save
+Zone.new(:name => "Sustainability"
+         :officer => vp_welfare).save
+Zone.new(:name => "Student Communities"
+         :officer => vp_community).save
+Zone.new(:name => "Creative Industries"
+         :officer => vp_democracy).save
+Zone.new(:name => "Education"
+         :officer => vp_education).save
+Zone.new(:name => "External Engagement"
+         :officer => vp_engagement).save
+Zone.new(:name => "Sports Development"
+         :officer => vp_sports).save
+Zone.new(:name => "Student Life"
+         :officer => vp_welfare).save
