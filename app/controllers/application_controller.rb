@@ -6,9 +6,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  check_authorization
+  check_authorization :unless => :in_unauthorized_whitelist?
 
   before_filter :check_first_run
+  before_filter :set_site_area
 
   def check_first_run
     if not cookies.permanent[:returning_user]
@@ -23,6 +24,12 @@ class ApplicationController < ActionController::Base
 
   def current_user
     return current_ldap_user | current_local_user | nil
+  end
+
+private
+
+  def in_unauthorized_whitelist?
+    respond_to?(:devise_controller?)
   end
 
 end
