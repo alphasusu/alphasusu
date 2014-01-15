@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115181323) do
+ActiveRecord::Schema.define(version: 20140115181921) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20140115181323) do
   end
 
   add_index "blog_posts", ["slug"], name: "index_blog_posts_on_slug", unique: true
+
+  create_table "committee_memberships", force: true do |t|
+    t.integer  "officer_id"
+    t.integer  "subcommittee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "committee_memberships", ["officer_id"], name: "index_committee_memberships_on_officer_id"
+  add_index "committee_memberships", ["subcommittee_id"], name: "index_committee_memberships_on_subcommittee_id"
 
   create_table "contact_elements", force: true do |t|
     t.string   "type"
@@ -176,6 +186,15 @@ ActiveRecord::Schema.define(version: 20140115181323) do
   end
 
   add_index "societies", ["slug"], name: "index_societies_on_slug", unique: true
+
+  create_table "subcommittees", force: true do |t|
+    t.text     "name"
+    t.integer  "zone_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subcommittees", ["zone_id"], name: "index_subcommittees_on_zone_id"
 
   create_table "tag_links", force: true do |t|
     t.integer "article_id"
