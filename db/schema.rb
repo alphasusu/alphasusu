@@ -216,7 +216,7 @@ ActiveRecord::Schema.define(version: 20140115181921) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
-    t.string   "email"
+    t.string   "email",                default: "", null: false
     t.string   "encrypted_password"
     t.datetime "confirmed_at"
     t.string   "confirmation_token"
@@ -224,8 +224,6 @@ ActiveRecord::Schema.define(version: 20140115181921) do
     t.boolean  "elevated"
     t.string   "unconfirmed_email"
   end
-
-  add_index "users", ["login"], name: "index_users_on_login", unique: true
 
   create_table "zones", force: true do |t|
     t.string   "name"
