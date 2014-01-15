@@ -7,7 +7,7 @@ class PlacesController < ApplicationController
   def index
     @places = Place.where(shown: true)
     @markers = @places.map do |p|
-      { latlng: [p.latitude, p.longitude], popup: p.name }
+      { latlng: [p.latitude, p.longitude], id: p.id }
     end
   end
 
