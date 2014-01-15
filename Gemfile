@@ -50,7 +50,6 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'rails_serve_static_assets'
 end
 
 # Use ActiveModel has_secure_password
