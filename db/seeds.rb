@@ -247,29 +247,29 @@ desserts.menu_items
                        :price => 3.00))
 bridgeMenu.save
 
-president = Officer.new(:title => "Union President").save
-vp_education = Officer.new(:title => "Vice-President Education").save
-vp_engagement = Officer.new(:title => "Vice-President Engagement").save
-vp_sports = Officer.new(:title => "Vice-President Sports Development").save
-vp_welfare = Officer.new(:title => "Vice-President Welfare").save
-vp_community = Officer.new(:title => "Vice-President Student Communities").save
-vp_democracy = Officer.new(:title => "Vice-President Democracy & Creative Industries").save
+president = Officer.create(:title => "Union President")
+vp_education = Officer.create(:title => "Vice-President Education")
+vp_engagement = Officer.create(:title => "Vice-President Engagement")
+vp_sports = Officer.create(:title => "Vice-President Sports Development")
+vp_welfare = Officer.create(:title => "Vice-President Welfare")
+vp_community = Officer.create(:title => "Vice-President Student Communities")
+vp_democracy = Officer.create(:title => "Vice-President Democracy & Creative Industries")
 
-Zone.new(:name => "Trustee"
-         :officer => president).save
-Zone.new(:name => "Democracy"
-         :officer => vp_democracy).save
-Zone.new(:name => "Sustainability"
-         :officer => vp_welfare).save
-Zone.new(:name => "Student Communities"
-         :officer => vp_community).save
-Zone.new(:name => "Creative Industries"
-         :officer => vp_democracy).save
-Zone.new(:name => "Education"
-         :officer => vp_education).save
-Zone.new(:name => "External Engagement"
-         :officer => vp_engagement).save
-Zone.new(:name => "Sports Development"
-         :officer => vp_sports).save
-Zone.new(:name => "Student Life"
-         :officer => vp_welfare).save
+Zone.create(:name => "Trustee",
+         :officer => president)
+Zone.create(:name => "Democracy",
+         :officer => vp_democracy)
+Zone.create(:name => "Sustainability",
+         :officer => vp_welfare)
+Zone.create(:name => "Student Communities",
+         :officer => vp_community)
+Zone.create(:name => "Creative Industries",
+         :officer => vp_democracy)
+Zone.create(:name => "Education",
+         :officer => vp_education)
+Zone.create(:name => "External Engagement",
+         :officer => vp_engagement)
+Zone.create(:name => "Sports Development",
+         :officer => vp_sports)
+Zone.create(:name => "Student Life",
+         :officer => vp_welfare)
