@@ -10,9 +10,9 @@
   var markers = <%=raw @markers.to_json %>;
 </script>
 
-<div class="row banner-offset">
+<div class="row">
   <% @places.each do |place| %>
-    <div class="small-12 medium-6 large-6 columns place" data-id="<%= place.id %>">
+    <div class="small-12 medium-6 large-6 columns place padded-item" data-id="<%= place.id %>">
       <h3>
         <%= link_to place.name, place_path(place), id: place.slug %>
       </h3>
