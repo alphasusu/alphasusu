@@ -15,7 +15,7 @@ IssueTracker::Application.routes.draw do
 
   get '/help', to: 'articles#index'
   get '/activities', to: 'home#activities'
-  get '/democracy', to: 'home#democracy'
+  get '/democracy', to: 'democracy#index'
   
   root 'home#index'
 

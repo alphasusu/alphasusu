@@ -246,3 +246,15 @@ desserts.menu_items
   .append(MenuItem.new(:name => "Sticky Toffee Pudding, Salted Caramel and Cinder Toffee",
                        :price => 3.00))
 bridgeMenu.save
+
+Officer.new(:title => "Union President").save
+Officer.new(:title => "Vice-President Education").save
+Officer.new(:title => "Vice-President Engagement").save
+Officer.new(:title => "Vice-President Sports Development").save
+Officer.new(:title => "Vice-President Welfare").save
+Officer.new(:title => "Vice-President Student Communities").save
+Officer.new(:title => "Vice-President Democracy & Creative Industries").save
+
+
+
+
