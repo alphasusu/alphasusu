@@ -10,6 +10,20 @@ class ApplicationController < ActionController::Base
 
   before_filter :check_first_run
   before_filter :set_site_area
+  
+  before_filter :mailer_set_url_options
+
+  def current_user
+    if current_ldap_user
+      current_ldap_user
+    elsif current_local_user
+      current_local_user
+    else
+      nil
+    end
+  end
+
+private
 
   def check_first_run
     if not cookies.permanent[:returning_user]
@@ -22,14 +36,13 @@ class ApplicationController < ActionController::Base
     params[:site_area] = :generic
   end
 
-  def current_user
-    return current_ldap_user | current_local_user | nil
-  end
-
-private
-
   def in_unauthorized_whitelist?
     respond_to?(:devise_controller?)
+  end
+  
+  # For Debugging, set the host for emailed links dynamically
+  def mailer_set_url_options
+    ActionMailer::Base.default_url_options[:host] = request.host_with_port
   end
 
 end
