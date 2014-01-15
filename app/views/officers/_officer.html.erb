@@ -1,3 +1,7 @@
   <div class="small-2 column">
-    <h5><%= officer.title %></h5>
+    <% if officer.user %>
+    <% else %>
+    <p style="text-align: center">Unfilled</p>
+    <% end %>
+    <h5 style="text-align: center"><%= officer.title %></h5>
   </div>
