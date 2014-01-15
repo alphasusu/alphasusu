@@ -15,3 +15,5 @@
 /log/*.log
 /tmp
 *~
+development
+development.sqlite3

@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140115181323) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "articles", force: true do |t|
     t.string   "title"
     t.string   "body"
@@ -24,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140115181323) do
     t.datetime "updated_at"
   end
 
-  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
+  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true
 
   create_table "blog_posts", force: true do |t|
     t.string   "title"
@@ -34,7 +31,7 @@ ActiveRecord::Schema.define(version: 20140115181323) do
     t.string   "slug"
   end
 
-  add_index "blog_posts", ["slug"], name: "index_blog_posts_on_slug", unique: true, using: :btree
+  add_index "blog_posts", ["slug"], name: "index_blog_posts_on_slug", unique: true
 
   create_table "contact_elements", force: true do |t|
     t.string   "type"
@@ -54,8 +51,8 @@ ActiveRecord::Schema.define(version: 20140115181323) do
     t.string   "slug"
   end
 
-  add_index "events", ["place_id"], name: "index_events_on_place_id", using: :btree
-  add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
+  add_index "events", ["place_id"], name: "index_events_on_place_id"
+  add_index "events", ["slug"], name: "index_events_on_slug", unique: true
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -65,10 +62,10 @@ ActiveRecord::Schema.define(version: 20140115181323) do
     t.datetime "created_at"
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "headlines", force: true do |t|
     t.text     "title"
@@ -97,7 +94,7 @@ ActiveRecord::Schema.define(version: 20140115181323) do
     t.datetime "updated_at"
   end
 
-  add_index "menu_categories", ["menu_id"], name: "index_menu_categories_on_menu_id", using: :btree
+  add_index "menu_categories", ["menu_id"], name: "index_menu_categories_on_menu_id"
 
   create_table "menu_items", force: true do |t|
     t.string   "name"
@@ -115,7 +112,7 @@ ActiveRecord::Schema.define(version: 20140115181323) do
     t.datetime "updated_at"
   end
 
-  add_index "menus", ["place_id"], name: "index_menus_on_place_id", using: :btree
+  add_index "menus", ["place_id"], name: "index_menus_on_place_id"
 
   create_table "officers", force: true do |t|
     t.string   "title"
@@ -124,7 +121,7 @@ ActiveRecord::Schema.define(version: 20140115181323) do
     t.datetime "updated_at"
   end
 
-  add_index "officers", ["user_id"], name: "index_officers_on_user_id", using: :btree
+  add_index "officers", ["user_id"], name: "index_officers_on_user_id"
 
   create_table "opening_times", force: true do |t|
     t.boolean  "vacation"
@@ -140,7 +137,7 @@ ActiveRecord::Schema.define(version: 20140115181323) do
 
   create_table "places", force: true do |t|
     t.string   "name"
-    t.text     "description"
+    t.text     "description", limit: 255
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at"
@@ -149,7 +146,7 @@ ActiveRecord::Schema.define(version: 20140115181323) do
     t.string   "slug"
   end
 
-  add_index "places", ["slug"], name: "index_places_on_slug", unique: true, using: :btree
+  add_index "places", ["slug"], name: "index_places_on_slug", unique: true
 
   create_table "schedules", force: true do |t|
     t.integer  "place_id"
@@ -157,7 +154,7 @@ ActiveRecord::Schema.define(version: 20140115181323) do
     t.datetime "updated_at"
   end
 
-  add_index "schedules", ["place_id"], name: "index_schedules_on_place_id", using: :btree
+  add_index "schedules", ["place_id"], name: "index_schedules_on_place_id"
 
   create_table "services", force: true do |t|
     t.string   "name"
@@ -168,7 +165,7 @@ ActiveRecord::Schema.define(version: 20140115181323) do
     t.string   "slug"
   end
 
-  add_index "services", ["slug"], name: "index_services_on_slug", unique: true, using: :btree
+  add_index "services", ["slug"], name: "index_services_on_slug", unique: true
 
   create_table "societies", force: true do |t|
     t.text     "name"
@@ -178,7 +175,7 @@ ActiveRecord::Schema.define(version: 20140115181323) do
     t.string   "slug"
   end
 
-  add_index "societies", ["slug"], name: "index_societies_on_slug", unique: true, using: :btree
+  add_index "societies", ["slug"], name: "index_societies_on_slug", unique: true
 
   create_table "tag_links", force: true do |t|
     t.integer "article_id"
@@ -216,6 +213,6 @@ ActiveRecord::Schema.define(version: 20140115181323) do
     t.datetime "updated_at"
   end
 
-  add_index "zones", ["officer_id"], name: "index_zones_on_officer_id", using: :btree
+  add_index "zones", ["officer_id"], name: "index_zones_on_officer_id"
 
 end
