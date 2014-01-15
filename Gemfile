@@ -60,3 +60,4 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem "paperclip", "~> 3.5.2"
+gem "cancan"

@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  
+  check_authorization
 
   before_filter :check_first_run
 
@@ -18,4 +20,9 @@ class ApplicationController < ActionController::Base
   def set_site_area
     params[:site_area] = :generic
   end
+
+  def current_user
+    return current_ldap_user | current_local_user | nil
+  end
+
 end

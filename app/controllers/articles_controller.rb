@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :set_site_area
 

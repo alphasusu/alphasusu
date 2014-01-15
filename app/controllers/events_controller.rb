@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_site_area
-  
+  load_and_authorize_resource
+
   def show
     @event = Event.friendly.find(params[:id])
   end
