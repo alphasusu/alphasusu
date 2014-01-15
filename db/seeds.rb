@@ -129,12 +129,7 @@ open(whats_on) do |rss|
     if title_split[1] and title_split[2]
       event.title = title_split[2]
       event.date = DateTime.parse(title_split[1])
-      place = Place.where(:name => title_split[3]).first
-      if place.nil?
-        event.place = Place.create(:name => title_split[3], :shown => false)
-      else
-        event.place = place
-      end
+      event.place = Place.find_or_create_by(:name => title_split[3])
     else
       puts "Malformed " + item.title
       puts title_split[1]
