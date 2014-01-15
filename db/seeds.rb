@@ -125,10 +125,16 @@ open(whats_on) do |rss|
 
   feed.items.each do |item|
     event = Event.new
-    title_split = item.title.split(/((?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday), [0-9]{1,2}(?:st|nd|th|rd) (?:January|Feburary|March|April|May|June|July|August|September|October|November|December) [0-9]{4} - [0-9]{1,2}:[0-9]{2}(?:a|p)m)(?: )(.*)/)
+    title_split = item.title.split(/((?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday), [0-9]{1,2}(?:st|nd|th|rd) (?:January|Feburary|March|April|May|June|July|August|September|October|November|December) [0-9]{4} - [0-9]{1,2}:[0-9]{2}(?:a|p)m)(?: )(.+ )(?:(?:in|at) )(.*)/)
     if title_split[1] and title_split[2]
       event.title = title_split[2]
       event.date = DateTime.parse(title_split[1])
+      place = Place.where(:name => title_split[3]).first
+      if place.nil?
+        event.place = Place.create(:name => title_split[3], :shown => false)
+      else
+        event.place = place
+      end
     else
       puts "Malformed " + item.title
       puts title_split[1]
