@@ -12,6 +12,11 @@
 	.help 				{	background: #7ac142 !important;		}
 }
 
+.top-bar input, .top-bar .button {
+	top: 0px !important;
+	margin: 14px 0 14px 0 !important;
+}
+
 .susu-logo {
 	background: white !important;
 	font-weight: bold !important;

@@ -21,7 +21,16 @@
     </ul>
     <ul class="right">
       <% if logged_in? %>
-        <li><a href="#"><%= current_user %></a></li>
+        <li class="has-dropdown">
+          <a href="#"><%= current_user.first_name %></a>
+          <ul class="dropdown">
+            <li class="has-form">
+              <%= form_for(current_user, :url => destroy_session_path, :html => {:method => :delete}) do |form| %>
+                <%= form.submit "Logout", class: "button" %>
+              <% end %>
+            </li>
+          </ul>
+        </li>
       <% else %>
         <li><%= link_to "Login", new_session_path %></li>
       <% end %>
