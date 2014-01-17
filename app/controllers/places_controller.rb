@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
   before_action :set_place, only: [:show, :edit, :update, :destroy]
   before_action :set_site_area
   
