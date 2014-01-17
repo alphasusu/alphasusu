@@ -2,10 +2,10 @@ IssueTracker::Application.routes.draw do
 
   devise_for :ldap_users, :local_users, skip: [ :sessions ]
   
-  as :local_user do
-    get 'sign_in' => 'sessions#new', :as => :new_session
-    post 'sign_in' => 'sessions#create', :as => :create_session
-    delete 'sign_out' => 'sessions#destroy', :as => :destroy_session
+  devise_scope :local_user do
+    get 'login' => 'sessions#new', :as => :new_session
+    post 'login' => 'sessions#create', :as => :create_session
+    delete 'logout' => 'sessions#destroy', :as => :destroy_session
   end
 
   resources :societies
