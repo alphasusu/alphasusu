@@ -1,18 +1,22 @@
-<div class="row">
-	<div class="small-12 medium-6 medium-offset-3 large-4 large-offset-4 columns">
+<div class="row login">
+	<div class="small-12 medium-6 large-6 columns left">
 		<%= form_for(resource, :as => 'user', url: create_session_path) do %>
-			<fieldset>
-				<legend>Log In</legend>
 				<label>University ID or SUSU Account Email</label>
 				<input type="text" placeholder="abc1g14, david.gilani@gmail.com" name="user[email]" />
-
 				<label>Password</label>
 				<input type="password" placeholder="" name="user[password]" />
-
 				<input type="submit" class="button" value="Log In" />
-			</fieldset>
 		<% end %>
 	</div>
+	<div class="small-12 medium-6 large-6 columns right help">
+		<h3>Trouble logging in?</h3>
+		<p>You can log in with your usual University of Southampton username and password, just like on SUSSED.</p>
+		<h5>Not a student?</h5>
+		<p>If you aren't a student, you will need to log in with a SUSU account.</p>
+		<p>
+			<%= link_to "Create a SUSU account", new_local_user_registration_path %><br/>
+			<%= link_to "Forgot your SUSU password?", new_local_user_password_path %><br/>
+			<%= link_to "Didn't receive email confirmation?", new_local_user_confirmation_path %>
+		</p>
+	</div>
 </div>
-
-<%= render "devise/shared/links" %>

@@ -5,7 +5,6 @@
   </ul>
 
   <section class="top-bar-section">
-    <!-- Right Nav Section -->
     <ul class="left">
       <li>
         <a href="/" class="susu-logo">
@@ -19,6 +18,13 @@
       <li><a href="/services" class="services">Services</a></li>
       <li><a href="/democracy" class="democracy">Democracy</a></li>
       <li><a href="/help" class="help">Help</a></li>
+    </ul>
+    <ul class="right">
+      <% if logged_in? %>
+        <li><a href="#"><%= current_user %></a></li>
+      <% else %>
+        <li><%= link_to "Login", new_session_path %></li>
+      <% end %>
     </ul>
   </section>
 </nav>
