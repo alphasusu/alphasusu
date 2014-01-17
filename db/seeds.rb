@@ -9,6 +9,8 @@
 
 require 'rss'
 
+Place.destroy_all
+
 cafe = Place.create({
 	name: "The Café",
 	description: "Whether you want a quick bacon roll for those early mornings or are meeting friends for lunch, The Café has a great selection of food to choose from.
@@ -49,10 +51,14 @@ You can also buy a selection of University of Southampton gifts and products fro
         shown:true
 })
 
+Schedule.destroy_all
+
 cafe_schedule = Schedule.create({ place: cafe })
 bridge_schedule = Schedule.create({ place: bridge })
 stags_schedule = Schedule.create({ place: stags })
 shop_schedule = Schedule.create({ place: shop })
+
+OpeningTime.destroy_all
 
 OpeningTime.create({ vacation: false, day: 1, open:  800, close: 1800, schedule: cafe_schedule })
 OpeningTime.create({ vacation: false, day: 2, open:  800, close: 1800, schedule: cafe_schedule })
@@ -97,6 +103,7 @@ OpeningTime.create({ vacation: true, day: 3, open:  830, close: 1630, schedule: 
 OpeningTime.create({ vacation: true, day: 4, open:  830, close: 1630, schedule: shop_schedule })
 OpeningTime.create({ vacation: true, day: 5, open:  830, close: 1630, schedule: shop_schedule })
 
+BlogPost.destroy_all
 sabb_blog = 'http://blogs.susu.org/sabbs/feed/'
 
 open(sabb_blog) do |rss|
@@ -110,6 +117,7 @@ open(sabb_blog) do |rss|
   end
 end
 
+Event.destroy_all
 whats_on = 'http://www.susu.org/feeds/whatson.xml'
 
 open(whats_on) do |rss|
@@ -117,13 +125,23 @@ open(whats_on) do |rss|
 
   feed.items.each do |item|
     event = Event.new
-    title_split = item.title.split(/((?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday), [0-9]{1,2}(?:st|nd|th) (?:January|Feburary|March|April|May|June|July|August|September|October|November|December) [0-9]{4} - [0-9]{1,2}:[0-9]{2}(?:a|p)m)(?: )(.*)/)
-    event.title = title_split[2]
-    event.date = DateTime.parse(title_split[1])
+    title_split = item.title.split(/((?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday), [0-9]{1,2}(?:st|nd|th|rd) (?:January|Feburary|March|April|May|June|July|August|September|October|November|December) [0-9]{4} - [0-9]{1,2}:[0-9]{2}(?:a|p)m)(?: )(.+ )(?:(?:in|at) )(.*)/)
+    if title_split[1] and title_split[2]
+      event.title = title_split[2]
+      event.date = DateTime.parse(title_split[1])
+      event.place = Place.find_or_create_by(:name => title_split[3])
+    else
+      puts "Malformed " + item.title
+      puts title_split[1]
+    end
     event.description = item.description
     event.save
   end
 end
+
+Menu.destroy_all
+MenuCategory.destroy_all
+MenuItem.destroy_all
 
 bridgeMenu = Menu.new(:place => bridge)
 starters = MenuCategory.new(:menu => bridgeMenu,
@@ -247,6 +265,8 @@ desserts.menu_items
                        :price => 3.00))
 bridgeMenu.save
 
+
+Officer.destroy_all
 president = Officer.create(:title => "Union President")
 vp_education = Officer.create(:title => "Vice-President Education")
 vp_engagement = Officer.create(:title => "Vice-President Engagement")
@@ -255,21 +275,84 @@ vp_welfare = Officer.create(:title => "Vice-President Welfare")
 vp_community = Officer.create(:title => "Vice-President Student Communities")
 vp_democracy = Officer.create(:title => "Vice-President Democracy & Creative Industries")
 
-Zone.create(:name => "Trustee",
-         :officer => president)
-Zone.create(:name => "Democracy",
-         :officer => vp_democracy)
-Zone.create(:name => "Sustainability",
-         :officer => vp_welfare)
-Zone.create(:name => "Student Communities",
-         :officer => vp_community)
-Zone.create(:name => "Creative Industries",
-         :officer => vp_democracy)
-Zone.create(:name => "Education",
-         :officer => vp_education)
-Zone.create(:name => "External Engagement",
-         :officer => vp_engagement)
-Zone.create(:name => "Sports Development",
-         :officer => vp_sports)
-Zone.create(:name => "Student Life",
-         :officer => vp_welfare)
+Zone.destroy_all
+trustee = Zone.create(:name => "Trustee",
+                      :officer => president)
+democracy = Zone.create(:name => "Democracy",
+                        :officer => vp_democracy)
+sustainability = Zone.create(:name => "Sustainability",
+                             :officer => vp_welfare)
+communities = Zone.create(:name => "Student Communities",
+                          :officer => vp_community)
+creative = Zone.create(:name => "Creative Industries",
+                       :officer => vp_democracy)
+education = Zone.create(:name => "Education",
+                        :officer => vp_education)
+external = Zone.create(:name => "External Engagement",
+                       :officer => vp_engagement)
+sports = Zone.create(:name => "Sports Development",
+                     :officer => vp_sports)
+life = Zone.create(:name => "Student Life",
+                   :officer => vp_welfare)
+
+Subcommittee.destroy_all
+
+Subcommittee.create(:name => "CMT Subcommittee",
+                    :zone => trustee)
+Subcommittee.create(:name => "Commercial Subcommittee",
+                    :zone => trustee)
+Subcommittee.create(:name => "Finance Subcommittee",
+                    :zone => trustee)
+Subcommittee.create(:name => "Staffing Subcommittee",
+                    :zone => trustee)
+
+Subcommittee.create(:name => "Democracy Zone",
+                    :zone => democracy)
+Subcommittee.create(:name => "Union Council",
+                    :zone => democracy)
+Subcommittee.create(:name => "Student Groups Committee",
+                    :zone => democracy)
+
+Subcommittee.create(:name => "Sustainability Zone",
+                    :zone => sustainability)
+Subcommittee.create(:name => "Equality and Diversity Forum",
+                    :zone => sustainability)
+Subcommittee.create(:name => "Ethical and Environmental Committee",
+                    :zone => sustainability)
+
+Subcommittee.create(:name => "Student Communities Zone",
+                    :zone => communities)
+Subcommittee.create(:name => "International Committee",
+                    :zone => communities)
+Subcommittee.create(:name => "JCR Committee",
+                    :zone => communities)
+
+Subcommittee.create(:name => "Creative Industries Zone",
+                    :zone => creative)
+Subcommittee.create(:name => "Media Committee",
+                    :zone => creative)
+Subcommittee.create(:name => "Performing Arts",
+                    :zone => creative)
+
+Subcommittee.create(:name => "Education Zone",
+                    :zone => education)
+
+Subcommittee.create(:name => "External Engagement Zone",
+                    :zone => external)
+Subcommittee.create(:name => "Enterprise",
+                    :zone => external)
+Subcommittee.create(:name => "RAG",
+                    :zone => external)
+
+Subcommittee.create(:name => "Sports Development Zone",
+                    :zone => sports)
+Subcommittee.create(:name => "Athletic Union Committee",
+                    :zone => sports)
+Subcommittee.create(:name => "Intramural Committee",
+                    :zone => sports)
+
+Subcommittee.create(:name => "Student Life Zone",
+                    :zone => life)
+Subcommittee.create(:name => "Wellbeing Committee",
+                    :zone => life)
+
