@@ -6,11 +6,7 @@
       <%= f.submit "Resend confirmation instructions", class: "button" %>
     <% end %>
   </div>
-  <div class="small-12 medium-6 large-6 columns right help">
-    <p>
-      <%= link_to "Login", new_session_path %><br/>
-      <%= link_to "Create a SUSU account", new_local_user_registration_path %><br/>
-      <%= link_to "Forgot your SUSU password?", new_local_user_password_path %><br/>
-    </p>
+  <div class="small-12 medium-6 large-6 columns right">
+    <%= render "shared/login_help_links", :view => :resend_confirmation %>
   </div>
 </div>

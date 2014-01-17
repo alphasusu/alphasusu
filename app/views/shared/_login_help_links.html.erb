@@ -1,0 +1,48 @@
+<% if defined? view %>
+	<div class="help">
+	
+		<%# We want to display help on the login and registration pages %>
+	
+		<% if view == :login %>
+			<h3>Trouble logging in?</h3>
+			<p>You can log in with your usual University of Southampton username and password, just like on SUSSED.</p>
+			<h5>Not a student?</h5>
+			<p>If you aren't a student, you will need to log in with a SUSU account.<br/>
+			<%= link_to "Create a SUSU account", new_local_user_registration_path %>
+			</p>
+			<hr/>
+		<% elsif view == :registration %>
+			<h3>Do you need to sign up?</h3>
+			<p><strong>If you're a student, you can log in with your usual 
+			University of Southampton username and password, just like on SUSSED.</strong><br/>
+			<%= link_to "Sign in with my University ID", new_session_path %>
+			</p>
+			<h5>Not a student?</h5>
+			<p>If you aren't a student, fill out the form to create a SUSU account.<br/>
+			<%= link_to "Didn't receive email confirmation?", new_local_user_confirmation_path %>
+			</p>
+			<hr/>
+		<% end %>
+		<p>
+		
+			<%# The help blocks above contain links, we don't want to repeat them, and only
+			    want links that make sense on each page, so exclude some pages from getting a link %>
+		
+			<% unless [:login, :registration].include?(view) %>
+				<%= link_to "Login with my University ID or SUSU Account", new_session_path %><br/>
+			<% end %>
+			
+			<% unless [:login, :registration].include?(view) %>
+				<%= link_to "Create a SUSU account", new_local_user_registration_path %><br/>
+			<% end %>
+			
+			<% unless [:forgot, :reset_password].include?(view) %>
+				<%= link_to "Forgot your SUSU password?", new_local_user_password_path %><br/>
+			<% end %>
+			
+			<% unless [:registration, :resend_confirmation].include?(view) %>
+				<%= link_to "Didn't receive email confirmation?", new_local_user_confirmation_path %><br/>
+			<% end %>
+		</p>
+	</div>
+<% end %>

@@ -34,16 +34,7 @@
       </div>
     <% end %>
   </div>
-  <div class="small-12 medium-6 large-6 columns right help">
-    <h3>Do you need to sign up?</h3>
-    <p><strong>If you're a student, </strong> you can log in with your usual University of Southampton username and password, just like on SUSSED.</p>
-    <p>
-      <%= link_to "Sign in with my University ID", new_session_path %>
-    </p>
-    <h5>Not a student?</h5>
-    <p>If you aren't a student, fill out the form to create a SUSU account.</p>
-    <p>
-      <%= link_to "Didn't receive email confirmation?", new_local_user_confirmation_path %>
-    </p>
+  <div class="small-12 medium-6 large-6 columns right">
+    <%= render "shared/login_help_links", :view => :registration %>
   </div>
 </div>
