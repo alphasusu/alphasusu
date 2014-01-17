@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115181323) do
+ActiveRecord::Schema.define(version: 20140116225614) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -187,7 +187,6 @@ ActiveRecord::Schema.define(version: 20140115181323) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "login",                default: "", null: false
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",        default: 0,  null: false
     t.datetime "current_sign_in_at"
@@ -205,6 +204,8 @@ ActiveRecord::Schema.define(version: 20140115181323) do
     t.boolean  "elevated"
     t.string   "unconfirmed_email"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
   create_table "zones", force: true do |t|
     t.string   "name"
