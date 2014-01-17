@@ -8,14 +8,11 @@ class SessionsController < Devise::SessionsController
 		# We need to determine if we will use LDAP or the Database to auth a user.
 		# To do this, we're going to inspect the email address provided.
 		email = request.params['user']['email']
-		logger.debug "-------> Email: #{email}"
 
 		# Remove @soton.ac.uk or equivalent, force uni addresses to auth with LDAP
 		if email.end_with? Rails.application.config.ldap_email
 			email.sub! "@#{Rails.application.config.ldap_email}", ""
 		end
-		
-		logger.debug "-------> Email: #{email}"
 		
 		# Now switch on whether there is an @ in the 'email'
 		# It might not be an email, it might be an AD username, but Devise likes
@@ -30,12 +27,8 @@ class SessionsController < Devise::SessionsController
 			error_string = 'University username or password incorrect'
 		end
 		
-		logger.debug "-------> User Class: #{user_class}"
-		
 		# Copy user data to ldap_user and local_user, which Devise is expecting
 		request.params['ldap_user'] = request.params['local_user'] = request.params['user']
-		
-		logger.debug "-------> User: #{params['user'].inspect}"
 		
 		# Use Warden to authenticate the user, if we get nil back, it failed.
 		self.resource = warden.authenticate scope: user_class
@@ -43,8 +36,6 @@ class SessionsController < Devise::SessionsController
 			flash[:error] = error_string
 			return redirect_to new_session_path
 		end
-		
-		logger.debug "-------> User: #{self.resource}"
 		
 		# Now we know the user is authenticated, sign them in to the site with Devise
 		sign_in(user_class, self.resource)
