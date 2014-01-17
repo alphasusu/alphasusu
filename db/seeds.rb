@@ -9,6 +9,69 @@
 
 require 'rss'
 
+# Create some default users for the sabbs, officers, etc and some test accounts.
+User.destroy_all
+
+@users = {}
+def create_user(key, details)
+  user = LocalUser.new
+  user.email = details[:email]
+  user.first_name = details[:name].split(' ').first
+  user.last_name = details[:name].split(' ').last
+  user.password = details[:password]
+  user.password_confirmation = details[:password]
+  user.skip_confirmation!
+  user.save! :validate => false
+  @users[key] = user
+end
+
+{
+  dan: {
+  name: "Dan Palmer",
+  email: "dan@example.com",
+  password: "password1"
+},
+  elliot: {
+  name: "Elliot Hughes",
+  email: "elliot@example.com",
+  password: "password1"
+},
+  president: {
+  name: "David Gilani",
+  email: "pres@susu.org",
+  password: "president"
+},
+  sports: {
+  name: "Evan Whyte",
+  email: "sports@susu.org",
+  password: "sports"
+},
+  democracy: {
+  name: "David Martin",
+  email: "democracy@susu.org",
+  password: "democracy"
+},
+  education: {
+  name: "David Mendoza-Wolfson",
+  email: "education@susu.org",
+  password: "education"
+},
+  welfare: {
+  name: "Beckie Thomas",
+  email: "welfare@susu.org",
+  password: "welfare"
+},
+  engagement: {
+  name: "Claire Gilbert",
+  email: "engagement@susu.org",
+  password: "engagement"
+},
+  communities: {
+  name: "Oli Coles",
+  email: "communities@susu.org",
+  password: "communities"
+}}.map {|key,details| create_user(key, details)}
+
 Place.destroy_all
 
 cafe = Place.create({
@@ -267,13 +330,27 @@ bridgeMenu.save
 
 
 Officer.destroy_all
-president = Officer.create(:title => "Union President")
-vp_education = Officer.create(:title => "Vice-President Education")
-vp_engagement = Officer.create(:title => "Vice-President Engagement")
-vp_sports = Officer.create(:title => "Vice-President Sports Development")
-vp_welfare = Officer.create(:title => "Vice-President Welfare")
-vp_community = Officer.create(:title => "Vice-President Student Communities")
-vp_democracy = Officer.create(:title => "Vice-President Democracy & Creative Industries")
+president = Officer.create(
+  :title => "Union President",
+  :user => @users[:president])
+vp_education = Officer.create(
+  :title => "Vice-President Education",
+  :user => @users[:education])
+vp_engagement = Officer.create(
+  :title => "Vice-President Engagement",
+  :user => @users[:engagement])
+vp_sports = Officer.create(
+  :title => "Vice-President Sports Development",
+  :user => @users[:sports])
+vp_welfare = Officer.create(
+  :title => "Vice-President Welfare",
+  :user => @users[:welfare])
+vp_community = Officer.create(
+  :title => "Vice-President Student Communities",
+  :user => @users[:communities])
+vp_democracy = Officer.create(
+  :title => "Vice-President Democracy & Creative Industries",
+  :user => @users[:democracy])
 
 Zone.destroy_all
 trustee = Zone.create(:name => "Trustee",
