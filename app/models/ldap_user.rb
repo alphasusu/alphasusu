@@ -1,5 +1,7 @@
 class LdapUser < User
   devise :ldap_authenticatable, :rememberable, :trackable
+
+  validates_uniqueness_of :email
   
   after_create :get_ldap_names
   

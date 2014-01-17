@@ -1,18 +1,49 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<div class="row registration">
+  <div class="small-12 medium-6 large-6 columns left">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <div class="row">
+        <div class="large-6 medium-6 small-12 columns <%= field_error_class :first_name %>">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, :autofocus => true %>
+          <%= field_error :first_name, "First Name" %>
+        </div>
+        <div class="large-6 medium-6 small-12 columns <%= field_error_class :last_name %>">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name %>
+          <%= field_error :last_name, "Last Name" %>
+        </div>
+        
+        <div class="large-12 columns <%= field_error_class :email %>">
+          <%= f.label :email %>
+          <%= f.email_field :email %>
+          <%= field_error :email, "Email" %>
+        </div>
+        <div class="large-12 columns <%= field_error_class :password %>">  
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+          <%= field_error :password, "Password" %>
+        </div>
+        <div class="large-12 columns <%= field_error_class :password_confirmation %>">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
+          <%= field_error :password_confirmation, "Password Confirmation" %>
+        </div>
+        <div class="large-12 columns">
+          <%= f.submit "Sign up", class: "button" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="small-12 medium-6 large-6 columns right help">
+    <h3>Do you need to sign up?</h3>
+    <p><strong>If you're a student, </strong> you can log in with your usual University of Southampton username and password, just like on SUSSED.</p>
+    <p>
+      <%= link_to "Sign in with my University ID", new_session_path %>
+    </p>
+    <h5>Not a student?</h5>
+    <p>If you aren't a student, fill out the form to create a SUSU account.</p>
+    <p>
+      <%= link_to "Didn't receive email confirmation?", new_local_user_confirmation_path %>
+    </p>
+  </div>
+</div>

@@ -36,6 +36,16 @@ module ApplicationHelper
 		time.strftime "%l:%M%P"
 	end
 	
+	def field_error_class(field)
+		resource.errors[field].empty? ? "" : "error"
+	end
+	
+	def field_error(field, name)
+		unless resource.errors[field].empty?
+			raw("<small>#{name} #{resource.errors[field].first}</small>")
+		end
+	end
+	
 	
 private
 
