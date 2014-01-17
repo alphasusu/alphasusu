@@ -1,7 +1,10 @@
-  <div class="small-2 column">
-    <% if officer.user %>
-    <% else %>
-    <p style="text-align: center">Unfilled</p>
-    <% end %>
-    <h5 style="text-align: center"><%= officer.title %></h5>
-  </div>
+<div class="officer">
+  <% if officer.user %>
+    <%= image_tag officer.user.get_avatar_url(:medium), size: "100x100", class: "sabb-photo", alt: officer.user.name %>
+    <h5><%= officer.user.name %></h5>
+  <% else %>
+    <%= image_tag "default_avatar_medium.jpg", size: "100x100", class: "sabb-photo", alt: "Unfilled Position" %>
+    <h5><em>Unfilled</em></h5>
+  <% end %>
+  <h5><strong><%= officer.title %></strong></h5>
+</div>
