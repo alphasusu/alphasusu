@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   
   before_filter :mailer_set_url_options
 
+  helper_method :current_user, :logged_in?
+
   def current_user
     if current_ldap_user
       current_ldap_user
@@ -21,6 +23,10 @@ class ApplicationController < ActionController::Base
     else
       nil
     end
+  end
+  
+  def logged_in?
+    current_user != nil
   end
 
 private
