@@ -1,69 +1,41 @@
 source 'https://rubygems.org'
 ruby '2.1.0'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: :development
+# Backend
+gem 'devise'                        # Authentication
+gem 'devise_ldap_authenticatable'   # LDAP Authentication
+gem "paperclip", "~> 3.5.2"         # File uploads/attachments
+gem "cancan"                        # Permissions/Authorization
+gem 'friendly_id'                   # Slugs for IDs
+gem 'jbuilder', '~> 1.2'            # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
-gem 'pg'
 
-# Use SCSS for stylesheets
+# Asset Pipeline
 gem 'sass-rails', '~> 4.0.0'
+gem 'uglifier', '>= 1.3.0'          # Use Uglifier as compressor for JavaScript assets
+gem 'coffee-rails', '~> 4.0.0'      # Use CoffeeScript for .js.coffee assets and views
 
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
 
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+# Client Side
+gem 'jquery-rails'                  # Because jquery
+gem 'leaflet-rails'                 # Leaflet for mapping
+gem 'foundation-rails'              # Foundation for CSS
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
+group :development do
+  gem 'meta_request'                # Debugging metrics in Rails Console for Chrome
+  gem 'sqlite3'                     # Instead of Postgres in development
+end
 
-# Leaflet Mapping Library (JavaScript)
-gem 'leaflet-rails'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
-
-# Foundation for Views
-gem 'foundation-rails'
-
-# For slug-like URLs
-gem 'friendly_id'
-
-# User Authentication
-gem 'devise'
-gem 'devise_ldap_authenticatable'
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'                          # Postgres for Production, on Heroku
+  # gem 'unicorn'                   # Use unicorn as the app server
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
-group :production do
-  gem 'rails_12factor'
-end
-
-group :development do
-  gem 'meta_request'
-end
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
-gem "paperclip", "~> 3.5.2"
-gem "cancan"
