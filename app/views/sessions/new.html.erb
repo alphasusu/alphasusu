@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="small-12 medium-6 medium-offset-3 large-4 large-offset-4 columns">
+		<%= form_for(resource, :as => 'user', url: create_session_path) do %>
+			<fieldset>
+				<legend>Log In</legend>
+				<label>University ID or SUSU Account Email</label>
+				<input type="text" placeholder="abc1g14, david.gilani@gmail.com" name="user[email]" />
+
+				<label>Password</label>
+				<input type="password" placeholder="" name="user[password]" />
+
+				<input type="submit" class="button" value="Log In" />
+			</fieldset>
+		<% end %>
+	</div>
+</div>
+
+<%= render "devise/shared/links" %>
