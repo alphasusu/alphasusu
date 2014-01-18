@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_site_area
   before_filter :mailer_set_url_options
 
-  before_filter :configure_registration_parameters, if: :devise_controller?
+  before_filter :configure_allowed_devise_parameters, if: :devise_controller?
 
   helper_method :current_user, :logged_in?
 
@@ -54,11 +54,12 @@ private
     ActionMailer::Base.default_url_options[:host] = request.host_with_port
   end
   
-  def configure_registration_parameters
+  def configure_allowed_devise_parameters
     # Strong Parameters in Rails 4 means that we can't just use attr_accessible to
     # whitelist model parameters. We need extra parameters on reigstration (name)
     # so we whitelist them here.
     devise_parameter_sanitizer.for(:sign_up).push(:first_name, :last_name)
+    devise_parameter_sanitizer.for(:account_update).push(:first_name, :last_name, :avatar)
   end
 
 end

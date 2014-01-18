@@ -1,29 +1,58 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
-
-  <div><%= f.submit "Update" %></div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-
-<%= link_to "Back", :back %>
+<div class="row edit-profile">
+  <div class="small-12 medium-6 large-6 columns left">
+    <%= form_for(resource, 
+                 :as => resource_name,
+                 :url => registration_path(resource_name), 
+                 :html => {
+                   :method => :put,
+                   :multipart => true
+                 }) do |f| %>
+      <div class="row">
+        <div class="large-3 columns left">
+          <%= image_tag resource.get_avatar_url(:medium), size: "100x100", class: "avatar", alt: resource.name %>
+        </div>
+        <div class="large-9 columns">
+          <%= f.label :avatar %>
+          <%= f.file_field :avatar %>
+        </div>
+        <div class="large-12 columns"></div>
+        <div class="large-6 medium-6 small-12 columns <%= field_error_class :first_name %>">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, :autofocus => true %>
+          <%= field_error :first_name, "First Name" %>
+        </div>
+        <div class="large-6 medium-6 small-12 columns <%= field_error_class :last_name %>">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name %>
+          <%= field_error :last_name, "Last Name" %>
+        </div>
+        
+        <div class="large-12 columns">
+          <%= f.label :email %>
+          <%= f.email_field :email, :autofocus => true %>
+        </div>
+        <div class="large-12 columns">
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+        </div>
+        <div class="large-12 columns">
+          <label>Password <small>Leave blank if you don't want to change it</small></label>
+          <%= f.password_field :password, :autocomplete => "off" %>
+        </div>
+        <div class="large-12 columns">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
+        </div>
+        <div class="large-12 columns">
+          <label>Current Password <small>Needed to change it</small></label>
+          <%= f.password_field :current_password %>
+        </div>
+        <div class="large-12 columns">
+          <%= f.submit "Update", class: "button" %>
+        </div>
+      </div>
+    <% end %>
+    <p><%= button_to "Delete my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button alert" %></p>
+  </div>
+</div>

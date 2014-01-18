@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
 	
 	has_attached_file(
 		:avatar,
-		:styles => { :small => "40x40>", :medium => "100x100>", :large => "300x300" }
+		:styles => { :small => "40x40>", :medium => "100x100>", :large => "300x300" },
+		:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension",
+		:url => "/system/:class/:attachment/:id/:style/:basename.:extension"
 	)
 	
 	validates_attachment :avatar, :size => { :in => 0..200.kilobytes }
