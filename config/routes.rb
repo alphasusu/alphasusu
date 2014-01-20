@@ -17,6 +17,13 @@ IssueTracker::Application.routes.draw do
   resources :articles
   resources :headlines
   resources :menus
+  
+  scope '/profile' do
+    get '/' => 'profile#me', :as => :profile
+    get '/:id' => 'profile#show'
+    get '/edit' => 'profile#edit', :as => :edit_profile
+    put '/:id' => 'profile#update'
+  end
 
   get '/help', to: 'articles#index'
   get '/activities', to: 'home#activities'

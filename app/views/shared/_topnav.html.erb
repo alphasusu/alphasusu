@@ -22,7 +22,7 @@
     <ul class="right">
       <% if logged_in? %>
         <li class="has-dropdown">
-          <a href="#"><%= current_user.first_name %></a>
+          <%= link_to current_user.first_name, profile_path %>
           <ul class="dropdown">
             <li class="has-form">
               <%= form_for(current_user, :url => destroy_session_path, :html => {:method => :delete}) do |form| %>
