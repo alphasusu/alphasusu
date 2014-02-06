@@ -1,0 +1,13 @@
+<div class="row banner-offset">
+	<div class="large-3 columns">
+		<%= image_tag resource.get_avatar_url(:medium), size: "100x100", class: "avatar", alt: resource.name %>
+	</div>
+	<div class="large-9 columns">
+		<h1><%= resource.name %></h1>
+	</div>
+	<div class="large-12 columns">
+		<% if resource == current_user %>
+			<%= link_to "Edit Profile", edit_profile_path(current_user) %>
+		<% end %>
+	</div>
+</div>

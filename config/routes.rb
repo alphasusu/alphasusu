@@ -19,10 +19,11 @@ IssueTracker::Application.routes.draw do
   resources :menus
   
   scope '/profile' do
-    get '/' => 'profile#me', :as => :profile
-    get '/:id' => 'profile#show'
-    get '/edit' => 'profile#edit', :as => :edit_profile
-    put '/:id' => 'profile#update'
+    get '/' => 'profiles#me', :as => :profile
+    get '/:id' => 'profiles#show'
+    get '/:id/edit' => 'profiles#edit', :as => :edit_profile
+    put '/:id' => 'profiles#update', :as => :update_profile
+    delete '/:id' => 'profiles#destroy', :as => :delete_profile
   end
 
   get '/help', to: 'articles#index'
