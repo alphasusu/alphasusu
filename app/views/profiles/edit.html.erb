@@ -1,8 +1,8 @@
 <div class="row edit-profile">
 	<div class="small-12 medium-6 large-6 columns left">
-		<%= form_for(resource,
+		<%= form_for(@profile,
 								 :as => 'profile',
-								 :url => update_profile_path(resource),
+								 :url => update_profile_path(@profile),
 								 :action => :update, 
 								 :html => {
 									 :method => :put,
@@ -10,22 +10,22 @@
 								 }) do |f| %>
 			<div class="row">
 				<div class="large-3 columns left">
-					<%= image_tag resource.get_avatar_url(:medium), size: "100x100", class: "avatar", alt: resource.name %>
+					<%= image_tag @profile.get_avatar_url(:medium), size: "100x100", class: "avatar", alt: @profile.name %>
 				</div>
 				<div class="large-9 columns">
 					<%= f.label :avatar %>
 					<%= f.file_field :avatar %>
 				</div>
 				<div class="large-12 columns"></div>
-				<div class="large-6 medium-6 small-12 columns <%= field_error_class resource, :first_name %>">
+				<div class="large-6 medium-6 small-12 columns <%= field_error_class @profile, :first_name %>">
 					<%= f.label :first_name %>
 					<%= f.text_field :first_name, :autofocus => true %>
-					<%= field_error resource, :first_name, "First Name" %>
+					<%= field_error @profile, :first_name, "First Name" %>
 				</div>
-				<div class="large-6 medium-6 small-12 columns <%= field_error_class resource, :last_name %>">
+				<div class="large-6 medium-6 small-12 columns <%= field_error_class @profile, :last_name %>">
 					<%= f.label :last_name %>
 					<%= f.text_field :last_name %>
-					<%= field_error resource, :last_name, "Last Name" %>
+					<%= field_error @profile, :last_name, "Last Name" %>
 				</div>
 
 				<div class="large-12 columns">
@@ -33,27 +33,30 @@
 					<%= f.email_field :email, :autofocus => true %>
 				</div>
 				<div class="large-12 columns">
-					<% if  resource.is_a?(LocalUser) && resource.pending_reconfirmation? %>
-						<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+					<% if @profile.is_a?(LocalUser) && @profile.pending_reconfirmation? %>
+						<p><strong>Currently waiting confirmation for: <%= @profile.unconfirmed_email %></strong></p>
 					<% end %>
 				</div>
-				<div class="large-12 columns">
+				<div class="large-12 columns <%= field_error_class @profile, :password %>">
 					<label>Password <small>Leave blank if you don't want to change it</small></label>
 					<%= f.password_field :password, :autocomplete => "off" %>
+					<%= field_error @profile, :password, "Password" %>
 				</div>
-				<div class="large-12 columns">
+				<div class="large-12 columns <%= field_error_class @profile, :password_confirmation %>">
 					<%= f.label :password_confirmation %>
 					<%= f.password_field :password_confirmation %>
+					<%= field_error @profile, :password_confirmation, "Confirmation" %>
 				</div>
-				<div class="large-12 columns">
+				<div class="large-12 columns <%= field_error_class @profile, :current_password %>">
 					<label>Current Password <small>Needed to change it</small></label>
 					<%= f.password_field :current_password %>
+					<%= field_error @profile, :current_password, "Password" %>
 				</div>
 				<div class="large-12 columns">
 					<%= f.submit "Update", class: "button" %>
 				</div>
 			</div>
 		<% end %>
-		<p><%= button_to "Delete my account", delete_profile_path(resource), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button alert" %></p>
+		<p><%= button_to "Delete my account", delete_profile_path(@profile), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button alert" %></p>
 	</div>
 </div>

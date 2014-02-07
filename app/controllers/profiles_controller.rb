@@ -16,17 +16,36 @@ class ProfilesController < ApplicationController
 	end
 	
 	def update
+        updates = profile_params
 		@profile = User.find(params[:id])
 		
-		@profile.first_name = params[:profile][:first_name]
-		@profile.last_name = params[:profile][:last_name]
+		@profile.first_name = updates[:first_name]
+		@profile.last_name = updates[:last_name]
+
+        if @profile.is_a?(LocalUser) && updates[:email] != @profile.email
+            @profile.email = updates[:email]
+        end
 		
-		if @profile.save!
-			redirect_to profile_path, notice: 'Profile successfully updated.'
-		else
-			flash.now[:alert] = 'Could not save your profile.'
-			render action: 'edit'
-		end
+        success = @profile.save!
+
+        if @profile.is_a?(LocalUser) && updates[:password]
+            success = @profile.update_with_password({
+                :current_password => updates[:current_password],
+                :password => updates[:password],
+                :password_confirmation => updates[:password_confirmation]
+            })
+
+            if success
+                sign_in :local_user, @profile, :bypass => true
+            end
+        end
+
+        if success
+            redirect_to profile_path, notice: 'Profile successfully updated.'
+        else
+            flash.now[:alert] = 'Could not save your profile.'
+            render action: 'edit'
+        end
 	end
 	
 	def destroy
