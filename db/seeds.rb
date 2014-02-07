@@ -10,7 +10,8 @@
 require 'rss'
 require 'net/http'
 require 'rubygems'
-require 'rexml/document'
+require 'json'
+
 
 # Create some default users for the sabbs, officers, etc and some test accounts.
 User.destroy_all
@@ -741,13 +742,34 @@ Society.create(:name => "Zumba+", :description => lorem_ipsum)
 
 
 Course.destroy_all
+Faculty.destroy_all
+Cohort.destroy_all
 
-url = URI.parse("http://data.southampton.ac.uk/academic-session/2012-2013.rdf?ug")
+require 'net/http'
+require 'rubygems'
+require 'json'
 
-xml_data = Net::HTTP.get(url)
+faculty_raw = Net::HTTP.get(URI.parse("http://www.susu.org/php/ajax-reps.php?type=faculty"))
+faculty_json = JSON.parse(faculty_raw)
 
-doc = REXML::Document.new(xml_data)
-
-doc.elements.each("rdf:RDF/rdf:Description/rdfs:label") do |element|
-  Course.create(:name => element.text)
+faculty_json.each do |k,faculties|
+  faculties.each do |faculty|
+    db_faculty = Faculty.create(:name => faculty["name"])
+    course_raw = Net::HTTP.get(URI.parse("http://www.susu.org/php/ajax-reps.php?type=course&search=#{faculty['id']}"))
+    course_json = JSON.parse(course_raw)
+    course_json.each do |course|
+      db_course = Course.create(:name => course["name"], :faculty => db_faculty)
+      elected_raw = Net::HTTP.get(URI.parse("http://www.susu.org/php/ajax-reps.php?type=rep&search=#{course['election_id']}"))
+      begin
+        
+        elected_json = JSON.parse(elected_raw)
+        elected_json.each do |rep|
+          Cohort.where(:course => db_course, :year => rep['year']).first_or_create
+        end
+      rescue Exception
+      end
+    end
+  end
 end
+
+
