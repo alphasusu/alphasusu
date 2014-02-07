@@ -8,6 +8,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 require 'rss'
+require 'net/http'
+require 'rubygems'
+require 'rexml/document'
 
 # Create some default users for the sabbs, officers, etc and some test accounts.
 User.destroy_all
@@ -188,7 +191,7 @@ open(whats_on) do |rss|
 
   feed.items.each do |item|
     event = Event.new
-    title_split = item.title.split(/((?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday), [0-9]{1,2}(?:st|nd|th|rd) (?:January|Feburary|March|April|May|June|July|August|September|October|November|December) [0-9]{4} - [0-9]{1,2}:[0-9]{2}(?:a|p)m)(?: )(.+ )(?:(?:in|at) )(.*)/)
+    title_split = item.title.split(/((?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday), [0-9]{1,2}(?:st|nd|th|rd) (?:January|February|March|April|May|June|July|August|September|October|November|December) [0-9]{4} - [0-9]{1,2}:[0-9]{2}(?:a|p)m)(?: )(.+ )(?:(?:in|at) )(.*)/)
     if title_split[1] and title_split[2]
       event.title = title_split[2]
       event.date = DateTime.parse(title_split[1])
@@ -735,3 +738,16 @@ Society.create(:name => "Wing Chun", :description => lorem_ipsum)
 Society.create(:name => "Wireless Society", :description => lorem_ipsum)
 Society.create(:name => "Yoga Society", :description => lorem_ipsum)
 Society.create(:name => "Zumba+", :description => lorem_ipsum)
+
+
+Course.destroy_all
+
+url = URI.parse("http://data.southampton.ac.uk/academic-session/2012-2013.rdf?ug")
+
+xml_data = Net::HTTP.get(url)
+
+doc = REXML::Document.new(xml_data)
+
+doc.elements.each("rdf:RDF/rdf:Description/rdfs:label") do |element|
+  Course.create(:name => element.text)
+end
