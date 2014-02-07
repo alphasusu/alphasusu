@@ -12,12 +12,20 @@ class User < ActiveRecord::Base
 	def name
 		"#{self.first_name} #{self.last_name}"
 	end
+
+	def get_email_address
+		if self.email.include? "@"
+			self.email
+		else
+			"#{self.email}@soton.ac.uk"
+		end
+	end
 	
 	def get_avatar_url(size)
 		if self.avatar.present?
 			self.avatar.url(size)
 		else
-			"http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email)}?s=#{dimension_for_size(size)}&d=mm"
+			"http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.get_email_address)}?s=#{dimension_for_size(size)}&d=mm"
 		end
 	end
 	
