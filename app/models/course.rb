@@ -1,4 +1,4 @@
 class Course < ActiveRecord::Base
-  has_one :representative, class_name: "User"
-  has_many :students, class_name: "User"
+  belongs_to :faculty
+  has_many :cohorts
 end

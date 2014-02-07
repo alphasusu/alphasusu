@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207193148) do
+ActiveRecord::Schema.define(version: 20140207221946) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20140207193148) do
   end
 
   add_index "blog_posts", ["slug"], name: "index_blog_posts_on_slug", unique: true
+
+  create_table "cohorts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "course_id"
+    t.integer  "year"
+  end
+
+  add_index "cohorts", ["course_id"], name: "index_cohorts_on_course_id"
+  add_index "cohorts", ["year", "course_id"], name: "index_cohorts_on_year_and_course_id", unique: true
 
   create_table "committee_memberships", force: true do |t|
     t.integer  "officer_id"
@@ -56,8 +66,10 @@ ActiveRecord::Schema.define(version: 20140207193148) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "faculty_id"
   end
 
+  add_index "courses", ["faculty_id"], name: "index_courses_on_faculty_id"
   add_index "courses", ["user_id"], name: "index_courses_on_user_id"
 
   create_table "events", force: true do |t|
@@ -72,6 +84,12 @@ ActiveRecord::Schema.define(version: 20140207193148) do
 
   add_index "events", ["place_id"], name: "index_events_on_place_id"
   add_index "events", ["slug"], name: "index_events_on_slug", unique: true
+
+  create_table "faculties", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
