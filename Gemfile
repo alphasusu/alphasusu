@@ -30,6 +30,7 @@ group :development do
 end
 
 group :production do
+  gem 'rmagick'
   gem 'rails_12factor'
   gem 'pg'                          # Postgres for Production, on Heroku
   # gem 'unicorn'                   # Use unicorn as the app server

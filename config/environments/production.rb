@@ -84,4 +84,7 @@ IssueTracker::Application.configure do
     :user_name => ENV["MANDRILL_USERNAME"],
     :password  => ENV["MANDRILL_API_KEY"]
   }
+
+  # Using RMagick on Heroku for ImageMagick integration
+  config.gem "rmagick", :lib => "RMagick"
 end
