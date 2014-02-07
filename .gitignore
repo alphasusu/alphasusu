@@ -17,3 +17,5 @@
 *~
 development
 development.sqlite3
+
+public/system/*
