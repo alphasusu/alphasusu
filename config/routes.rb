@@ -26,7 +26,7 @@ IssueTracker::Application.routes.draw do
     delete '/:id' => 'profiles#destroy', :as => :delete_profile
   end
 
-  get '/help', to: 'articles#index'
+  get '/help', to: 'help#index'
   get '/activities', to: 'home#activities'
   get '/democracy', to: 'democracy#index'
   
