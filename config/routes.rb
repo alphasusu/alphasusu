@@ -27,6 +27,7 @@ IssueTracker::Application.routes.draw do
   end
 
   get '/help', to: 'help#index'
+  get '/help/chat', to: 'help#chat'
   get '/activities', to: 'home#activities'
   get '/democracy', to: 'democracy#index'
   

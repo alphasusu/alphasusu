@@ -1,4 +1,11 @@
 $ ->
+	if $('.chat-window').length
+		initChat()
+	else
+		initHelpIndex()
+
+
+initHelpIndex = ->
 	$('.chat-button').each (idx, value) ->
 		group = $(value).attr('data-chat-id')
 		checkOnline group, (online) ->
@@ -6,6 +13,9 @@ $ ->
 				enableChat value, group
 			else
 				disableChat value, group
+
+initChat = ->
+	alert('Hello')
 
 checkOnline = (group, callback) ->
 	callback (Math.random() > 0.5)
