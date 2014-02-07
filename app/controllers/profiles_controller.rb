@@ -58,14 +58,16 @@ class ProfilesController < ApplicationController
   
 private
   
-  	def profile_params
-  		params.require(:profile).permit(
-  			:first_name, :last_name, :email, :avatar,
-  			:password, :password_confirmation, :current_password)
-  	end
+  def profile_params
+  	params.require(:profile).permit(
+  		:first_name, :last_name, :email, :avatar,
+  		:password, :password_confirmation, :current_password)
+  end
   	
-  	def user_not_found
-		render text: "User Not Found", status: 404  	
-	end
+  def user_not_found
+		render text: "User Not Found", status: 404
+    # raise ActionController::RoutingError.new('Not Found')
+    # TODO: make a 'user_not_found' route/view etc, use this for a good 404.
+  end
 	
 end
