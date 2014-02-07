@@ -8,6 +8,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 require 'rss'
+require 'net/http'
+require 'rubygems'
+require 'rexml/document'
 
 # Create some default users for the sabbs, officers, etc and some test accounts.
 User.destroy_all
@@ -735,3 +738,16 @@ Society.create(:name => "Wing Chun", :description => lorem_ipsum)
 Society.create(:name => "Wireless Society", :description => lorem_ipsum)
 Society.create(:name => "Yoga Society", :description => lorem_ipsum)
 Society.create(:name => "Zumba+", :description => lorem_ipsum)
+
+
+Course.destroy_all
+
+url = URI.parse("http://data.southampton.ac.uk/academic-session/2012-2013.rdf?ug")
+
+xml_data = Net::HTTP.get(url)
+
+doc = REXML::Document.new(xml_data)
+
+doc.elements.each("rdf:RDF/rdf:Description/rdfs:label") do |element|
+  Course.create(:name => element.text)
+end
