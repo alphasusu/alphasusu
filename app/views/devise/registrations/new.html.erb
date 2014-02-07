@@ -2,31 +2,31 @@
   <div class="small-12 medium-6 large-6 columns left">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <div class="row">
-        <div class="large-6 medium-6 small-12 columns <%= field_error_class :first_name %>">
+        <div class="large-6 medium-6 small-12 columns <%= field_error_class resource, :first_name %>">
           <%= f.label :first_name %>
           <%= f.text_field :first_name, :autofocus => true %>
-          <%= field_error :first_name, "First Name" %>
+          <%= field_error resource, :first_name, "First Name" %>
         </div>
-        <div class="large-6 medium-6 small-12 columns <%= field_error_class :last_name %>">
+        <div class="large-6 medium-6 small-12 columns <%= field_error_class resource, :last_name %>">
           <%= f.label :last_name %>
           <%= f.text_field :last_name %>
-          <%= field_error :last_name, "Last Name" %>
+          <%= field_error resource, :last_name, "Last Name" %>
         </div>
         
-        <div class="large-12 columns <%= field_error_class :email %>">
+        <div class="large-12 columns <%= field_error_class resource, :email %>">
           <%= f.label :email %>
           <%= f.email_field :email %>
-          <%= field_error :email, "Email" %>
+          <%= field_error resource, :email, "Email" %>
         </div>
-        <div class="large-12 columns <%= field_error_class :password %>">  
+        <div class="large-12 columns <%= field_error_class resource, :password %>">  
           <%= f.label :password %>
           <%= f.password_field :password %>
-          <%= field_error :password, "Password" %>
+          <%= field_error resource, :password, "Password" %>
         </div>
-        <div class="large-12 columns <%= field_error_class :password_confirmation %>">
+        <div class="large-12 columns <%= field_error_class resource, :password_confirmation %>">
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation %>
-          <%= field_error :password_confirmation, "Password Confirmation" %>
+          <%= field_error resource, :password_confirmation, "Password Confirmation" %>
         </div>
         <div class="large-12 columns">
           <%= f.submit "Sign up", class: "button" %>
