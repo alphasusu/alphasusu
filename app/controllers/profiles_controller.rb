@@ -22,13 +22,17 @@ class ProfilesController < ApplicationController
 		@profile.first_name = updates[:first_name]
 		@profile.last_name = updates[:last_name]
 
+        if updates[:avatar]
+            @profile.avatar = updates[:avatar]
+        end
+
         if @profile.is_a?(LocalUser) && updates[:email] != @profile.email
             @profile.email = updates[:email]
         end
 		
         success = @profile.save!
 
-        if @profile.is_a?(LocalUser) && updates[:password]
+        if @profile.is_a?(LocalUser) && !updates[:password].blank?
             success = @profile.update_with_password({
                 :current_password => updates[:current_password],
                 :password => updates[:password],
