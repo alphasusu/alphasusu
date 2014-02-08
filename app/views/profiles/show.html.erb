@@ -4,7 +4,9 @@
 	</div>
 	<div class="large-9 columns">
 		<h1><%= @profile.name %></h1>
-		<h4><%= @profile.course.name %> <small><%= @profile.get_year %></small></h4>
+		<% if @profile.course %>
+			<h4><%= @profile.course.name %> <small><%= @profile.get_year %></small></h4>
+		<% end %>
 	</div>
 	<div class="large-12 columns">
 		<% if @profile == current_user %>

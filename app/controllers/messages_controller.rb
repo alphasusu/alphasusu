@@ -12,28 +12,22 @@ class MessagesController < ApplicationController
     def show
     end
 
-    # GET /messages/new
+    # POST /messages/new
     def new
         @message = Message.new
-    end
-
-    # GET /messages/1/edit
-    def edit
+        @to_user = User.find(params[:message][:to_user_id])
     end
 
     # POST /messages
     # POST /messages.json
     def create
         @message = Message.new(message_params)
-
-        respond_to do |format|
-            if @message.save
-                format.html { redirect_to @message, notice: 'Message was successfully created.' }
-                format.json { render action: 'show', status: :created, location: @message }
-            else
-                format.html { render action: 'new' }
-                format.json { render json: @message.errors, status: :unprocessable_entity }
-            end
+        @to_user = @message.to_user
+        
+        if @message.save
+            render action: 'sent'
+        else
+            render action: 'new'
         end
     end
 
@@ -69,6 +63,6 @@ class MessagesController < ApplicationController
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def message_params
-            params.require(:message).permit(:subject, :body)
+            params.require(:message).permit(:subject, :body, :to_user_id)
         end
 end
