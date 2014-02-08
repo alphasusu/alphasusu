@@ -1,6 +1,7 @@
 <div class="row">
   <h2>Courses</h2>
-  <ul>
+  <input id="course-filter">
+  <ul class="courses">
     <% @courses.each do |course| %>
     <li><%= link_to course.name, course %></li>
     <% end %>
