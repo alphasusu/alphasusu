@@ -26,6 +26,9 @@ def create_user(key, details)
   user.password_confirmation = details[:password]
   user.skip_confirmation!
   user.save! :validate => false
+  if !details[:admin].nil? and details[:admin]
+    user.elevated = true
+  end
   @users[key] = user
 end
 
@@ -33,12 +36,14 @@ end
   dan: {
   name: "Dan Palmer",
   email: "dan@example.com",
-  password: "password1"
+  password: "password1",
+    admin: true
 },
   elliot: {
   name: "Elliot Hughes",
   email: "elliot@example.com",
-  password: "password1"
+  password: "password1",
+    admin: true
 },
   president: {
   name: "David Gilani",
