@@ -54,8 +54,10 @@
 				</div>
 			</div>
 		</div>
+	<% elsif !current_user.course || current_user.year.blank? %>
+		<h5 class="banner-offset">You haven't completed your profile yet. <%= link_to "Add your course and cohort", edit_profile_path(current_user) %> to see who your representatives are.</h5>
 	<% else %>
-		<h5 class="banner-offset">You are not logged in. <%= link_to "Login now", new_session_path %> to contact your representatives.<h5>
+		<h5 class="banner-offset">You are not logged in. <%= link_to "Login now", new_session_path %> to contact your representatives.</h5>
 	<% end %>
 	<div class="large-12 columns">
 		<% @articles.each do |article| %>
