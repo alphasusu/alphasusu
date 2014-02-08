@@ -1,0 +1,5 @@
+<%= render "chat" %>
+<script>
+	window.setUserName("<%= current_user.first_name %>")
+	window.initChat("http://localhost:4000/", "<%= @chat_id %>", true);
+</script>

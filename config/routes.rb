@@ -28,6 +28,8 @@ IssueTracker::Application.routes.draw do
 
   get '/help', to: 'help#index'
   get '/help/chat', to: 'help#chat'
+  get '/help/support', to: 'help#support'
+  get '/help/agent', to: 'help#support_chat'
   get '/activities', to: 'home#activities'
   get '/democracy', to: 'democracy#index'
   

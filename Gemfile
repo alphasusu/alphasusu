@@ -22,6 +22,7 @@ gem 'coffee-rails', '~> 4.0.0'      # Use CoffeeScript for .js.coffee assets and
 gem 'jquery-rails'                  # Because jquery
 gem 'leaflet-rails'                 # Leaflet for mapping
 gem 'foundation-rails'              # Foundation for CSS
+gem 'socket.io-rails'               # Socket.IO
 
 
 group :development do
