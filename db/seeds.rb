@@ -86,11 +86,11 @@ SupportTeam.destroy_all
 
 support_sabbs = SupportTeam.create({
   :name => "Sabbs",
-  :description => "Talk to the Sabbs about things that matter to you.",
+  :description => "Talk to the Sabbs about how the union is run.",
   :logo => File.open('resources/support_logos/sabbs.png')})
 support_susu = SupportTeam.create({
   :name => "SUSU Support",
-  :description => "Get help from SUSU staff members who can answer your questions.",
+  :description => "Get help from SUSU staff members who can answer your questions about the union.",
   :logo => File.open('resources/support_logos/susu_support.png')})
 support_nightline = SupportTeam.create({
   :name => "Nightline",
