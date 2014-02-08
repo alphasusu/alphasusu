@@ -1,0 +1,21 @@
+<div class="row new-message">
+	<div class="large-12 columns">
+		<h3>Send a message to <%= @to_user.name %></h3>
+	</div>
+	<%= form_for(@message) do |f| %>
+		<%= f.hidden_field :to_user_id, :value => @to_user.id %>
+		<div class="large-12 columns <%= field_error_class @message, :subject %>">
+			<%= f.label :subject %>
+			<%= f.text_field :subject %>
+			<%= field_error @message, :subject, "Subject" %>
+		</div>
+		<div class="large-12 columns <%= field_error_class @message, :body %>">
+			<%= f.label :body %>
+			<%= f.text_area :body %>
+			<%= field_error @message, :body, "Message" %>
+		</div>
+		<div class="large-12 columns">
+			<%= f.submit "Send Message", class: "button" %>
+		</div>
+	<% end %>
+</div>

@@ -22,6 +22,7 @@ class ProfilesController < ApplicationController
         @profile.first_name = updates[:first_name]
         @profile.last_name = updates[:last_name]
         @profile.course_id = updates[:course_id]
+        @profile.year = updates[:year]
 
         if updates[:avatar]
             @profile.avatar = updates[:avatar]
@@ -61,7 +62,7 @@ private
     
     def profile_params
         params.require(:profile).permit(
-            :first_name, :last_name, :email, :avatar, :course_id,
+            :first_name, :last_name, :email, :avatar, :course_id, :year,
             :password, :password_confirmation, :current_password)
     end
         

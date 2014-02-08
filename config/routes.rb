@@ -1,5 +1,7 @@
 IssueTracker::Application.routes.draw do
 
+  resources :messages
+
   devise_for :ldap_users, :local_users, skip: [ :sessions ]
   
   devise_scope :local_user do
@@ -18,6 +20,11 @@ IssueTracker::Application.routes.draw do
   resources :headlines
   resources :menus
   resources :courses
+  resources :messages, :except => :new
+
+  scope :messages do
+    post '/new' => 'messages#new'
+  end
   
   scope '/profile' do
     get '/' => 'profiles#me', :as => :profile

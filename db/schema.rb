@@ -148,6 +148,15 @@ ActiveRecord::Schema.define(version: 20140208134030) do
 
   add_index "menus", ["place_id"], name: "index_menus_on_place_id"
 
+  create_table "messages", force: true do |t|
+    t.string   "subject"
+    t.text     "body",         limit: 255
+    t.integer  "from_user_id"
+    t.integer  "to_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "officers", force: true do |t|
     t.string   "title"
     t.integer  "user_id"
@@ -263,6 +272,7 @@ ActiveRecord::Schema.define(version: 20140208134030) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "course_id"
+    t.string   "year"
   end
 
   add_index "users", ["course_id"], name: "index_users_on_course_id"

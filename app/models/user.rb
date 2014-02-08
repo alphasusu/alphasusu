@@ -40,4 +40,21 @@ class User < ActiveRecord::Base
 				300
 		end
 	end
+
+	def self.years
+		@years = {
+			'Found.' => 'Foundation',
+			'1' => 'Year 1',
+			'2' => 'Year 2',
+			'3' => 'Year 3',
+			'4' => 'Year 4',
+			'5' => 'Year 5',
+			'PG' => 'Post Graduate',
+			'alumni' => 'Alumni',
+		}
+	end
+
+	def get_year
+		self.class.years[self.year]
+	end
 end

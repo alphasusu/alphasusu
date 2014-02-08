@@ -27,9 +27,14 @@
 					<%= f.text_field :last_name %>
 					<%= field_error @profile, :last_name, "Last Name" %>
 				</div>
-				<div class="large-12 columns">
+				<div class="large-8 columns">
 					<%= f.label :course %>
 					<%= f.select :course_id, options_from_collection_for_select(Course.all, :id, :name, @profile.course_id), :include_blank => true %>
+				</div>
+				<div class="large-4 columns">
+					<%= f.label :year %>
+					<% years_display = User.years.to_a.map {|y| [y[1], y[0]]} %>
+					<%= f.select :year, options_for_select(years_display, @profile.year), :include_blank => true %>
 				</div>
 				<div class="large-12 columns">
 					<%= f.label :email %>

@@ -18,6 +18,25 @@
 		<% end %>
 	</div>
 	<div class="large-12 columns">
+		<% if logged_in? %>
+			<h3>Your <%= pluralize_without_count(@course_reps.length, 'Representative') %></h3>
+			<div class="row">
+				<% @course_reps.each do |rep| %>
+					<div class="large-4 medium-6 small-12 columns">
+						<div class="panel">
+							<h3><%= rep.user.name %></h3>
+							<h5><%= rep.course.name %></h5>
+							<%= form_for(Message.new, url: new_message_path) do |f| %>
+								<%= f.hidden_field :to_user_id, :value => rep.user.id %>
+								<%= f.submit class: "button" %>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+	<div class="large-12 columns">
 		<% @articles.each do |article| %>
 			<p><%= article.title %></p>
 		<% end %>

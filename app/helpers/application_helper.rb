@@ -45,7 +45,10 @@ module ApplicationHelper
 			raw("<small>#{name} #{resource.errors[field].first}</small>")
 		end
 	end
-	
+
+	def pluralize_without_count(count, string)
+		count == 1 ? string : string.pluralize
+	end
 	
 private
 
