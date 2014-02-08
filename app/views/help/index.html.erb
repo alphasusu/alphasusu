@@ -3,12 +3,13 @@
 		<div class="large-12 columns">
 			<h1>Who can help me?</h1>
 			<div class="row">
-				<% @support_groups.each do |group| %>
+				<% @support_teams.each do |group| %>
 					<div class="large-3 medium-6 small-12 columns">
-						<div class="panel">
-							<h5><%= group[:name] %></h5>
-							<p><%= group[:description] %></p>
-							<a href="#" class="disabled button chat-button" data-chat-id="<%= group[:code] %>">Checking...</a>
+						<div class="panel support-team">
+							<%= image_tag group.logo.url %>
+							<h5><%= group.name %></h5>
+							<p><%= group.description %></p>
+							<a href="#" class="disabled button chat-button" data-chat-id="<%= group.id %>">Checking...</a>
 						</div>
 					</div>
 				<% end %>
@@ -72,5 +73,5 @@
 	</div>
 </div>
 <script>
-	window.initHelpIndex();
+	window.initHelpIndex("http://localhost:4000/");
 </script>

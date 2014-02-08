@@ -76,6 +76,27 @@ end
   password: "communities"
 }}.map {|key,details| create_user(key, details)}
 
+
+SupportTeam.destroy_all
+
+support_sabbs = SupportTeam.create({
+  :name => "Sabbs",
+  :description => "Talk to the Sabbs about things that matter to you.",
+  :logo => File.open('resources/support_logos/sabbs.png')})
+support_susu = SupportTeam.create({
+  :name => "SUSU Support",
+  :description => "Get help from SUSU staff members who can answer your questions.",
+  :logo => File.open('resources/support_logos/susu_support.png')})
+support_nightline = SupportTeam.create({
+  :name => "Nightline",
+  :description => "Get support from a fellow student, anonymously and confidentially.",
+  :logo => File.open('resources/support_logos/nightline.png')})
+support_course_reps = SupportTeam.create({
+  :name => "Course Reps",
+  :description => "Talk to someone about issues on your course, or in your department.",
+  :logo => File.open('resources/support_logos/course_reps.png')})
+
+
 Place.destroy_all
 
 cafe = Place.create({

@@ -4,27 +4,12 @@ class HelpController < ApplicationController
 
     def index
         @articles = HelpArticle.all
-        if logged_in?
+        if logged_in? && current_user.course && !current_user.year.blank?
             @course_reps = current_user.course.course_representatives.where(year: current_user.year)
             @academic_president = current_user.course.academic_unit.academic_president
             @faculty_officer = current_user.course.academic_unit.faculty.faculty_officer
-
-            # @representatives = @course_reps.concat [@academic_president, @faculty_officer]
             
-            @support_groups = [
-                { :code => "sabbs",
-                  :name => "Sabbs",
-                  :description => "Talk to the Sabbs about things that matter to you." },
-                { :code => "susu_support",
-                  :name => "SUSU Support",
-                  :description => "Get help from SUSU staff members who can answer your questions." },
-                { :code => "nightline",
-                  :name => "Nightline",
-                  :description => "Get support from a fellow student, anonymously and confidentially." },
-                { :code => "course_rep",
-                  :name => "Course Representatives",
-                  :description => "Talk to someone about issues on your course, or in your department." }
-            ]
+            @support_teams = SupportTeam.all
         end
     end
 
