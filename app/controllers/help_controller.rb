@@ -12,10 +12,18 @@ class HelpController < ApplicationController
             # @representatives = @course_reps.concat [@academic_president, @faculty_officer]
             
             @support_groups = [
-                "sabbs",
-                "susu_support",
-                "nightline",
-                "course_rep"
+                { :code => "sabbs",
+                  :name => "Sabbs",
+                  :description => "Talk to the Sabbs about things that matter to you." },
+                { :code => "susu_support",
+                  :name => "SUSU Support",
+                  :description => "Get help from SUSU staff members who can answer your questions." },
+                { :code => "nightline",
+                  :name => "Nightline",
+                  :description => "Get support from a fellow student, anonymously and confidentially." },
+                { :code => "course_rep",
+                  :name => "Course Representatives",
+                  :description => "Talk to someone about issues on your course, or in your department." }
             ]
         end
     end
