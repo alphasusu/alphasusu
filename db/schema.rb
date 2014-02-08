@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140208102657) do
+ActiveRecord::Schema.define(version: 20140208111405) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -129,6 +129,15 @@ ActiveRecord::Schema.define(version: 20140208102657) do
   end
 
   add_index "menus", ["place_id"], name: "index_menus_on_place_id"
+
+  create_table "messages", force: true do |t|
+    t.string   "subject"
+    t.string   "body"
+    t.integer  "from_user_id"
+    t.integer  "to_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "officers", force: true do |t|
     t.string   "title"
