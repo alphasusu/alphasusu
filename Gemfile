@@ -10,6 +10,7 @@ gem "paperclip", "~> 3.5.2"         # File uploads/attachments
 gem "cancan"                        # Permissions/Authorization
 gem 'friendly_id'                   # Slugs for IDs
 gem 'jbuilder', '~> 1.2'            # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'nokogiri'
 
 
 # Asset Pipeline
