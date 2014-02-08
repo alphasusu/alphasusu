@@ -3,7 +3,7 @@ class HelpController < ApplicationController
     before_filter :require_login, except: [ :index ]
 
     def index
-        @articles = Article.all
+        @articles = HelpArticle.all
         if logged_in?
             @course_reps = current_user.course.course_representatives.where(year: current_user.year)
             @academic_president = current_user.course.academic_unit.academic_president
