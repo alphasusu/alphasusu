@@ -42,8 +42,6 @@ task :import_coursereps => :environment do
       user.last_name = row[2].split(' ', 2)[1]
       user.type = "LdapUser"
       user.save
-      course = Course.find_or_create_by(name: row[1])
-      courserep = CourseRepresentative.create(user: user, year: row[5], course: course)
 
       academic_unit = AcademicUnit.find_or_create_by(name: row[10])
       course = Course.find_or_create_by(name: row[1])
