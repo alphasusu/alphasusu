@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140208111405) do
+ActiveRecord::Schema.define(version: 20140208115426) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 20140208111405) do
 
   create_table "messages", force: true do |t|
     t.string   "subject"
-    t.string   "body"
+    t.text     "body",         limit: 255
     t.integer  "from_user_id"
     t.integer  "to_user_id"
     t.datetime "created_at"
