@@ -5,19 +5,16 @@
 </div>
 
 <div class="row">
-  <div class="small-4 columns">
+  <div class="small-6 columns">
     <div class="row">
       <h3>Blogs</h3>
     </div>
     <%= render partial: "blog_posts/preview", collection: @posts %>
   </div>
-  <div class="small-4 columns">
+  <div class="small-6 columns">
     <h3>What's On</h3>
     <div class="row">
       <%= render partial: "events/preview", collection: @events %>
     </div>
-  </div>
-  <div class="small-4 columns">
-    <h3>SUSU Media</h3>
   </div>
 </div>
