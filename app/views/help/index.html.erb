@@ -19,37 +19,40 @@
 	</div>
 	<div class="large-12 columns">
 		<% if logged_in? %>
-			<h3>Your <%= pluralize_without_count(@course_reps.length, 'Representative') %></h3>
+			<h1>Your Representatives</h1>
 			<div class="row">
 				<% @course_reps.each do |rep| %>
-					<div class="large-4 medium-6 small-12 columns">
-						<div class="panel">
-							<h3><%= rep.user.name %></h3>
-							<h5><%= rep.course.name %></h5>
+					<div class="large-12 columns">
+						<div class="representative">
+							<span class="description">
+								<h3><%= rep.user.name %> <small><%= rep.course.name %></small></h3>
+							</span>
 							<%= form_for(Message.new, url: new_message_path) do |f| %>
 								<%= f.hidden_field :to_user_id, :value => rep.user.id %>
-								<%= f.submit class: "button" %>
+								<%= f.submit "Contact", class: "button small" %>
 							<% end %>
 						</div>
 					</div>
 				<% end %>
-				<div class="large-4 medium-6 small-12 columns">
-					<div class="panel">
-						<h3><%= @academic_president.user.name %></h3>
-						<h5><%= @academic_president.academic_unit.name %></h5>
+				<div class="large-12 columns">
+					<div class="representative">
+						<span class="description">
+							<h3>Academic President of <%= @academic_president.academic_unit.name %></h3>
+						</span>
 						<%= form_for(Message.new, url: new_message_path) do |f| %>
 							<%= f.hidden_field :to_user_id, :value => @academic_president.user.id %>
-							<%= f.submit class: "button" %>
+							<%= f.submit "Contact", class: "button small" %>
 						<% end %>
 					</div>
 				</div>
-				<div class="large-4 medium-6 small-12 columns">
-					<div class="panel">
-						<h3><%= @faculty_officer.user.name %></h3>
-						<h5><%= @faculty_officer.faculty.name %></h5>
+				<div class="large-12 columns">
+					<div class="representative">
+						<span class="description">
+							<h3>Faculty Officer for <%= @faculty_officer.faculty.name %></h3>
+						</span>
 						<%= form_for(Message.new, url: new_message_path) do |f| %>
 							<%= f.hidden_field :to_user_id, :value => @faculty_officer.user.id %>
-							<%= f.submit class: "button" %>
+							<%= f.submit "Contact", class: "button small" %>
 						<% end %>
 					</div>
 				</div>
@@ -58,7 +61,8 @@
 	</div>
 	<div class="large-12 columns">
 		<% @articles.each do |article| %>
-			<p><%= article.title %></p>
+			<h3><%= article.title %></h3>
+			<p><%= article.body %></p>
 		<% end %>
 	</div>
 </div>
