@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140208052521) do
+ActiveRecord::Schema.define(version: 20140208134030) do
+
+  create_table "academic_units", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.integer  "faculty_id"
+  end
+
+  add_index "academic_units", ["faculty_id"], name: "index_academic_units_on_faculty_id"
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -55,7 +64,10 @@ ActiveRecord::Schema.define(version: 20140208052521) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "academic_unit_id"
   end
+
+  add_index "courses", ["academic_unit_id"], name: "index_courses_on_academic_unit_id"
 
   create_table "events", force: true do |t|
     t.text     "title"
@@ -69,6 +81,12 @@ ActiveRecord::Schema.define(version: 20140208052521) do
 
   add_index "events", ["place_id"], name: "index_events_on_place_id"
   add_index "events", ["slug"], name: "index_events_on_slug", unique: true
+
+  create_table "faculties", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -138,9 +156,13 @@ ActiveRecord::Schema.define(version: 20140208052521) do
     t.string   "type"
     t.integer  "course_id"
     t.string   "year"
+    t.integer  "faculty_id"
+    t.integer  "academic_unit_id"
   end
 
+  add_index "officers", ["academic_unit_id"], name: "index_officers_on_academic_unit_id"
   add_index "officers", ["course_id"], name: "index_officers_on_course_id"
+  add_index "officers", ["faculty_id"], name: "index_officers_on_faculty_id"
   add_index "officers", ["user_id"], name: "index_officers_on_user_id"
 
   create_table "opening_times", force: true do |t|
