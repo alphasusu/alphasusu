@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :course
+  has_and_belongs_to_many :support_teams
 	
 	has_attached_file(
 		:avatar,

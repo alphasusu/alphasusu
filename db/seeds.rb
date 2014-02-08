@@ -101,6 +101,16 @@ support_course_reps = SupportTeam.create({
   :description => "Talk to someone about issues on your course, or in your department.",
   :logo => File.open('resources/support_logos/course_reps.png')})
 
+@users[:dan].support_teams << support_course_reps
+@users[:dan].support_teams << support_susu
+@users[:dan].save!
+
+@users[:president].support_teams << support_sabbs
+@users[:president].save!
+
+@users[:elliot].support_teams << support_course_reps
+@users[:elliot].support_teams << support_susu
+@users[:elliot].save!
 
 Place.destroy_all
 

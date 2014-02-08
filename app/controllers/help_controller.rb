@@ -25,6 +25,7 @@ class HelpController < ApplicationController
     end
 
     def support
+        @roles = current_user.support_teams
     end
 
     def support_chat

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140208155257) do
+ActiveRecord::Schema.define(version: 20140208165315) do
 
   create_table "academic_units", force: true do |t|
     t.datetime "created_at"
@@ -247,7 +247,15 @@ ActiveRecord::Schema.define(version: 20140208155257) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "team_type"
   end
+
+  create_table "support_teams_users", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "support_team_id"
+  end
+
+  add_index "support_teams_users", ["user_id", "support_team_id"], name: "index_support_teams_users_on_user_id_and_support_team_id"
 
   create_table "tag_links", force: true do |t|
     t.integer "article_id"
