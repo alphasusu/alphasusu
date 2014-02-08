@@ -4,7 +4,6 @@ class HelpController < ApplicationController
 
     def index
         @articles = Article.all
-        # current_user.course.representative
         if logged_in?
             @course_reps = current_user.course.course_representatives.where(year: current_user.year)
             @support_groups = [
