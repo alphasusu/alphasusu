@@ -1,0 +1,2 @@
+class HelpArticle < Article
+end

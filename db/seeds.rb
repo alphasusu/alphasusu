@@ -170,41 +170,6 @@ OpeningTime.create({ vacation: true, day: 3, open:  830, close: 1630, schedule: 
 OpeningTime.create({ vacation: true, day: 4, open:  830, close: 1630, schedule: shop_schedule })
 OpeningTime.create({ vacation: true, day: 5, open:  830, close: 1630, schedule: shop_schedule })
 
-BlogPost.destroy_all
-sabb_blog = 'http://blogs.susu.org/sabbs/feed/'
-
-open(sabb_blog) do |rss|
-  feed = RSS::Parser.parse(rss)
-  
-  feed.items.each do |item|
-    blog_post = BlogPost.new
-    blog_post.title = item.title
-    blog_post.body = item.content_encoded
-    blog_post.save
-  end
-end
-
-Event.destroy_all
-whats_on = 'http://www.susu.org/feeds/whatson.xml'
-
-open(whats_on) do |rss|
-  feed = RSS::Parser.parse(rss)
-
-  feed.items.each do |item|
-    event = Event.new
-    title_split = item.title.split(/((?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday), [0-9]{1,2}(?:st|nd|th|rd) (?:January|February|March|April|May|June|July|August|September|October|November|December) [0-9]{4} - [0-9]{1,2}:[0-9]{2}(?:a|p)m)(?: )(.+ )(?:(?:in|at) )(.*)/)
-    if title_split[1] and title_split[2]
-      event.title = title_split[2]
-      event.date = DateTime.parse(title_split[1])
-      event.place = Place.find_or_create_by(:name => title_split[3])
-    else
-      puts "Malformed " + item.title
-      puts title_split[1]
-    end
-    event.description = item.description
-    event.save
-  end
-end
 
 Menu.destroy_all
 MenuCategory.destroy_all
