@@ -18,10 +18,10 @@
 		<% end %>
 	</div>
 	<div class="large-12 columns">
-		<h1>Your Representatives</h1>
+		<h3>Your <%= pluralize_without_count(@course_reps.length, 'Representative') %></h3>
 		<div class="row">
 			<% @course_reps.each do |rep| %>
-				<div class="large-3 medium-6 small-12 columns">
+				<div class="large-4 medium-6 small-12 columns">
 					<div class="panel">
 						<h3><%= rep.user.name %></h3>
 						<h5><%= rep.course.name %></h5>
