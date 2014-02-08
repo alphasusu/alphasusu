@@ -22,6 +22,7 @@
 					<div class="large-12 columns">
 						<div class="representative">
 							<span class="description">
+								<%= image_tag rep.user.get_avatar_url(:medium), size: "40x40", class: "avatar", alt: rep.user.name %>
 								<h3><%= rep.user.name %> <small><%= rep.course.name %></small></h3>
 							</span>
 							<%= form_for(Message.new, url: new_message_path) do |f| %>
@@ -65,14 +66,18 @@
 		</div>
 	<% end %>
 	<div class="large-12 columns">
-          <h1>Help Articles</h1>
-		<% @articles.each do |article| %>
-			<h3><%= link_to article.title, article %></h3>
-			<p><%= article.body %></p>
-		<% end %>
-                <% if can? :create, HelpArticle %>
-                <%= link_to "New", new_help_article_path() %>
-                <% end %>
+        <h1>Help Articles</h1>
+		<div class="row">
+			<% @articles.each do |article| %>
+				<div class="large-6 medium-6 small-12 columns">
+					<h3><%= link_to article.title, article %></h3>
+					<p><%= article.body %></p>
+				</div>
+			<% end %>
+		</div>
+        <% if can? :create, HelpArticle %>
+	        <%= link_to "New", new_help_article_path(), class: "button small" %>
+        <% end %>
 	</div>
 </div>
 <script>
