@@ -740,36 +740,3 @@ Society.create(:name => "Wireless Society", :description => lorem_ipsum)
 Society.create(:name => "Yoga Society", :description => lorem_ipsum)
 Society.create(:name => "Zumba+", :description => lorem_ipsum)
 
-
-Course.destroy_all
-Faculty.destroy_all
-Cohort.destroy_all
-
-require 'net/http'
-require 'rubygems'
-require 'json'
-
-faculty_raw = Net::HTTP.get(URI.parse("http://www.susu.org/php/ajax-reps.php?type=faculty"))
-faculty_json = JSON.parse(faculty_raw)
-
-faculty_json.each do |k,faculties|
-  faculties.each do |faculty|
-    db_faculty = Faculty.create(:name => faculty["name"])
-    course_raw = Net::HTTP.get(URI.parse("http://www.susu.org/php/ajax-reps.php?type=course&search=#{faculty['id']}"))
-    course_json = JSON.parse(course_raw)
-    course_json.each do |course|
-      db_course = Course.create(:name => course["name"], :faculty => db_faculty)
-      elected_raw = Net::HTTP.get(URI.parse("http://www.susu.org/php/ajax-reps.php?type=rep&search=#{course['election_id']}"))
-      begin
-        
-        elected_json = JSON.parse(elected_raw)
-        elected_json.each do |rep|
-          Cohort.where(:course => db_course, :year => rep['year']).first_or_create
-        end
-      rescue Exception
-      end
-    end
-  end
-end
-
-
