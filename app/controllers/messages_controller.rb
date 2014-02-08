@@ -18,6 +18,7 @@ class MessagesController < ApplicationController
     def create
         @message = Message.new(message_params)
         @to_user = @message.to_user
+        @message.from_user = current_user
 
         if @message.save
             RepresentativeMailer.contact_email(@message).deliver

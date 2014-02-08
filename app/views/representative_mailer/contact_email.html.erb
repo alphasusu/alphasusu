@@ -4,6 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Test Email</h1>
+    <h1>Hi <%= @to_user.first_name %>,</h1>
+    <p>You've got a message from <%= @from_user.name %> because of your position as a course rep. To respond, just reply to this email.</p>
+    <hr/>
+    <p><%= @body %></p>
   </body>
 </html>
