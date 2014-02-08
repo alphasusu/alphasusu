@@ -1,5 +1,8 @@
-<ul>
-  <% @courses.each do |course| %>
-  <li><%= course.name %></li>
-  <% end %>
-</ul>
+<div class="row">
+  <h2>Courses</h2>
+  <ul>
+    <% @courses.each do |course| %>
+    <li><%= link_to course.name, course %></li>
+    <% end %>
+  </ul>
+</div>

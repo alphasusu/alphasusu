@@ -1,1 +1,10 @@
-<%= @course.name %>
+<div class="row">
+  <h2><%= @course.name %></h2>
+
+  <h3>Course Reps</h3>
+  <ul>
+    <% @course.course_representatives.each do |rep| %>
+    <%= render rep %>
+    <% end %>
+  </ul>
+</div>

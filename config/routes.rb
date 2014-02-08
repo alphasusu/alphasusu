@@ -8,7 +8,6 @@ IssueTracker::Application.routes.draw do
     delete 'logout' => 'sessions#destroy', :as => :destroy_session
   end
 
-  resources :courses
   resources :societies
   resources :issues
   resources :blog_posts
@@ -18,6 +17,7 @@ IssueTracker::Application.routes.draw do
   resources :articles
   resources :headlines
   resources :menus
+  resources :courses
   
   scope '/profile' do
     get '/' => 'profiles#me', :as => :profile

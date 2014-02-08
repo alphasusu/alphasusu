@@ -3,7 +3,6 @@ require 'csv'
 desc "Import Course Reps"
 task :import_coursereps => :environment do
 
-  CourseRepresentation.destroy_all
   CourseRepresentative.destroy_all
   Course.destroy_all
   
@@ -14,8 +13,9 @@ task :import_coursereps => :environment do
     end
 
     user = User.find_or_create_by(email: row[3].split("@")[0])
+    user.first_name = row[2]
+    user.save
     course = Course.find_or_create_by(name: row[1])
-    courserep = CourseRepresentative.create(user: user)
-    courselink = CourseRepresentation.create(course: course, course_representative: courserep, year:row[5])
+    courserep = CourseRepresentative.create(user: user, year: row[5], course: course)
   end
 end
