@@ -1,0 +1,2 @@
+module CourseRepsHelper
+end

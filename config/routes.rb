@@ -8,6 +8,7 @@ IssueTracker::Application.routes.draw do
     delete 'logout' => 'sessions#destroy', :as => :destroy_session
   end
 
+  resources :courses
   resources :societies
   resources :issues
   resources :blog_posts
