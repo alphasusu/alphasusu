@@ -17,6 +17,7 @@ IssueTracker::Application.routes.draw do
   resources :articles
   resources :headlines
   resources :menus
+  resources :courses
   
   scope '/profile' do
     get '/' => 'profiles#me', :as => :profile
