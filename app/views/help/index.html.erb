@@ -18,6 +18,19 @@
 		<% end %>
 	</div>
 	<div class="large-12 columns">
+		<h1>Your Representatives</h1>
+		<div class="row">
+			<% @course_reps.each do |rep| %>
+				<div class="large-3 medium-6 small-12 columns">
+					<div class="panel">
+						<h3><%= rep.user.name %></h3>
+						<h5><%= rep.course.name %></h5>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="large-12 columns">
 		<% @articles.each do |article| %>
 			<p><%= article.title %></p>
 		<% end %>

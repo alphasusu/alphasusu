@@ -6,6 +6,7 @@ class HelpController < ApplicationController
         @articles = Article.all
         # current_user.course.representative
         if logged_in?
+            @course_reps = current_user.course.course_representatives
             @support_groups = [
                 "sabbs",
                 "susu_support",
