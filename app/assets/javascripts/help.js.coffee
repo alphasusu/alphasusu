@@ -7,14 +7,12 @@ userName = "Anonymous"
 ## Initialisers
 #####
 
-window.initHelpIndex = ->
-	$('.chat-button').each (idx, value) ->
-		group = $(value).attr('data-chat-id')
-		checkOnline group, (online) ->
-			if online
-				enableChat value, group
-			else
-				disableChat value, group
+window.initHelpIndex = (server) ->
+	$.getJSON server + 'online', (online) ->
+		$('.chat-button').each ->
+			disableChat $(this)
+		$.each online, (idx, value) ->
+			enableChat $('[data-chat-id="' + value + '"]')
 
 window.initChat = (server, room, agent = false) ->
 	$('.chat-form').submit ->
@@ -44,16 +42,13 @@ window.initSupport = (server) ->
 ## Helper Methods
 #####
 
-checkOnline = (group, callback) ->
-	callback (Math.random() > 0.5)
-
-enableChat = (button, group) ->
+enableChat = (button) ->
 	$(button)
 		.removeClass('disabled')
 		.html('Chat Now')
-		.attr('href', '/help/chat?group=' + group)
+		.attr('href', '/help/chat?group=' + $(button).attr('data-chat-id'))
 
-disableChat = (button, group) ->
+disableChat = (button) ->
 	$(button)
 		.addClass('disabled')
 		.html('Offline')
@@ -81,6 +76,8 @@ newChatWindow = (chatId) ->
 
 window.setSupportChannel = (group) ->
 	socket.emit 'support', { group: group }
+	$('.chat .selection').css('display', 'none')
+	$('.chat .online').css('display', 'block')
 
 window.setUserName = (newName) ->
 	userName = newName

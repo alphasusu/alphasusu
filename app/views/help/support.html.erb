@@ -1,18 +1,18 @@
 <div class="row banner-offset chat">
 	<div class="large-12 columns">
 		<h3>Support</h3>
-		<div class="online">
+		<div class="online" style="display:none;">
 			<p>Waiting for support requests. Leave this page open and requests will open in new windows for you.
 			<br/>You must have your pop-up blocker disabled for this website to receive support requests.</p>
 		</div>
 		<div class="selection">
 			<p>Select a group to act as in a support role.</p>
+			<% @roles.each do |role| %>
+				<a href="#" class="button role" onclick="window.setSupportChannel('<%= role.id %>')"><%= role.name %></a>
+			<% end %>
 		</div>
 	</div>
 </div>
 <script>
 	window.initSupport("http://localhost:4000/");
-	setTimeout(function() {
-		window.setSupportChannel("course_rep");
-	}, 1000);
 </script>
