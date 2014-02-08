@@ -1,6 +1,6 @@
 <div class="row banner-offset">
-	<div class="large-12 columns">
-		<% if logged_in? %>
+	<% if logged_in? && current_user.course && !current_user.year.blank? %>
+		<div class="large-12 columns">
 			<h1>Who can help me?</h1>
 			<div class="row">
 				<% @support_groups.each do |group| %>
@@ -13,12 +13,8 @@
 					</div>
 				<% end %>
 			</div>
-		<% else %>
-			<h5>You are not logged in. <%= link_to "Login now", new_session_path %> to talk to people who can help you.<h5>
-		<% end %>
-	</div>
-	<div class="large-12 columns">
-		<% if logged_in? %>
+		</div>
+		<div class="large-12 columns">
 			<h1>Your Representatives</h1>
 			<div class="row">
 				<% @course_reps.each do |rep| %>
@@ -57,8 +53,10 @@
 					</div>
 				</div>
 			</div>
-		<% end %>
-	</div>
+		</div>
+	<% else %>
+		<h5 class="banner-offset">You are not logged in. <%= link_to "Login now", new_session_path %> to contact your representatives.<h5>
+	<% end %>
 	<div class="large-12 columns">
 		<% @articles.each do |article| %>
 			<h3><%= article.title %></h3>
