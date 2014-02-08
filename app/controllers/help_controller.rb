@@ -6,6 +6,11 @@ class HelpController < ApplicationController
         @articles = Article.all
         if logged_in?
             @course_reps = current_user.course.course_representatives.where(year: current_user.year)
+            @academic_president = current_user.course.academic_unit.academic_president
+            @faculty_officer = current_user.course.academic_unit.faculty.faculty_officer
+
+            # @representatives = @course_reps.concat [@academic_president, @faculty_officer]
+            
             @support_groups = [
                 "sabbs",
                 "susu_support",

@@ -33,6 +33,26 @@
 						</div>
 					</div>
 				<% end %>
+				<div class="large-4 medium-6 small-12 columns">
+					<div class="panel">
+						<h3><%= @academic_president.user.name %></h3>
+						<h5><%= @academic_president.academic_unit.name %></h5>
+						<%= form_for(Message.new, url: new_message_path) do |f| %>
+							<%= f.hidden_field :to_user_id, :value => @academic_president.user.id %>
+							<%= f.submit class: "button" %>
+						<% end %>
+					</div>
+				</div>
+				<div class="large-4 medium-6 small-12 columns">
+					<div class="panel">
+						<h3><%= @faculty_officer.user.name %></h3>
+						<h5><%= @faculty_officer.faculty.name %></h5>
+						<%= form_for(Message.new, url: new_message_path) do |f| %>
+							<%= f.hidden_field :to_user_id, :value => @faculty_officer.user.id %>
+							<%= f.submit class: "button" %>
+						<% end %>
+					</div>
+				</div>
 			</div>
 		<% end %>
 	</div>
