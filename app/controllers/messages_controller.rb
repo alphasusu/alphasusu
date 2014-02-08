@@ -20,6 +20,7 @@ class MessagesController < ApplicationController
         @to_user = @message.to_user
 
         if @message.save
+            RepresentativeMailer.contact_email(@message).deliver
             render action: 'sent'
         else
             render action: 'new'
