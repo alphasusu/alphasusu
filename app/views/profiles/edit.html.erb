@@ -19,7 +19,7 @@
 				<div class="large-12 columns"></div>
 				<div class="large-6 medium-6 small-12 columns <%= field_error_class @profile, :first_name %>">
 					<%= f.label :first_name %>
-					<%= f.text_field :first_name, :autofocus => true %>
+					<%= f.text_field :first_name %>
 					<%= field_error @profile, :first_name, "First Name" %>
 				</div>
 				<div class="large-6 medium-6 small-12 columns <%= field_error_class @profile, :last_name %>">
@@ -27,10 +27,13 @@
 					<%= f.text_field :last_name %>
 					<%= field_error @profile, :last_name, "Last Name" %>
 				</div>
-
+				<div class="large-12 columns">
+					<%= f.label :course %>
+					<%= f.select :course_id, options_from_collection_for_select(Course.all, :id, :name, @profile.course_id), :include_blank => true %>
+				</div>
 				<div class="large-12 columns">
 					<%= f.label :email %>
-					<%= f.email_field :email, :autofocus => true %>
+					<%= f.email_field :email %>
 				</div>
 				<div class="large-12 columns">
 					<% if @profile.is_a?(LocalUser) && @profile.pending_reconfirmation? %>
