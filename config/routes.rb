@@ -34,10 +34,14 @@ IssueTracker::Application.routes.draw do
     delete '/:id' => 'profiles#destroy', :as => :delete_profile
   end
 
-  get '/help', to: 'help#index'
-  get '/help/chat', to: 'help#chat'
-  get '/help/support', to: 'help#support'
-  get '/help/agent', to: 'help#support_chat'
+  scope '/help' do
+    get '/', to: 'help#index'
+    get '/chat', to: 'help#chat'
+    get '/support', to: 'help#support'
+    get '/agent', to: 'help#support_chat'
+    resources :help_articles, :path => '/articles'
+  end
+
   get '/activities', to: 'home#activities'
   get '/democracy', to: 'democracy#index'
   

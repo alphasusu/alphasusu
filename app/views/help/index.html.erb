@@ -64,11 +64,14 @@
 		</div>
 	<% end %>
 	<div class="large-12 columns">
-		<h1>Help Articles</h1>
+          <h1>Help Articles</h1>
 		<% @articles.each do |article| %>
-			<h3><%= article.title %></h3>
+			<h3><%= link_to article.title, article %></h3>
 			<p><%= article.body %></p>
 		<% end %>
+                <% if can? :create, HelpArticle %>
+                <%= link_to "New", new_help_article_path() %>
+                <% end %>
 	</div>
 </div>
 <script>
