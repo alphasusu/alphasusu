@@ -6,4 +6,11 @@ class DemocracyController < ApplicationController
     @president = Officer.where(:title => "Union President")
     @vice_presidents = Officer.where.not(:title => "Union President")
   end
+
+private
+
+    def set_site_area
+        params[:site_area] = :democracy
+    end
+
 end
