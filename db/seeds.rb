@@ -741,3 +741,14 @@ Society.create(:name => "Wireless Society", :description => lorem_ipsum)
 Society.create(:name => "Yoga Society", :description => lorem_ipsum)
 Society.create(:name => "Zumba+", :description => lorem_ipsum)
 
+Headline.destroy_all
+
+Headline.create({
+  :title => "Nominate Yourself",
+  :body => "Want to become a SUSU Sabb? Now's the time to nominate yourself for the upcoming <strong><a href=\"#\">elections</a></strong>."
+})
+
+Headline.create({
+  :title => "SUSU Appathon Great Success!",
+  :body => "The SUSU Appathon proved a great success, with loads of pizza, fizzy drinks, coffee, chocolate..."
+})

@@ -28,7 +28,7 @@
 }
 
 .orbit-container {
-        box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 10px #000000;
 	height: 100%;
 	
 	.orbit-slides-container {
@@ -39,8 +39,18 @@
 	    	height: 200px;
 	    }
 
-	    h2 { color: white; }
-	    h3 { color: white; }
+	    h2 {
+	    	color: white;
+	    	text-shadow: 0 0 5px black;
+	    }
+	    h3 {
+	    	color: white;
+	    	text-shadow: 0 0 5px black;
+
+	    	a {
+	    		color: lighten(#008cba, 20%);
+	    	}
+	    }
 	}
 }
 
