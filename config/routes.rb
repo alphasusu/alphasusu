@@ -1,7 +1,5 @@
 IssueTracker::Application.routes.draw do
 
-  resources :messages
-
   devise_for :ldap_users, :local_users, skip: [ :sessions ]
   
   devise_scope :local_user do
@@ -21,6 +19,7 @@ IssueTracker::Application.routes.draw do
   resources :menus
   resources :courses
   resources :messages, :except => :new
+  resources :permissions
 
   scope :messages do
     post '/new' => 'messages#new'

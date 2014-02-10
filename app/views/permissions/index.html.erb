@@ -1,0 +1,33 @@
+<h1>Listing permissions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Subject class</th>
+      <th>Subject</th>
+      <th>Action</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @permissions.each do |permission| %>
+      <tr>
+        <td><%= permission.user_id %></td>
+        <td><%= permission.subject_class %></td>
+        <td><%= permission.subject_id %></td>
+        <td><%= permission.action %></td>
+        <td><%= link_to 'Show', permission %></td>
+        <td><%= link_to 'Edit', edit_permission_path(permission) %></td>
+        <td><%= link_to 'Destroy', permission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Permission', new_permission_path %>

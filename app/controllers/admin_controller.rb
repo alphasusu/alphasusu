@@ -45,8 +45,8 @@ class AdminController < ApplicationController
             :site => [
                 :headline,
                 :ability,
+                :permission,
             ],
-            
             :help => [
                 :help_article,
                 :support_team,
