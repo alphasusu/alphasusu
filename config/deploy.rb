@@ -55,4 +55,16 @@ namespace :deploy do
     end
   end
 
+  after :restart, :import do
+    on roles(:app) do
+      within release_path do
+        with rails_env: :production do
+          execute :rake, 'import:events'
+          execute :rake, 'import:blog_posts'
+          execute :rake, 'import:course_reps'
+        end
+      end
+    end
+  end
+
 end
