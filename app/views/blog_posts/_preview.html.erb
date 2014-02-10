@@ -1,5 +1,5 @@
 <div class="blog-post-preview">
-  <h4><%= preview.title %></h4>
+  <h4><%= link_to preview.title, preview %></h4>
   <small><%= image_tag preview.author.get_avatar_url(:small), class: "avatar" %> By <%= link_to preview.author.name, user_path(preview.author) %></small>
-  <p><%= preview.body[0,280] %></p>
+  <p class="show-for-medium-up"><%= preview.body[0,280] %></p>
 </div>
