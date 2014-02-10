@@ -4,9 +4,13 @@
 	</div>
 	<div class="large-9 columns">
 		<h1><%= @profile.name %></h1>
+                <% @positions.each do |position| %>
+                  <h3><%= position.title %></h3>
+                <% end %>
 		<% if @profile.course %>
 			<h4><%= @profile.course.name %> <small><%= @profile.get_year %></small></h4>
 		<% end %>
+
 	</div>
 	<div class="large-12 columns">
 		<% if @profile == current_user %>

@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
     
     def show
         @profile = User.find(params[:id])
+      @positions = Officer.where(user: @profile)
     end
         
     def me
