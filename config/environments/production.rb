@@ -1,4 +1,4 @@
-IssueTracker::Application.configure do
+1IssueTracker::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -85,6 +85,4 @@ IssueTracker::Application.configure do
     :password  => ENV["MANDRILL_API_KEY"]
   }
 
-  # Using RMagick on Heroku for ImageMagick integration
-  config.gem "rmagick", :lib => "RMagick"
 end
