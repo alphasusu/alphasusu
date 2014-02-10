@@ -1,5 +1,5 @@
 <div class="row">
-  <h4><img class="avatar" src="http://www.avatarpro.biz/avatar?s=32" /><%= preview.title %></h4>
-  <small>By <a href="#">Joe Bloggs</a></small>
+  <h4><%= preview.title %></h4>
+  <small><%= image_tag preview.author.get_avatar_url(:small), class: "avatar" %> By <%= link_to preview.author.name, user_path(preview.author) %></small>
   <p><%= preview.body[0,280] %></p>
 </div>

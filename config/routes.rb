@@ -27,7 +27,7 @@ IssueTracker::Application.routes.draw do
   
   scope '/profile' do
     get '/' => 'profiles#me', :as => :profile
-    get '/:id' => 'profiles#show'
+    get '/:id' => 'profiles#show', :as => :user
     get '/:id/edit' => 'profiles#edit', :as => :edit_profile
     put '/:id' => 'profiles#update', :as => :update_profile
     delete '/:id' => 'profiles#destroy', :as => :delete_profile

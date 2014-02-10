@@ -17,6 +17,8 @@ namespace "import" do
         blog_post.title = item.title
         blog_body = Nokogiri::HTML(item.content_encoded)
         blog_post.body = blog_body.text
+        blog_post.author = User.where(first_name: item.dc_creator.split[0],
+                                      last_name: item.dc_creator.split[1]).first
         blog_post.save
       end
     end
