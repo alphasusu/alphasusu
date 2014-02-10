@@ -31,6 +31,7 @@ group :development do
   gem 'sqlite3'                     # Instead of Postgres in development
   gem 'capistrano'
   gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
 end
 
 group :production do
