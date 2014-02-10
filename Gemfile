@@ -29,6 +29,7 @@ gem 'socket.io-rails'               # Socket.IO
 group :development do
   gem 'meta_request'                # Debugging metrics in Rails Console for Chrome
   gem 'sqlite3'                     # Instead of Postgres in development
+  gem 'capistrano'
 end
 
 group :production do
