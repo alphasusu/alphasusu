@@ -1,19 +1,26 @@
-<div class="banner">
+<div class="banner show-for-medium-up">
   <ul class="" data-orbit data-options="bullets: false">
     <%= render @headlines %>
   </ul>
 </div>
+<div class="banner-mobile show-for-small-only">
+<%= render @headlines %>
+</div>
 <div class="row">
-  <div class="small-6 columns">
+  <div class="large-6 medium-6 small-12 columns">
+    <h3>Blogs</h3>
     <div class="row">
-      <h3>Blogs</h3>
+      <div class="large-12 columns">
+        <%= render partial: "blog_posts/preview", collection: @posts %>
+      </div>
     </div>
-    <%= render partial: "blog_posts/preview", collection: @posts %>
   </div>
-  <div class="small-6 columns">
+  <div class="large-6 medium-6 small-12 columns">
     <h3>What's On</h3>
     <div class="row">
-      <%= render partial: "events/preview", collection: @events %>
+      <div class="large-12 columns">
+        <%= render partial: "events/preview", collection: @events %>
+      </div>
     </div>
   </div>
 </div>

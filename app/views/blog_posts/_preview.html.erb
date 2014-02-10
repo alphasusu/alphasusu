@@ -1,4 +1,4 @@
-<div class="row">
+<div class="blog-post-preview">
   <h4><%= preview.title %></h4>
   <small><%= image_tag preview.author.get_avatar_url(:small), class: "avatar" %> By <%= link_to preview.author.name, user_path(preview.author) %></small>
   <p><%= preview.body[0,280] %></p>
