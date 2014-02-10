@@ -27,6 +27,21 @@
 	}
 }
 
+.banner-mobile {
+	.content {
+		border-bottom: 1px solid #ddd;
+		padding: 10px;
+
+		h2 {
+			font-size: 20px;
+			font-weight: bold;
+		}
+		h3 {
+			font-size: 14px;
+		}
+	}
+}
+
 .orbit-container {
     box-shadow: inset 0 0 10px #000000;
 	height: 100%;

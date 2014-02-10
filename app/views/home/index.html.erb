@@ -1,10 +1,12 @@
 <div class="banner show-for-medium-up">
   <ul class="" data-orbit data-options="bullets: false">
-    <%= render @headlines %>
+    <% @headlines.each do |headline| %>
+      <li data-orbit-slide="headline-1"><%= render headline %></li>
+    <% end %>
   </ul>
 </div>
 <div class="banner-mobile show-for-small-only">
-<%= render @headlines %>
+  <%= render @headlines %>
 </div>
 <div class="row">
   <div class="large-6 medium-6 small-12 columns">
