@@ -1,24 +1,30 @@
 <% if @first_visit %>
 	<div id="first-run-modal" class="reveal-modal" data-reveal>
-		<h2>Welcome to SUSU Alpha</h2>
+		<h2>Welcome to Alpha SUSU</h2>
 		<p class="lead">This page is an experiment, use <a href="http://www.susu.org/">susu.org</a> for the current site.</p>
-		<p>We made this site to show how much better the SUSU website could be if we cut the clutter.</p>
-		<p>We aim to be</p>
+		<p>We made this site to show how much better the SUSU website could be if we cut the clutter and focus on what <em>students</em> need.</p>
+		<p><em>We aim to be</em></p>
 		<ul>
 		  <li>User Focussed</li>
 		  <li>Minimal</li>
 		  <li>Modern</li>
 		</ul>
-		<p>We really hope we succeeded.</p>
-		<p>But please bear in mind that the site isn't official, isn't complete, isn't accurate. Think of it as an experiment, not your source for SUSU information. If you have any feedback, please report it on <a href="https://github.com/ElliotJH/alpha-susu/issues">GitHub</a>.
+		<p>But please bear in mind that the site isn't official, and isn't always complete or accurate. Think of it as an <em>experiment</em>, not your source for SUSU information.</p>
+		<p>If you have any feedback, anything that you think could be improved or needs fixing, please report it on <a href="https://github.com/alphasusu/alphasusu/issues">GitHub</a>.
 		<p>We hope you like the site.</p>
-		<a class="button success right" onclick="closeFirstRunModal()">Ok, I Understand</a>
+		<a class="button success right small" onclick="closeFirstRunModal()" style="margin-left: 10px;">Ok, I Understand</a>
+		<a href="https://twitter.com/AlphaSUSU" class="twitter-follow-button right" data-show-count="false" data-size="large" data-show-screen-name="false" data-dnt="true">Follow @AlphaSUSU</a>
 	</div>
 	<script>
-		$('#first-run-modal').foundation('reveal', 'open', {});
+		$(function() {
+			$('#first-run-modal').foundation('reveal', 'open', {});
+		});
 
 		function closeFirstRunModal() {
 			$('#first-run-modal').foundation('reveal', 'close', {});
 		}
+	</script>
+	<script>
+		!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 	</script>
 <% end %>
