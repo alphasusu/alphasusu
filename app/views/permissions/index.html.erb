@@ -7,6 +7,7 @@
       <th>Subject class</th>
       <th>Subject</th>
       <th>Action</th>
+      <th>Description</th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,6 +21,7 @@
         <td><%= permission.subject_class %></td>
         <td><%= permission.subject_id %></td>
         <td><%= permission.action %></td>
+        <td><%= permission.description %></td>
         <td><%= link_to 'Show', permission %></td>
         <td><%= link_to 'Edit', edit_permission_path(permission) %></td>
         <td><%= link_to 'Destroy', permission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
