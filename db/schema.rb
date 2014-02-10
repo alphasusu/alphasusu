@@ -257,7 +257,6 @@ ActiveRecord::Schema.define(version: 20140210155242) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.string   "team_type"
   end
 
   create_table "support_teams_users", id: false, force: true do |t|
