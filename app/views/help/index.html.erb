@@ -23,7 +23,7 @@
 						<div class="representative">
 							<span class="description">
 								<%= image_tag rep.user.get_avatar_url(:medium), size: "40x40", class: "avatar", alt: rep.user.name %>
-								<h3><%= rep.user.name %> <small><%= rep.course.name %></small></h3>
+								<h3><%= link_to rep.user.name, user_path(rep.user) %> <small><%= rep.course.name %></small></h3>
 							</span>
 							<%= form_for(Message.new, url: new_message_path) do |f| %>
 								<%= f.hidden_field :to_user_id, :value => rep.user.id %>
@@ -35,7 +35,7 @@
 				<div class="large-12 columns">
 					<div class="representative">
 						<span class="description">
-							<h3>Academic President of <%= @academic_president.academic_unit.name %></h3>
+							<h3><%= link_to "Academic President of " + @academic_president.academic_unit.name, user_path(@academic_president.user) %></h3>
 						</span>
 						<%= form_for(Message.new, url: new_message_path) do |f| %>
 							<%= f.hidden_field :to_user_id, :value => @academic_president.user.id %>
@@ -46,7 +46,7 @@
 				<div class="large-12 columns">
 					<div class="representative">
 						<span class="description">
-							<h3>Faculty Officer for <%= @faculty_officer.faculty.name %></h3>
+							<h3><%= link_to "Faculty Officer  " + @faculty_officer.faculty.name, user_path(@faculty_officer.user) %></h3>
 						</span>
 						<%= form_for(Message.new, url: new_message_path) do |f| %>
 							<%= f.hidden_field :to_user_id, :value => @faculty_officer.user.id %>

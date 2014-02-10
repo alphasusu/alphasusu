@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
         
     def me
         @profile = current_user
+      @positions = Officer.where(user: @profile)
         render :show
     end
     
