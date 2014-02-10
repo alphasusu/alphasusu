@@ -44,6 +44,10 @@ IssueTracker::Application.routes.draw do
 
   get '/activities', to: 'home#activities'
   get '/democracy', to: 'democracy#index'
+
+  scope '/admin' do
+    get '/' => 'admin#index', :as => :admin
+  end
   
   root 'home#index'
 
