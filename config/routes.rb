@@ -18,7 +18,7 @@ IssueTracker::Application.routes.draw do
   resources :headlines
   resources :menus
   resources :courses
-  resources :messages, :except => :new
+  resources :messages
   resources :permissions
 
   scope :messages do
