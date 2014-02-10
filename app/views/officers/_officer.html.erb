@@ -1,7 +1,7 @@
 <div class="officer">
   <% if officer.user %>
     <%= image_tag officer.user.get_avatar_url(:medium), size: "100x100", class: "sabb-photo", alt: officer.user.name %>
-    <h5><%= officer.user.name %></h5>
+    <h5><%= link_to officer.user.name, user_path(officer.user) %></h5>
   <% else %>
     <%= image_tag "default_avatar_medium.jpg", size: "100x100", class: "sabb-photo", alt: "Unfilled Position" %>
     <h5><em>Unfilled</em></h5>
