@@ -24,6 +24,7 @@ def create_user(key, details)
   user.last_name = details[:name].split(' ').last
   user.password = details[:password]
   user.password_confirmation = details[:password]
+  user.avatar = details[:avatar]
   user.skip_confirmation!
   user.save! :validate => false
   if !details[:admin].nil? and details[:admin]
@@ -34,52 +35,60 @@ end
 
 {
   dan: {
-  name: "Dan Palmer",
-  email: "dan@example.com",
-  password: "password1",
-    admin: true
-},
+    name: "Dan Palmer",
+    email: "dan@example.com",
+    password: "password1",
+    admin: true,
+  },
   elliot: {
-  name: "Elliot Hughes",
-  email: "elliot@example.com",
-  password: "password1",
-    admin: true
-},
+    name: "Elliot Hughes",
+    email: "elliot@example.com",
+    password: "password1",
+    admin: true,
+  },
   president: {
-  name: "David Gilani",
-  email: "pres@susu.org",
-  password: "president"
-},
+    name: "David Gilani",
+    email: "pres@susu.org",
+    password: "president",
+    avatar: File.open('resources/sabbs/david-gilani.png'),
+  },
   sports: {
-  name: "Evan Whyte",
-  email: "sports@susu.org",
-  password: "sports"
-},
+    name: "Evan Whyte",
+    email: "sports@susu.org",
+    password: "sports",
+    avatar: File.open('resources/sabbs/evan-whyte.png'),
+  },
   democracy: {
-  name: "David Martin",
-  email: "democracy@susu.org",
-  password: "democracy"
-},
+    name: "David Martin",
+    email: "democracy@susu.org",
+    password: "democracy",
+    avatar: File.open('resources/sabbs/david-martin.png'),
+  },
   education: {
-  name: "David Mendoza-Wolfson",
-  email: "education@susu.org",
-  password: "education"
-},
+    name: "David Mendoza-Wolfson",
+    email: "education@susu.org",
+    password: "education",
+    avatar: File.open('resources/sabbs/david-mendoza-wolfson.png'),
+  },
   welfare: {
-  name: "Beckie Thomas",
-  email: "welfare@susu.org",
-  password: "welfare"
-},
+    name: "Beckie Thomas",
+    email: "welfare@susu.org",
+    password: "welfare",
+    avatar: File.open('resources/sabbs/beckie-thomas.png'),
+  },
   engagement: {
-  name: "Claire Gilbert",
-  email: "engagement@susu.org",
-  password: "engagement"
-},
+    name: "Claire Gilbert",
+    email: "engagement@susu.org",
+    password: "engagement",
+    avatar: File.open('resources/sabbs/claire-gilbert.png'),
+  },
   communities: {
-  name: "Oli Coles",
-  email: "communities@susu.org",
-  password: "communities"
-}}.map {|key,details| create_user(key, details)}
+    name: "Oli Coles",
+    email: "communities@susu.org",
+    password: "communities",
+    avatar: File.open('resources/sabbs/oli-coles.png'),
+  }
+}.map {|key,details| create_user(key, details)}
 
 
 SupportTeam.destroy_all
