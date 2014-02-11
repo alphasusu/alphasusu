@@ -3,6 +3,9 @@ require 'nokogiri'
 require 'rss'
 
 namespace "import" do
+  desc "All" 
+  task :all => [:users, :blog_posts, :events, :societies]
+
   desc "Users"
   task :users => :environment do
     @users = {}
