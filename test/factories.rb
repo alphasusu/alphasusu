@@ -123,7 +123,7 @@ FactoryGirl.define do
 
     factory :society do
         name 'The Extreme Ironing Society'
-        descrition 'Lorem ipsum dolor sit amet.'
+        description 'Lorem ipsum dolor sit amet.'
         slug 'the-extreme-ironing-society'
     end
 
