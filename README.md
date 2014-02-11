@@ -59,7 +59,8 @@ git submodule update --init
 bundle exec rake db:setup
 bundle exec rake import:all
 
-bundle exec rails s```
+bundle exec rails s
+```
 
 These steps have been tested multiple times on OS X and Linux but are
 untested on Windows. Reports of success or failure on any platform are
