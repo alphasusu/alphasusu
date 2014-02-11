@@ -32,6 +32,7 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
+  gem 'tconsole'
 end
 
 group :production do
