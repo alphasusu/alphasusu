@@ -151,7 +151,49 @@ FactoryGirl.define do
         name 'Test Tag'
     end
 
-    factory :user do
+    factory :local_user, class: LocalUser do
+        type 'LocalUser'
+        email 'test@example.com'
+        elevated false
+        first_name 'John'
+        last_name 'Smith'
+        course
+        year '2'
+        password 'password1'
+    end
+
+    factory :local_admin, class: LocalUser do
+        type 'LocalUser'
+        email 'test@example.com'
+        elevated true
+        first_name 'John'
+        last_name 'Smith'
+        course
+        year '2'
+        password 'password1'          
+    end
+
+    factory :ldap_user, class: LdapUser do
+        type 'LdapUser'
+        email 'test@example.com'
+        elevated false
+        first_name 'John'
+        last_name 'Smith'
+        course
+        year '2'
+    end
+
+    factory :ldap_admin, class: LdapUser do
+        type 'LdapUser'
+        email 'test@example.com'
+        elevated true
+        first_name 'John'
+        last_name 'Smith'
+        course
+        year '2'         
+    end
+
+    factory :user, class: User do
         type 'User'
         email 'test@example.com'
         elevated false
