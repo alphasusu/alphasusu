@@ -77,6 +77,136 @@ namespace "import" do
         avatar: File.open('resources/sabbs/oli-coles.png'),
       }
     }.map {|key,details| create_user(key, details)}
+
+    SupportTeam.destroy_all
+
+    support_sabbs = SupportTeam.create({ :name => "Sabbs",
+                                         :description => "Talk to the Sabbs about how the union is run.",
+                                         :logo => File.open('resources/support_logos/sabbs.png')})
+    support_susu = SupportTeam.create({ :name => "SUSU Support",
+                                        :description => "Get help from SUSU staff members who can answer your questions about the union.",
+                                        :logo => File.open('resources/support_logos/susu_support.png')})
+    support_nightline = SupportTeam.create({ :name => "Nightline",
+                                             :description => "Get support from a fellow student, anonymously and confidentially.",
+                                             :logo => File.open('resources/support_logos/nightline.png')})
+    support_course_reps = SupportTeam.create({ :name => "Course Reps",
+                                               :description => "Talk to someone about issues on your course, or in your department.",
+                                               :logo => File.open('resources/support_logos/course_reps.png')})
+    
+    @users[:dan].support_teams << support_course_reps
+    @users[:dan].support_teams << support_susu
+    @users[:dan].save!
+    
+    @users[:president].support_teams << support_sabbs
+    @users[:president].save!
+
+    @users[:elliot].support_teams << support_course_reps
+    @users[:elliot].support_teams << support_susu
+    @users[:elliot].save!
+
+    Officer.destroy_all
+    president = Officer.create(
+                               :title => "Union President",
+                               :user => @users[:president])
+    vp_education = Officer.create(
+                                  :title => "Vice-President Education",
+                                  :user => @users[:education])
+    vp_engagement = Officer.create(
+                                   :title => "Vice-President Engagement",
+                                   :user => @users[:engagement])
+    vp_sports = Officer.create(
+                               :title => "Vice-President Sports Development",
+                               :user => @users[:sports])
+    vp_welfare = Officer.create(
+                                :title => "Vice-President Welfare",
+                                :user => @users[:welfare])
+    vp_community = Officer.create(
+                                  :title => "Vice-President Student Communities",
+                                  :user => @users[:communities])
+    vp_democracy = Officer.create(
+                                  :title => "Vice-President Democracy & Creative Industries",
+                                  :user => @users[:democracy])
+    
+    Zone.destroy_all
+    trustee = Zone.create(:name => "Trustee",
+                          :officer => president)
+    democracy = Zone.create(:name => "Democracy",
+                            :officer => vp_democracy)
+    sustainability = Zone.create(:name => "Sustainability",
+                                 :officer => vp_welfare)
+    communities = Zone.create(:name => "Student Communities",
+                              :officer => vp_community)
+    creative = Zone.create(:name => "Creative Industries",
+                           :officer => vp_democracy)
+    education = Zone.create(:name => "Education",
+                            :officer => vp_education)
+    external = Zone.create(:name => "External Engagement",
+                           :officer => vp_engagement)
+    sports = Zone.create(:name => "Sports Development",
+                         :officer => vp_sports)
+    life = Zone.create(:name => "Student Life",
+                       :officer => vp_welfare)
+
+    Subcommittee.destroy_all
+    
+    Subcommittee.create(:name => "CMT Subcommittee",
+                        :zone => trustee)
+    Subcommittee.create(:name => "Commercial Subcommittee",
+                        :zone => trustee)
+    Subcommittee.create(:name => "Finance Subcommittee",
+                        :zone => trustee)
+    Subcommittee.create(:name => "Staffing Subcommittee",
+                        :zone => trustee)
+    
+    Subcommittee.create(:name => "Democracy Zone",
+                        :zone => democracy)
+    Subcommittee.create(:name => "Union Council",
+                        :zone => democracy)
+    Subcommittee.create(:name => "Student Groups Committee",
+                        :zone => democracy)
+    
+    Subcommittee.create(:name => "Sustainability Zone",
+                        :zone => sustainability)
+    Subcommittee.create(:name => "Equality and Diversity Forum",
+                        :zone => sustainability)
+    Subcommittee.create(:name => "Ethical and Environmental Committee",
+                        :zone => sustainability)
+    
+    Subcommittee.create(:name => "Student Communities Zone",
+                        :zone => communities)
+    Subcommittee.create(:name => "International Committee",
+                        :zone => communities)
+    Subcommittee.create(:name => "JCR Committee",
+                        :zone => communities)
+    
+    Subcommittee.create(:name => "Creative Industries Zone",
+                        :zone => creative)
+    Subcommittee.create(:name => "Media Committee",
+                        :zone => creative)
+    Subcommittee.create(:name => "Performing Arts",
+                        :zone => creative)
+    
+    Subcommittee.create(:name => "Education Zone",
+                        :zone => education)
+    
+    Subcommittee.create(:name => "External Engagement Zone",
+                        :zone => external)
+    Subcommittee.create(:name => "Enterprise",
+                        :zone => external)
+    Subcommittee.create(:name => "RAG",
+                        :zone => external)
+
+    Subcommittee.create(:name => "Sports Development Zone",
+                        :zone => sports)
+    Subcommittee.create(:name => "Athletic Union Committee",
+                        :zone => sports)
+    Subcommittee.create(:name => "Intramural Committee",
+                        :zone => sports)
+    
+    Subcommittee.create(:name => "Student Life Zone",
+                        :zone => life)
+    Subcommittee.create(:name => "Wellbeing Committee",
+                        :zone => life)
   end
 
   desc "Import SUSU Blog Posts"
