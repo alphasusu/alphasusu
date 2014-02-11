@@ -1,5 +1,7 @@
 language: ruby
 rvm:
   - 2.1.0
-before_script: "bundle exec rake db:test:prepare"
+before_script:
+  - bundle exec rake db:test:prepare
+  - cp config/database.yml.example config/database.yml
 script: "RAILS_ENV=test bundle exec rake --trace db:migrate test"
