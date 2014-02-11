@@ -49,16 +49,16 @@ THE SOFTWARE.
 
 To get started, checkout the source code and make sure you can get it run.
 
-   1. bundle install
-   2. cp config/database.yml.example config/database.yml
-   3. (Optionally) Modify database.yml to suit your needs
-   4. bundle exec rake db:setup
-   5. git submodule init
-   6. git submodule update
-   7. bundle exec rake import:course_reps
-   8. bundle exec rake import:events
-   9. bundle exec rake import:blog_posts
-   10 bundle exec rails s
+``bundle install
+cp config/database.yml.example config/database.yml
+(Optionally) Modify database.yml to suit your needs
+bundle exec rake db:setup
+git submodule init
+git submodule update
+bundle exec rake import:course_reps
+bundle exec rake import:events
+bundle exec rake import:blog_posts
+bundle exec rails s``
 
 These steps have been tested multiple times on OS X and Linux but are
 untested on Windows. Reports of success or failure on any platform are
