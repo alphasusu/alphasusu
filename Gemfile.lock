@@ -66,6 +66,11 @@ GEM
       net-ldap (>= 0.3.1, < 0.6.0)
     erubis (2.7.0)
     execjs (2.0.2)
+    factory_girl (4.3.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.3.0)
+      factory_girl (~> 4.3.0)
+      railties (>= 3.0.0)
     foundation-rails (5.0.3.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
@@ -184,6 +189,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   devise_ldap_authenticatable
+  factory_girl_rails
   foundation-rails
   friendly_id
   jbuilder (~> 1.2)
