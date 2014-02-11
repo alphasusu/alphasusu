@@ -49,15 +49,18 @@ THE SOFTWARE.
 
 To get started, checkout the source code and make sure you can get it run.
 
-``bundle install
+``
+bundle install
+
 cp config/database.yml.example config/database.yml
-(Optionally) Modify database.yml to suit your needs
+
+git submodule update --init
+
 bundle exec rake db:setup
-git submodule init
-git submodule update
 bundle exec rake import:course_reps
 bundle exec rake import:events
 bundle exec rake import:blog_posts
+
 bundle exec rails s``
 
 These steps have been tested multiple times on OS X and Linux but are
