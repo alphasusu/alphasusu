@@ -1,0 +1,2 @@
+class StudentLeader < Officer
+end

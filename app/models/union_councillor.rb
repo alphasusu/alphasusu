@@ -1,0 +1,2 @@
+class UnionCouncillor < Officer  
+end
