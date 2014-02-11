@@ -59,6 +59,10 @@ git submodule update --init
 bundle exec rake db:setup
 bundle exec rake import:all
 
+bundle exec rake import:course_reps
+bundle exec rake import:events
+bundle exec rake import:blog_posts
+
 bundle exec rails s``
 
 These steps have been tested multiple times on OS X and Linux but are
