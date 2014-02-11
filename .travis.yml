@@ -1,0 +1,5 @@
+language: ruby
+rvm:
+  - 2.1.0
+before_script: "bundle exec rake db:test:prepare"
+script: "RAILS_ENV=test bundle exec rake --trace db:migrate test"
