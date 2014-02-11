@@ -25,6 +25,7 @@ gem 'leaflet-rails'                 # Leaflet for mapping
 gem 'foundation-rails'              # Foundation for CSS
 gem 'socket.io-rails'               # Socket.IO
 
+gem 'coveralls', require: false     # Coveralls for code coverage
 
 group :development do
   gem 'meta_request'                # Debugging metrics in Rails Console for Chrome
