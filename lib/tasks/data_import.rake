@@ -3,6 +3,39 @@ require 'nokogiri'
 require 'rss'
 
 namespace "import" do
+
+  desc "Import Student Leaders"
+  task :student_leaders => :environment do
+    UnionCouncillor.destroy_all
+    open("http://www.susu.org/running-your-union/council-members") do |page|
+      doc = Nokogiri::HTML(page)
+
+      doc.css(".grid-33").each do |list|
+        case list.css("h3").first.text
+        when "Sabbaticals"
+          next
+        when "Student Leaders"
+          list.css("li").each do |ul|
+            matches = /(?:<strong>|<span style="font-style: italic;">)([A-Za-z' ]+)(?:<\/strong>|<\/span>)<br>([A-Za-z&;\-)( ]+)/.match(ul.to_s)
+            name = matches[1]
+            title = matches[2]
+
+            sl = StudentLeader.find_or_create_by(title: title)
+            user = User.find_or_create_by(first_name: name.split[0], last_name: name.split[1..-1].join(" "))
+            sl.user = user
+            sl.save
+          end
+        when "Union Councillors"
+          list.css("li strong").each do |listrong|
+            name = listrong.text
+            user = User.find_or_create_by(first_name: name.split[0], last_name: name.split[1..-1].join(" "))
+            uc = UnionCouncillor.create(user: user)
+          end
+        end
+      end
+    end
+  end
+
   desc "Import SUSU Blog Posts"
   task :blog_posts => :environment do
     
