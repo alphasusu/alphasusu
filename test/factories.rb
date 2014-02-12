@@ -12,6 +12,13 @@ FactoryGirl.define do
         type 'Article'
     end
 
+    factory :help_article do
+        title 'Test Help Article'
+        body 'Lorem ipsum dolor sit amet.'
+        sequence(:slug) {|n| "test-help-article-#{n}" }
+        type 'HelpArticle'
+    end
+
     factory :blog_post do
         title 'Test Blog Post'
         body 'Lorem ipsum dolor sit amet.'
