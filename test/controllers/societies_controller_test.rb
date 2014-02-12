@@ -15,7 +15,6 @@ class SocietiesControllerTest < ActionController::TestCase
     as_nobody
     assert_raise(CanCan::AccessDenied) {
       get :new
-      assert_response :success
     }
   end
 
@@ -23,7 +22,6 @@ class SocietiesControllerTest < ActionController::TestCase
     as_user
     assert_raise(CanCan::AccessDenied) {
       get :new
-      assert_response :success
     }
   end
 
@@ -65,7 +63,6 @@ class SocietiesControllerTest < ActionController::TestCase
     as_nobody
     assert_raise(CanCan::AccessDenied) {
       get :edit, id: @society
-      assert_response :success
     }
   end
 
@@ -73,7 +70,6 @@ class SocietiesControllerTest < ActionController::TestCase
     as_user
     assert_raise(CanCan::AccessDenied) {
       get :edit, id: @society
-      assert_response :success
     }
   end
 
