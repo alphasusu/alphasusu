@@ -1,6 +1,6 @@
 # Alpha SUSU
 
-[![AlphaSUSU](https://travis-ci.org/alphasusu/alphasusu.png)](https://travis-ci.org/alphasusu/alphasusu)
+[![Travis CI Status](https://travis-ci.org/alphasusu/alphasusu.png)](https://travis-ci.org/alphasusu/alphasusu) [![Coverage Status](https://coveralls.io/repos/alphasusu/alphasusu/badge.png?branch=master)](https://coveralls.io/r/alphasusu/alphasusu?branch=master)
 
 ## Introduction
 
