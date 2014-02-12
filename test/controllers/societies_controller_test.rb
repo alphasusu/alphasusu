@@ -99,7 +99,22 @@ class SocietiesControllerTest < ActionController::TestCase
     assert_redirected_to society_path(assigns(:society))
   end
 
+  test "should not destroy society without auth" do
+    as_nobody
+    assert_raise(CanCan::AccessDenied) {
+      delete :destroy, id: @society
+    }
+  end
+
+  test "should not destroy society without permission" do
+    as_user
+    assert_raise(CanCan::AccessDenied) {
+      delete :destroy, id: @society
+    }
+  end
+
   test "should destroy society" do
+    as_admin
     assert_difference('Society.count', -1) do
       delete :destroy, id: @society
     end
