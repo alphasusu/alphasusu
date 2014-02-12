@@ -1,25 +1,26 @@
 class ProfilesController < ApplicationController
     before_filter :require_login, except: [ :show ]
+    before_action :set_profile, only: [:show, :edit, :update, :destroy]
     rescue_from ActiveRecord::RecordNotFound, with: :user_not_found
     
     def show
-        @profile = User.find(params[:id])
-      @positions = Officer.where(user: @profile)
+        @positions = Officer.where(user: @profile)
     end
         
     def me
         @profile = current_user
-      @positions = Officer.where(user: @profile)
+        @positions = Officer.where(user: @profile)
         render :show
     end
     
     def edit
-        @profile = current_user
+        authorize! :update, @profile
     end
     
     def update
+        authorize! :update, @profile
+
         updates = profile_params
-        @profile = User.find(params[:id])
         
         @profile.first_name = updates[:first_name]
         @profile.last_name = updates[:last_name]
@@ -57,10 +58,20 @@ class ProfilesController < ApplicationController
     end
     
     def destroy
-        
+        authorize! :destroy, @profile
+
+        @profile.destroy
+        respond_to do |format|
+            format.html { redirect_to new_session_path }
+            format.json { head :no_content }
+        end
     end
     
 private
+
+    def set_profile
+        @profile = User.find(params[:id])
+    end
     
     def profile_params
         params.require(:profile).permit(

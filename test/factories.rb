@@ -12,6 +12,13 @@ FactoryGirl.define do
         type 'Article'
     end
 
+    factory :help_article do
+        title 'Test Help Article'
+        body 'Lorem ipsum dolor sit amet.'
+        sequence(:slug) {|n| "test-help-article-#{n}" }
+        type 'HelpArticle'
+    end
+
     factory :blog_post do
         title 'Test Blog Post'
         body 'Lorem ipsum dolor sit amet.'
@@ -40,7 +47,7 @@ FactoryGirl.define do
         description 'Lorem ipsum dolor sit amet.'
         date Date.new
         place
-        sug 'test-event'
+        sequence(:slug) {|n| "test-event-#{n}" }
     end
 
     factory :faculty do
@@ -88,6 +95,13 @@ FactoryGirl.define do
         year '2'
         faculty
         academic_unit
+    end
+
+    factory :course_representative do
+        user
+        course
+        type 'CourseRepresentative'
+        year '2'
     end
 
     factory :opening_time do
@@ -218,6 +232,12 @@ FactoryGirl.define do
     factory :zone do
         name 'Test Zone'
         officer
+    end
+
+    factory :issue do
+        title 'Test Issue'
+        description 'Lorem ipsum dolor sit amet'
+        sequence(:slug) {|n| "test-issue-#{n}" }
     end
 
 end

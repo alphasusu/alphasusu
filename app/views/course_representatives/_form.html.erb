@@ -1,0 +1,24 @@
+<%= form_for @course_representative do |f| %>
+	<div class="row">
+		<div class="large-12 columns <%= field_error_class @course_representative, :user_id %>">
+			<%= f.label :user_id %>
+			<%= f.select :user_id,
+				options_from_collection_for_select(LdapUser.all, :id, :name, @course_representative.user_id), :include_blank => true %>
+			<%= field_error @course_representative, :user, "User" %>
+		</div>
+		<div class="large-12 columns <%= field_error_class @course_representative, :course_id %>">
+			<%= f.label :course_id %>
+			<%= f.select :course_id,
+				options_from_collection_for_select(Course.all, :id, :name, @course_representative.course_id), :include_blank => false %>
+			<%= field_error @course_representative, :course_id, "Course" %>
+		</div>
+		<div class="large-12 columns <%= field_error_class @course_representative, :year %>">
+			<%= f.label :year %>
+			<% years_display = User.years.to_a.map {|y| [y[1], y[0]]} %>
+			<%= f.select :year, options_for_select(years_display, @course_representative.year), :include_blank => false %>
+		</div>
+		<div class="large-12 columns">
+			<%= f.submit class: "button" %>
+		</div>
+	</div>
+<% end %>

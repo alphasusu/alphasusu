@@ -51,7 +51,7 @@ class SessionsController < Devise::SessionsController
 		
 		respond_to do |format|
 			format.all { head :no_content }
-			format.any(*navigational_formats) { redirect_to new_session_path }
+			format.any(*navigational_formats) { redirect_to root_path }
 		end
 	end
 	
