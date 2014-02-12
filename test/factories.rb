@@ -6,16 +6,16 @@ FactoryGirl.define do
     end
 
     factory :article do
-        title 'Test Blog Article'
+        title 'Test Article'
         body 'Lorem ipsum dolor sit amet.'
-        slug 'test-blog-article'
+        sequence(:slug) {|n| "test-article-#{n}" }
         type 'Article'
     end
 
     factory :blog_post do
         title 'Test Blog Post'
         body 'Lorem ipsum dolor sit amet.'
-        slug 'test-blog-post'
+        sequence(:slug) {|n| "test-blog-post-#{n}" }
         user
     end
 
@@ -72,8 +72,12 @@ FactoryGirl.define do
     factory :message do
         subject 'Test Message Subject'
         body 'Test Message Body'
-        from_user
-        to_user
+
+        # We use 'association' here so that we can specify the factory
+        # for a non-matching name.
+        # Alternatively: factory :user, :aliases => [:from_user, :to_user] do...
+        association :from_user, factory: :user
+        association :to_user, factory: :user
     end
 
     factory :officer do
@@ -107,24 +111,32 @@ FactoryGirl.define do
         latitude 50.93475
         longitude -1.39739
         shown true
-        slug 'the-stags-head'
+        sequence(:slug) {|n| "the-stags-head-#{n}" }
+
+        after(:create) do |place|
+            FactoryGirl.create(:schedule, :place => place)
+        end
     end
 
     factory :schedule do
         place
+
+        after(:create) do |schedule|
+            FactoryGirl.create(:opening_time, :schedule => schedule)
+        end
     end
 
     factory :service do
         name 'The Safety Bus'
         description 'Lorem ipsum dolor sit amet'
         location 'The Concourse'
-        slug 'the-safety-bus'
+        sequence(:slug) {|n| "the-safety-bus-#{n}" }
     end
 
     factory :society do
         name 'The Extreme Ironing Society'
-        descrition 'Lorem ipsum dolor sit amet.'
-        slug 'the-extreme-ironing-society'
+        description 'Lorem ipsum dolor sit amet.'
+        sequence(:slug) {|n| "the-extreme-ironing-society-#{n}" }
     end
 
     factory :subcommittee do
@@ -151,9 +163,51 @@ FactoryGirl.define do
         name 'Test Tag'
     end
 
-    factory :user do
+    factory :local_user, class: LocalUser do
+        type 'LocalUser'
+        sequence(:email) {|e| "test-local-user#{e}@example.com" }
+        elevated false
+        first_name 'John'
+        last_name 'Smith'
+        course
+        year '2'
+        password 'password1'
+    end
+
+    factory :local_admin, class: LocalUser do
+        type 'LocalUser'
+        sequence(:email) {|e| "test-local-admin#{e}@example.com" }
+        elevated true
+        first_name 'John'
+        last_name 'Smith'
+        course
+        year '2'
+        password 'password1'          
+    end
+
+    factory :ldap_user, class: LdapUser do
+        type 'LdapUser'
+        sequence(:email) {|e| "test-ldap-user#{e}@example.com" }
+        elevated false
+        first_name 'John'
+        last_name 'Smith'
+        course
+        year '2'
+    end
+
+    factory :ldap_admin, class: LdapUser do
+        type 'LdapUser'
+        sequence(:email) {|e| "test-ldap-admin#{e}@example.com" }
+        elevated true
+        first_name 'John'
+        last_name 'Smith'
+        course
+        year '2'         
+    end
+
+    factory :user, class: User do
         type 'User'
-        email 'test@example.com'
+        sequence(:email) {|e| "test-#{e}@example.com" }
         elevated false
         first_name 'John'
         last_name 'Smith'
