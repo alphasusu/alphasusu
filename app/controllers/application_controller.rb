@@ -71,4 +71,31 @@ private
     end
   end
 
+
+  # Helper methods for resource controllers to re-use similar code
+
+  def create_resource_response(resource)
+    respond_to do |format|
+      if resource.save
+        format.html { redirect_to resource, notice: "#{resource.class.name.titlecase} was successfully created." }
+        format.json { render action: 'show', status: :created, location: resource }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: resource.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_resource_response(resource, parameters)
+    respond_to do |format|
+      if resource.update(parameters)
+        format.html { redirect_to resource, notice: "#{resource.class.name.titlecase} was successfully updated." }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: resource.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 end
