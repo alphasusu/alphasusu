@@ -108,10 +108,18 @@ FactoryGirl.define do
         longitude -1.39739
         shown true
         sequence(:slug) {|n| "the-stags-head-#{n}" }
+
+        after(:create) do |place|
+            FactoryGirl.create(:schedule, :place => place)
+        end
     end
 
     factory :schedule do
         place
+
+        after(:create) do |schedule|
+            FactoryGirl.create(:opening_time, :schedule => schedule)
+        end
     end
 
     factory :service do
