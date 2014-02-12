@@ -27,8 +27,9 @@ IssueTracker::Application.routes.draw do
     post '/new' => 'messages#new'
   end
   
-  scope '/profile' do
-    get '/' => 'profiles#me', :as => :profile
+  get '/profile' => 'profiles#me', :as => :profile
+
+  scope '/profiles' do
     get '/:id' => 'profiles#show', :as => :user
     get '/:id/edit' => 'profiles#edit', :as => :edit_profile
     put '/:id' => 'profiles#update', :as => :update_profile
