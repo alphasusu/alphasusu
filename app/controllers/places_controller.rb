@@ -30,30 +30,13 @@ class PlacesController < ApplicationController
   # POST /places.json
   def create
     @place = Place.new(place_params)
-
-    respond_to do |format|
-      if @place.save
-        format.html { redirect_to @place, notice: 'Place was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @place }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
-      end
-    end
+    create_resource_response(@place)
   end
 
   # PATCH/PUT /places/1
   # PATCH/PUT /places/1.json
   def update
-    respond_to do |format|
-      if @place.update(place_params)
-        format.html { redirect_to @place, notice: 'Place was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
-      end
-    end
+    update_resource_response(@place, place_params)
   end
 
   # DELETE /places/1

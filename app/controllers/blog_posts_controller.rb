@@ -27,30 +27,13 @@ class BlogPostsController < ApplicationController
   # POST /blog_posts.json
   def create
     @post = BlogPost.new(blog_post_params)
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Blog Post was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @post }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
+    create_resource_response(@post)
   end
 
   # PATCH/PUT /blog_posts/1
   # PATCH/PUT /blog_posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(blog_post_params)
-        format.html { redirect_to @post, notice: 'Blog Post was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
+    update_resource_response(@post, blog_post_params)
   end
 
   # DELETE /blog_posts/1

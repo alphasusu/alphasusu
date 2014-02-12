@@ -28,30 +28,13 @@ class ServicesController < ApplicationController
   # POST /services.json
   def create
     @service = Service.new(service_params)
-
-    respond_to do |format|
-      if @service.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @service }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-      end
-    end
+    create_resource_response(@service)
   end
 
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
-    respond_to do |format|
-      if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-      end
-    end
+    update_resource_response(@service, service_params)
   end
 
   # DELETE /services/1

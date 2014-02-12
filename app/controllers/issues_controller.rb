@@ -26,30 +26,13 @@ class IssuesController < ApplicationController
   # POST /issues.json
   def create
     @issue = Issue.new(issue_params)
-
-    respond_to do |format|
-      if @issue.save
-        format.html { redirect_to @issue, notice: 'Issue was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @issue }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @issue.errors, status: :unprocessable_entity }
-      end
-    end
+    create_resource_response(@issue)
   end
 
   # PATCH/PUT /issues/1
   # PATCH/PUT /issues/1.json
   def update
-    respond_to do |format|
-      if @issue.update(issue_params)
-        format.html { redirect_to @issue, notice: 'Issue was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @issue.errors, status: :unprocessable_entity }
-      end
-    end
+    update_resource_response(@issue, issue_params)
   end
 
   # DELETE /issues/1
