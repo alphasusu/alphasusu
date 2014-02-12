@@ -1,0 +1,18 @@
+<%= form_for @course do |f| %>
+	<div class="row">
+		<div class="large-12 columns <%= field_error_class @course, :name %>">
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+			<%= field_error @course, :name, "Course Name" %>
+		</div>
+		<div class="large-12 columns <%= field_error_class @course, :academic_unit_id %>">
+			<%= f.label :academic_unit_id %>
+			<%= f.select :academic_unit_id,
+				options_from_collection_for_select(AcademicUnit.all, :id, :name, @course.academic_unit_id), :include_blank => false %>
+			<%= field_error @course, :academic_unit_id, "Academic Unit" %>
+		</div>
+		<div class="large-12 columns">
+			<%= f.submit class: "button" %>
+		</div>
+	</div>
+<% end %>
