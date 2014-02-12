@@ -59,14 +59,14 @@ class SocietiesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
+  test "should not get edit without auth" do
     as_nobody
     assert_raise(CanCan::AccessDenied) {
       get :edit, id: @society
     }
   end
 
-  test "should get edit" do
+  test "should not get edit without permission" do
     as_user
     assert_raise(CanCan::AccessDenied) {
       get :edit, id: @society
