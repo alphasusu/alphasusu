@@ -22,7 +22,7 @@ gem 'coffee-rails', '~> 4.0.0'      # Use CoffeeScript for .js.coffee assets and
 # Client Side
 gem 'jquery-rails'                  # Because jquery
 gem 'leaflet-rails'                 # Leaflet for mapping
-gem 'foundation-rails'              # Foundation for CSS
+gem 'foundation-rails', "5.0.3.0"   # Foundation for CSS
 gem 'socket.io-rails'               # Socket.IO
 
 gem 'coveralls', require: false     # Coveralls for code coverage
