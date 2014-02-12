@@ -234,4 +234,10 @@ FactoryGirl.define do
         officer
     end
 
+    factory :issue do
+        title 'Test Issue'
+        description 'Lorem ipsum dolor sit amet'
+        sequence(:slug) {|n| "test-issue-#{n}" }
+    end
+
 end
