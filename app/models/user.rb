@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 	)
 	
 	validates_attachment :avatar, :size => { :in => 0..200.kilobytes }
+	validates_attachment_content_type :avatar, :content_type => %w(image/jpeg image/jpg image/png)
 	
 	def name
 		"#{self.first_name} #{self.last_name}"

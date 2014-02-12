@@ -7,4 +7,7 @@ class SupportTeam < ActiveRecord::Base
         :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension",
         :url => "/system/:class/:attachment/:id/:style/:basename.:extension"
     )
+
+    validates_attachment :logo, :size => { :in => 0..200.kilobytes }
+    validates_attachment_content_type :logo, :content_type => %w(image/jpeg image/jpg image/png)
 end
