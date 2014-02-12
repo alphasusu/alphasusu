@@ -20,6 +20,7 @@ IssueTracker::Application.routes.draw do
   resources :courses
   resources :messages
   resources :permissions
+  resources :course_representatives
 
   scope :messages do
     post '/new' => 'messages#new'

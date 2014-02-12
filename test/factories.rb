@@ -90,6 +90,13 @@ FactoryGirl.define do
         academic_unit
     end
 
+    factory :course_representative do
+        user
+        course
+        type 'CourseRepresentative'
+        year '2'
+    end
+
     factory :opening_time do
         vacation false
         day 1
