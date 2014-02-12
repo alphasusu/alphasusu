@@ -27,30 +27,13 @@ class HelpArticlesController < ApplicationController
   # POST /help_articles.json
   def create
     @help_article = HelpArticle.new(help_article_params)
-
-    respond_to do |format|
-      if @help_article.save
-        format.html { redirect_to @help_article, notice: 'HelpArticle was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @help_article }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @help_article.errors, status: :unprocessable_entity }
-      end
-    end
+    create_resource_response(@help_article)
   end
 
   # PATCH/PUT /help_articles/1
   # PATCH/PUT /help_articles/1.json
   def update
-    respond_to do |format|
-      if @help_article.update(help_article_params)
-        format.html { redirect_to @help_article, notice: 'HelpArticle was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @help_article.errors, status: :unprocessable_entity }
-      end
-    end
+    update_resource_response(@help_article, help_article_params)
   end
 
   # DELETE /help_articles/1

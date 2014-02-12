@@ -26,30 +26,13 @@ class PermissionsController < ApplicationController
   # POST /permissions.json
   def create
     @permission = Permission.new(permission_params)
-
-    respond_to do |format|
-      if @permission.save
-        format.html { redirect_to @permission, notice: 'Permission was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @permission }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @permission.errors, status: :unprocessable_entity }
-      end
-    end
+    create_resource_response(@permission)
   end
 
   # PATCH/PUT /permissions/1
   # PATCH/PUT /permissions/1.json
   def update
-    respond_to do |format|
-      if @permission.update(permission_params)
-        format.html { redirect_to @permission, notice: 'Permission was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @permission.errors, status: :unprocessable_entity }
-      end
-    end
+    update_resource_response(@permission, permission_params)
   end
 
   # DELETE /permissions/1

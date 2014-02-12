@@ -27,30 +27,13 @@ class SocietiesController < ApplicationController
   # POST /societies.json
   def create
     @society = Society.new(society_params)
-
-    respond_to do |format|
-      if @society.save
-        format.html { redirect_to @society, notice: 'Society was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @society }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @society.errors, status: :unprocessable_entity }
-      end
-    end
+    create_resource_response(@society)
   end
 
   # PATCH/PUT /societies/1
   # PATCH/PUT /societies/1.json
   def update
-    respond_to do |format|
-      if @society.update(society_params)
-        format.html { redirect_to @society, notice: 'Society was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @society.errors, status: :unprocessable_entity }
-      end
-    end
+    update_resource_response(@society, society_params)
   end
 
   # DELETE /societies/1

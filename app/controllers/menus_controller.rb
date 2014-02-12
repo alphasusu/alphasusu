@@ -27,30 +27,13 @@ class MenusController < ApplicationController
   # POST /menus.json
   def create
     @menu = Menu.new(menu_params)
-
-    respond_to do |format|
-      if @menu.save
-        format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @menu }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @menu.errors, status: :unprocessable_entity }
-      end
-    end
+    create_resource_response(@menu)
   end
 
   # PATCH/PUT /menus/1
   # PATCH/PUT /menus/1.json
   def update
-    respond_to do |format|
-      if @menu.update(menu_params)
-        format.html { redirect_to @menu, notice: 'Menu was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @menu.errors, status: :unprocessable_entity }
-      end
-    end
+    update_resource_response(@menu, menu_params)
   end
 
   # DELETE /menus/1

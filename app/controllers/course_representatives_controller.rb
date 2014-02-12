@@ -27,30 +27,13 @@ class CourseRepresentativesController < ApplicationController
   # POST /course_representatives.json
   def create
     @course_representative = CourseRepresentative.new(course_representative_params)
-
-    respond_to do |format|
-      if @course_representative.save
-        format.html { redirect_to @course_representative, notice: 'Course Representative was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @course_representative }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @course_representative.errors, status: :unprocessable_entity }
-      end
-    end
+    create_resource_response(@course_representative)
   end
 
   # PATCH/PUT /course_representatives/1
   # PATCH/PUT /course_representatives/1.json
   def update
-    respond_to do |format|
-      if @course_representative.update(course_representative_params)
-        format.html { redirect_to @course_representative, notice: 'Course Representative was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @course_representative.errors, status: :unprocessable_entity }
-      end
-    end
+    update_resource_response(@course_representative, course_representative_params)
   end
 
   # DELETE /course_representatives/1

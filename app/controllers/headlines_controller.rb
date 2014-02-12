@@ -27,30 +27,13 @@ class HeadlinesController < ApplicationController
   # POST /headlines.json
   def create
     @headline = Headline.new(headline_params)
-
-    respond_to do |format|
-      if @headline.save
-        format.html { redirect_to @headline, notice: 'Headline was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @headline }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @headline.errors, status: :unprocessable_entity }
-      end
-    end
+    create_resource_response(@headline)
   end
 
   # PATCH/PUT /headlines/1
   # PATCH/PUT /headlines/1.json
   def update
-    respond_to do |format|
-      if @headline.update(headline_params)
-        format.html { redirect_to @headline, notice: 'Headline was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @headline.errors, status: :unprocessable_entity }
-      end
-    end
+    update_resource_response(@headline, headline_params)
   end
 
   # DELETE /headlines/1
