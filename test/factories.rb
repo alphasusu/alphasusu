@@ -161,7 +161,7 @@ FactoryGirl.define do
 
     factory :local_user, class: LocalUser do
         type 'LocalUser'
-        email 'test@example.com'
+        sequence(:email) {|e| "test-local-user#{e}@example.com" }
         elevated false
         first_name 'John'
         last_name 'Smith'
@@ -172,7 +172,7 @@ FactoryGirl.define do
 
     factory :local_admin, class: LocalUser do
         type 'LocalUser'
-        email 'test@example.com'
+        sequence(:email) {|e| "test-local-admin#{e}@example.com" }
         elevated true
         first_name 'John'
         last_name 'Smith'
@@ -183,7 +183,7 @@ FactoryGirl.define do
 
     factory :ldap_user, class: LdapUser do
         type 'LdapUser'
-        email 'test@example.com'
+        sequence(:email) {|e| "test-ldap-user#{e}@example.com" }
         elevated false
         first_name 'John'
         last_name 'Smith'
@@ -193,7 +193,7 @@ FactoryGirl.define do
 
     factory :ldap_admin, class: LdapUser do
         type 'LdapUser'
-        email 'test@example.com'
+        sequence(:email) {|e| "test-ldap-admin#{e}@example.com" }
         elevated true
         first_name 'John'
         last_name 'Smith'
@@ -203,7 +203,7 @@ FactoryGirl.define do
 
     factory :user, class: User do
         type 'User'
-        email 'test@example.com'
+        sequence(:email) {|e| "test-#{e}@example.com" }
         elevated false
         first_name 'John'
         last_name 'Smith'
