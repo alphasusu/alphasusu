@@ -40,7 +40,7 @@ FactoryGirl.define do
         description 'Lorem ipsum dolor sit amet.'
         date Date.new
         place
-        sug 'test-event'
+        sequence(:slug) {|n| "test-event-#{n}" }
     end
 
     factory :faculty do
