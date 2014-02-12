@@ -1,4 +1,5 @@
 class MenusController < ApplicationController
+  authorize_resource
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
   before_action :set_site_area
 
