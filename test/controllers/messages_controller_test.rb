@@ -2,48 +2,39 @@ require 'test_helper'
 
 class MessagesControllerTest < ActionController::TestCase
   setup do
-    @message = messages(:one)
+    @message = FactoryGirl.create(:message)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:messages)
+  test "should not get new without auth" do
+    fails_to_login {
+      get :new
+    }
   end
 
-  test "should get new" do
-    get :new
+  test "should not post new without auth" do
+    fails_to_login {
+      get :new
+    }
+  end
+
+  test "should post new" do
+    as_user
+    post :new, message: { to_user_id: @message.to_user_id }
     assert_response :success
+  end
+
+  test "should not create message without auth" do
+    fails_to_login {
+      post :create, message: { body: @message.body, subject: @message.subject }
+    }
   end
 
   test "should create message" do
+    as_user
     assert_difference('Message.count') do
       post :create, message: { body: @message.body, subject: @message.subject }
     end
 
     assert_redirected_to message_path(assigns(:message))
-  end
-
-  test "should show message" do
-    get :show, id: @message
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @message
-    assert_response :success
-  end
-
-  test "should update message" do
-    patch :update, id: @message, message: { body: @message.body, subject: @message.subject }
-    assert_redirected_to message_path(assigns(:message))
-  end
-
-  test "should destroy message" do
-    assert_difference('Message.count', -1) do
-      delete :destroy, id: @message
-    end
-
-    assert_redirected_to messages_path
   end
 end

@@ -33,6 +33,11 @@ class ActiveSupport::TestCase
         admin.confirm!
         sign_in :local_user, admin
     end
+
+    def fails_to_login(&block)
+        yield
+        assert_redirected_to new_session_path
+    end
 end
 
 class ActionController::TestCase

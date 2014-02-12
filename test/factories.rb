@@ -72,8 +72,12 @@ FactoryGirl.define do
     factory :message do
         subject 'Test Message Subject'
         body 'Test Message Body'
-        from_user
-        to_user
+
+        # We use 'association' here so that we can specify the factory
+        # for a non-matching name.
+        # Alternatively: factory :user, :aliases => [:from_user, :to_user] do...
+        association :from_user, factory: :user
+        association :to_user, factory: :user
     end
 
     factory :officer do
