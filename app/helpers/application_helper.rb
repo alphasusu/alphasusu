@@ -69,22 +69,12 @@ private
 			return [] # Return empty for no times
 		end
 		
-		opening_times = opening_times.sort_by(&:day)
-		if opening_times.first.day == 0 # Sunday
-			opening_times << opening_times.shift # Put it at the back
-		end
+		opening_times = format_weekday_order opening_times
 		
 		collapsed_times = [opening_times.shift]
 		day_names = [day_name(collapsed_times.first.day)]
 		
-		comparator = nil
-		if compare == :opening
-			comparator = lambda { |t1, t2| t1.has_same_times(t2) }
-		elsif compare == :service
-			comparator = lambda { |t1, t2| t1.has_same_service(t2) }
-		else
-			return []
-		end
+		comparator = opening_time_comparator_for_type compare
 		
 		opening_times.each do |time|
 			if comparator.call(collapsed_times.last, time)
@@ -95,7 +85,28 @@ private
 			end
 		end
 		
-		collapsed_times.each_with_index.map do |time, i|
+		format_opening_times_for_render collapsed_times, day_names
+	end
+
+	def format_weekday_order(opening_times)
+		opening_times = opening_times.sort_by(&:day)
+		if opening_times.first.day == 0 # Sunday
+			opening_times << opening_times.shift # Put it at the back
+		end
+		opening_times
+	end
+
+	def opening_time_comparator_for_type(type)
+		comparator = nil
+		if type == :opening
+			comparator = lambda { |t1, t2| t1.has_same_times(t2) }
+		elsif type == :service
+			comparator = lambda { |t1, t2| t1.has_same_service(t2) }
+		end
+	end
+
+	def format_opening_times_for_render(collapsed_opening_times, day_names)
+		collapsed_opening_times.each_with_index.map do |time, i|
 			{ opening_time: time, text_display: collapse_day_list(day_names[i]) }
 		end
 	end

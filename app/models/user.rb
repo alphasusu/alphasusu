@@ -58,4 +58,16 @@ class User < ActiveRecord::Base
 	def get_year
 		self.class.years[self.year]
 	end
+
+	def get_course_representatives
+		self.course.course_representatives.where(year: self.year)
+	end
+
+	def get_academic_president
+		self.course.academic_unit.academic_president
+	end
+
+	def get_faculty_officer
+		self.course.academic_unit.faculty.faculty_officer
+	end
 end

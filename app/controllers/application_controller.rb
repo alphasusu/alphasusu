@@ -80,8 +80,7 @@ private
         format.html { redirect_to resource, notice: "#{resource.class.name.titlecase} was successfully created." }
         format.json { render action: 'show', status: :created, location: resource }
       else
-        format.html { render action: 'new' }
-        format.json { render json: resource.errors, status: :unprocessable_entity }
+        resource_response_error(resource, :new, format)
       end
     end
   end
@@ -92,10 +91,14 @@ private
         format.html { redirect_to resource, notice: "#{resource.class.name.titlecase} was successfully updated." }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
-        format.json { render json: resource.errors, status: :unprocessable_entity }
+        resource_response_error(resource, :edit, format)
       end
     end
+  end
+
+  def resource_response_error(resource, action, format)
+    format.html { render action: action.to_s }
+    format.json { render json: resource.errors, status: :unprocessable_entity }
   end
 
 end

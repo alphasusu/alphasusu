@@ -7,25 +7,12 @@ class SessionsController < Devise::SessionsController
 	def create
 		# We need to determine if we will use LDAP or the Database to auth a user.
 		# To do this, we're going to inspect the email address provided.
-		email = request.params['user']['email']
-
-		# Remove @soton.ac.uk or equivalent, force uni addresses to auth with LDAP
-		if email.end_with? Rails.application.config.ldap_email
-			email.sub! "@#{Rails.application.config.ldap_email}", ""
-		end
+		email = canonicalise_email
 		
 		# Now switch on whether there is an @ in the 'email'
 		# It might not be an email, it might be an AD username, but Devise likes
 		# things to be emails.
-		user_class = nil
-		error_string = 'Login failed'
-		if email.include? '@'
-			user_class = :local_user
-			error_string = 'SUSU username or password incorrect'
-		else
-			user_class = :ldap_user
-			error_string = 'University username or password incorrect'
-		end
+		user_class, error_string = login_type
 		
 		# Copy user data to ldap_user and local_user, which Devise is expecting
 		request.params['ldap_user'] = request.params['local_user'] = request.params['user']
@@ -52,6 +39,25 @@ class SessionsController < Devise::SessionsController
 		respond_to do |format|
 			format.all { head :no_content }
 			format.any(*navigational_formats) { redirect_to root_path }
+		end
+	end
+
+private
+
+	def canonicalise_email
+		# Remove @soton.ac.uk or equivalent, force uni addresses to auth with LDAP
+		email = request.params['user']['email']
+		if email.end_with? Rails.application.config.ldap_email
+			email.sub! "@#{Rails.application.config.ldap_email}", ""
+		end
+		email
+	end
+
+	def login_type
+		if request.params[:user][:email].include? '@'
+			return :local_user, 'SUSU username or password incorrect'
+		else
+			return :ldap_user, 'University username or password incorrect'
 		end
 	end
 	

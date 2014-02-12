@@ -5,9 +5,9 @@ class HelpController < ApplicationController
     def index
         @articles = HelpArticle.all
         if logged_in? && current_user.course && !current_user.year.blank?
-            @course_reps = current_user.course.course_representatives.where(year: current_user.year)
-            @academic_president = current_user.course.academic_unit.academic_president
-            @faculty_officer = current_user.course.academic_unit.faculty.faculty_officer
+            @course_reps = current_user.get_course_representatives
+            @academic_president = current_user.get_academic_president
+            @faculty_officer = current_user.get_faculty_officer
             
             @support_teams = SupportTeam.all
         end
