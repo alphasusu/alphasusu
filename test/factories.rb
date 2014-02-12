@@ -6,16 +6,16 @@ FactoryGirl.define do
     end
 
     factory :article do
-        title 'Test Blog Article'
+        title 'Test Article'
         body 'Lorem ipsum dolor sit amet.'
-        slug 'test-blog-article'
+        sequence(:slug) {|n| "test-article-#{n}" }
         type 'Article'
     end
 
     factory :blog_post do
         title 'Test Blog Post'
         body 'Lorem ipsum dolor sit amet.'
-        slug 'test-blog-post'
+        sequence(:slug) {|n| "test-blog-post-#{n}" }
         user
     end
 
@@ -107,7 +107,7 @@ FactoryGirl.define do
         latitude 50.93475
         longitude -1.39739
         shown true
-        slug 'the-stags-head'
+        sequence(:slug) {|n| "the-stags-head-#{n}" }
     end
 
     factory :schedule do
@@ -118,13 +118,13 @@ FactoryGirl.define do
         name 'The Safety Bus'
         description 'Lorem ipsum dolor sit amet'
         location 'The Concourse'
-        slug 'the-safety-bus'
+        sequence(:slug) {|n| "the-safety-bus-#{n}" }
     end
 
     factory :society do
         name 'The Extreme Ironing Society'
         description 'Lorem ipsum dolor sit amet.'
-        slug 'the-extreme-ironing-society'
+        sequence(:slug) {|n| "the-extreme-ironing-society-#{n}" }
     end
 
     factory :subcommittee do
