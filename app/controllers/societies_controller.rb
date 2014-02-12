@@ -1,4 +1,5 @@
 class SocietiesController < ApplicationController
+  authorize_resource
   before_action :set_society, only: [:show, :edit, :update, :destroy]
   before_action :set_site_area
 
