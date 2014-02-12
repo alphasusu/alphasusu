@@ -2,6 +2,8 @@ language: ruby
 rvm:
   - 2.1.0
 before_script:
+  - git submodule update --init
   - cp config/database.yml.example config/database.yml
   - bundle exec rake db:test:prepare
-script: "RAILS_ENV=test bundle exec rake --trace db:migrate test"
+  - rake import:all
+script: "bundle exec rake --trace db:migrate test"

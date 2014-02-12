@@ -4,7 +4,7 @@ require 'rss'
 
 namespace "import" do
   desc "All" 
-  task :all => [:users, :blog_posts, :events, :societies]
+  task :all => [:users, :blog_posts, :events, :societies, :course_reps]
 
   desc "Users"
   task :users => :environment do
