@@ -25,16 +25,16 @@ class MessagesControllerTest < ActionController::TestCase
 
   test "should not create message without auth" do
     fails_to_login {
-      post :create, message: { body: @message.body, subject: @message.subject }
+      post :create, message: { body: @message.body, subject: @message.subject, to_user_id: @message.to_user_id }
     }
   end
 
   test "should create message" do
     as_user
     assert_difference('Message.count') do
-      post :create, message: { body: @message.body, subject: @message.subject }
+      post :create, message: { body: @message.body, subject: @message.subject, to_user_id: @message.to_user_id }
     end
 
-    assert_redirected_to message_path(assigns(:message))
+    assert_response :success
   end
 end
