@@ -1,10 +1,18 @@
 require 'csv'
 require 'nokogiri'
 require 'rss'
+require 'json'
 
 namespace "import" do
   desc "All" 
-  task :all => [:users, :blog_posts, :events, :societies, :course_reps]
+  task :all => [
+    :users,
+    :blog_posts,
+    :events,
+    :societies,
+    :course_reps,
+    :performing_arts,
+  ]
 
   desc "Users"
   task :users => :environment do
@@ -311,9 +319,26 @@ namespace "import" do
       end
     end
   end
+
+  desc "Create Performing Arts Groups"
+  task :performing_arts => :environment do
+    PerformingArt.destroy_all
+    File.open Rails.root.join('data', 'performing_arts.json') do |f|
+      data = JSON.load(f)
+      data.each do |d|
+        PerformingArt.create(
+          :name => d[:name],
+          :description => d[:description],
+        )
+      end
+    end
+  end
   
   desc "Create Societies"
   task :societies => :environment do
+
+    Society.destroy_all
+
     lorem_ipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc."
 
     Society.create(:name => "Actuarial Society", :description => lorem_ipsum)
