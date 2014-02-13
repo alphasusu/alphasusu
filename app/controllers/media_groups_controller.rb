@@ -1,5 +1,7 @@
 class MediaGroupsController < ApplicationController
+  authorize_resource
   before_action :set_media_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_site_area
 
   # GET /media_groups
   # GET /media_groups.json
@@ -70,5 +72,9 @@ class MediaGroupsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def media_group_params
       params[:media_group]
+    end
+
+    def set_site_area
+      params[:site_area] = :activities
     end
 end

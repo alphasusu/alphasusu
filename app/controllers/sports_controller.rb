@@ -1,5 +1,7 @@
 class SportsController < ApplicationController
+  authorize_resource
   before_action :set_sport, only: [:show, :edit, :update, :destroy]
+  before_action :set_site_area
 
   # GET /sports
   # GET /sports.json
@@ -70,5 +72,9 @@ class SportsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def sport_params
       params[:sport]
+    end
+
+    def set_site_area
+      params[:site_area] = :activities
     end
 end

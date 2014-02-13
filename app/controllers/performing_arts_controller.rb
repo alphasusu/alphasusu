@@ -1,5 +1,7 @@
 class PerformingArtsController < ApplicationController
+  authorize_resource
   before_action :set_performing_art, only: [:show, :edit, :update, :destroy]
+  before_action :set_site_area
 
   # GET /performing_arts
   # GET /performing_arts.json
@@ -70,5 +72,9 @@ class PerformingArtsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def performing_art_params
       params[:performing_art]
+    end
+
+    def set_site_area
+      params[:site_area] = :activities
     end
 end
