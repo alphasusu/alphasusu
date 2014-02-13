@@ -6,6 +6,11 @@ class ActivitiesController < ApplicationController
     @sport_count = Sport.count
     @performing_art_count = PerformingArt.count
     @media_group_count = MediaGroup.count
+
+    groups = StudentGroup.where.not(logo_file_name: nil)
+    groups.shuffle!
+
+    @showcased_groups = groups[0..8]
   end
 
 private
