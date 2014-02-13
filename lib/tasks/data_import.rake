@@ -9,7 +9,7 @@ namespace "import" do
     :users,
     :blog_posts,
     :events,
-    :societies,
+    :groups,
     :course_reps,
   ]
 
@@ -321,35 +321,41 @@ namespace "import" do
 
   desc "Create Student Groups"
   task :groups => :environment do
+    puts "== Import Student Groups ======================================================"
+    puts "-- delete existing groups"
     Society.destroy_all
     PerformingArt.destroy_all
     Sport.destroy_all
     MediaGroup.destroy_all
 
+    puts "-- import groups"
     File.open Rails.root.join('data', 'societies.json') do |f|
       groups = JSON.load(f)
       groups.each do |g|
+        klass = nil
         if g['zone'] == 7 #sport
-          Sport.create(
-            name: g['name'],
-            description: g['description'],
-          )
+          klass = Sport
         elsif g['type'] == 'Media'
-          MediaGroup.create(
-            name: g['name'],
-            description: g['description'],
-          )
+          klass = MediaGroup
         elsif g['type'] == 'Performing Arts'
-          PerformingArt.create(
-            name: g['name'],
-            description: g['description'],
-          )
+          klass = PerformingArt
         else
-          Society.create(
-            name: g['name'],
-            description: g['description'],
-          )
+          klass = Society
         end
+
+        logo = if g['logo'] != "http://www.susu.org/groups/images/nologo.png"
+          open(g['logo'])
+        else
+          nil
+        end
+
+        klass.create(
+          name: g['name'],
+          description: g['description'],
+          logo: logo,
+        )
+
+        puts "   -> imported #{g['name']}"
       end
     end
   end
