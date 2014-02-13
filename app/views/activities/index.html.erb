@@ -5,8 +5,8 @@
   </div>
 </div>
 <div class="row">
-<div class="small-6 columns"><h2><strong><%= @society_count %></strong> Societies</h2></div>
-<div class="small-6 columns"><h2><strong><%= @sport_count %></strong> Sports</h2></div>
-<div class="small-6 columns"><h2><strong><%= @performing_art_count %></strong> Performing Arts</h2></div>
-<div class="small-6 columns"><h2><strong><%= @media_group_count %></strong> Media Groups</h2></div>
+<div class="small-6 columns"><h2><strong><%= @society_count %></strong> <%= link_to "Societies", societies_path %></h2></div>
+<div class="small-6 columns"><h2><strong><%= @sport_count %></strong> <%= link_to "Sports", sports_path %></h2></div>
+<div class="small-6 columns"><h2><strong><%= @performing_art_count %></strong> <%= link_to "Performing Arts", performing_arts_path %></h2></div>
+<div class="small-6 columns"><h2><strong><%= @media_group_count %></strong> <%= link_to "Media Groups", media_groups_path %></h2></div>
 </div>
