@@ -1,0 +1,25 @@
+<h1>Listing media_groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @media_groups.each do |media_group| %>
+      <tr>
+        <td><%= link_to 'Show', media_group %></td>
+        <td><%= link_to 'Edit', edit_media_group_path(media_group) %></td>
+        <td><%= link_to 'Destroy', media_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Media group', new_media_group_path %>

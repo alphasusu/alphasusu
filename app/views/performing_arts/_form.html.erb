@@ -1,0 +1,17 @@
+<%= form_for(@performing_art) do |f| %>
+  <% if @performing_art.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@performing_art.errors.count, "error") %> prohibited this performing_art from being saved:</h2>
+
+      <ul>
+      <% @performing_art.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

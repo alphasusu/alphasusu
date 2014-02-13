@@ -8,7 +8,6 @@ IssueTracker::Application.routes.draw do
     delete 'logout' => 'sessions#destroy', :as => :destroy_session
   end
 
-  resources :societies
   resources :issues
   resources :blog_posts
   resources :events
@@ -44,7 +43,14 @@ IssueTracker::Application.routes.draw do
     resources :help_articles, :path => '/articles'
   end
 
-  get '/activities', to: 'activities#index'
+  scope '/activities' do
+    get '/', to: 'activities#index'
+    resources :societies
+    resources :sports
+    resources :performing_arts
+    resources :media_groups
+  end
+
   get '/democracy', to: 'democracy#index'
 
   scope '/admin' do
