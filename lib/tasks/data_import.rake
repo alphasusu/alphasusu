@@ -11,7 +11,6 @@ namespace "import" do
     :events,
     :societies,
     :course_reps,
-    :performing_arts,
   ]
 
   desc "Users"
