@@ -1,5 +1,5 @@
 IssueTracker::Application.routes.draw do
-7
+  
   devise_for :ldap_users, :local_users, skip: [ :sessions ]
   
   devise_scope :local_user do
