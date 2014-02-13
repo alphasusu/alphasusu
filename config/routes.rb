@@ -1,5 +1,5 @@
 IssueTracker::Application.routes.draw do
-
+7
   devise_for :ldap_users, :local_users, skip: [ :sessions ]
   
   devise_scope :local_user do
@@ -44,7 +44,7 @@ IssueTracker::Application.routes.draw do
     resources :help_articles, :path => '/articles'
   end
 
-  get '/activities', to: 'home#activities'
+  get '/activities', to: 'activities#index'
   get '/democracy', to: 'democracy#index'
 
   scope '/admin' do

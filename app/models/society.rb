@@ -1,5 +1,2 @@
-class Society < ActiveRecord::Base
-	extend FriendlyId
-	friendly_id :name, use: :slugged
-	
+class Society < StudentGroup
 end

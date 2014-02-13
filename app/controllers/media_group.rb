@@ -1,0 +1,2 @@
+class MediaGroup < StudentGroup
+end
