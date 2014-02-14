@@ -5,10 +5,10 @@
 	</div>
 </div>
 <div class="row">
-	<div class="medium-6 small-12 columns"><h2><strong><%= @society_count %></strong> <%= link_to "Societies", student_groups_path %></h2></div>
-	<div class="medium-6 small-12 columns"><h2><strong><%= @sport_count %></strong> <%= link_to "Sport Clubs", student_groups_path %></h2></div>
-	<div class="medium-6 small-12 columns"><h2><strong><%= @performing_art_count %></strong> <%= link_to "Performing Arts", student_groups_path %></h2></div>
-	<div class="medium-6 small-12 columns"><h2><strong><%= @media_group_count %></strong> <%= link_to "Media Groups", student_groups_path %></h2></div>
+	<div class="medium-6 small-12 columns"><h2><strong><%= @society_count %></strong> <a href="#" onclick="$('#societies-filter').click()">Societies</a></h2></div>
+	<div class="medium-6 small-12 columns"><h2><strong><%= @sport_count %></strong> <a href="#" onclick="$('#sports-filter').click()">Sports</a></h2></div>
+	<div class="medium-6 small-12 columns"><h2><strong><%= @performing_art_count %></strong> <a href="#" onclick="$('#performing-arts-filter').click()">Performing Arts</a></h2></div>
+	<div class="medium-6 small-12 columns"><h2><strong><%= @media_group_count %></strong> <a href="#" onclick="$('#media-filter').click()">Media Groups</a></h2></div>
 </div>
 <script>
 	STUDENT_GROUPS = <%= raw @groups_json %>;
@@ -25,7 +25,7 @@
 	<dl class="sub-nav">
 		<dt>Filter:</dt>
 		{{ _.each(kinds, function(kind) { }}
-			<dd><a>{{= kind }}</a></dd>
+			<dd><a id="{{= kind.toLowerCase().replace(' ', '-') }}-filter">{{= kind }}</a></dd>
 		{{ }); }}
 	</dl>
 </script>
