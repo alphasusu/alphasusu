@@ -339,7 +339,7 @@ namespace "import" do
         if group.new_record?
           group.description = g['description']
           group.zone_id = g['zone']
-          logo = if g['logo'] != "http://www.susu.org/groups/images/nologo.png"
+          logo = if g['logo'] != "http://www.susu.org/groups/images/nologo.png" && !Rails.env.test?
             group.logo = open(g['logo'])
           else
             nil
