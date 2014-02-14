@@ -1,0 +1,2 @@
+class DepartmentalSociety < StudentGroup
+end

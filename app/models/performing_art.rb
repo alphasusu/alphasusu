@@ -1,2 +1,0 @@
-class PerformingArt < StudentGroup
-end

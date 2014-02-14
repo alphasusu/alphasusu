@@ -1,2 +1,0 @@
-class Society < StudentGroup
-end

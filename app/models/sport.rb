@@ -1,2 +1,0 @@
-class Sport < StudentGroup
-end

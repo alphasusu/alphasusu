@@ -1,2 +1,0 @@
-class MediaGroup < StudentGroup
-end
