@@ -1,0 +1,2 @@
+class Jcr < StudentGroup
+end

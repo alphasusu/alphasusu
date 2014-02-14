@@ -24,6 +24,7 @@ gem 'jquery-rails'                  # Because jquery
 gem 'leaflet-rails'                 # Leaflet for mapping
 gem 'foundation-rails', "5.0.3.0"   # Foundation for CSS
 gem 'socket.io-rails'               # Socket.IO
+gem 'lodash-rails'                  # Client-side data manipulation
 
 gem 'coveralls', require: false     # Coveralls for code coverage
 

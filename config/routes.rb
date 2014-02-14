@@ -1,4 +1,6 @@
 IssueTracker::Application.routes.draw do
+  
+  resources :student_group_kinds
 
   devise_for :ldap_users, :local_users, skip: [ :sessions ]
   
@@ -8,7 +10,6 @@ IssueTracker::Application.routes.draw do
     delete 'logout' => 'sessions#destroy', :as => :destroy_session
   end
 
-  resources :societies
   resources :issues
   resources :blog_posts
   resources :events
@@ -44,7 +45,11 @@ IssueTracker::Application.routes.draw do
     resources :help_articles, :path => '/articles'
   end
 
-  get '/activities', to: 'home#activities'
+  scope '/activities' do
+    get '/', to: 'activities#index'
+    resources :student_groups
+  end
+
   get '/democracy', to: 'democracy#index'
 
   scope '/admin' do

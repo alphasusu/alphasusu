@@ -147,7 +147,7 @@ FactoryGirl.define do
         sequence(:slug) {|n| "the-safety-bus-#{n}" }
     end
 
-    factory :society do
+    factory :student_group do
         name 'The Extreme Ironing Society'
         description 'Lorem ipsum dolor sit amet.'
         sequence(:slug) {|n| "the-extreme-ironing-society-#{n}" }
@@ -238,6 +238,11 @@ FactoryGirl.define do
         title 'Test Issue'
         description 'Lorem ipsum dolor sit amet'
         sequence(:slug) {|n| "test-issue-#{n}" }
+    end
+
+    factory :student_group_kind do
+        sequence(:name) {|n| "Kind-#{n}" }
+        description 'Media groups in SUSU'
     end
 
 end

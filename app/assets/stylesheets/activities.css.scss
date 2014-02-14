@@ -1,0 +1,34 @@
+.group {
+	text-align: center;
+	display: block;
+	height: 160px;
+	margin-top: 30px;
+
+	.group-logo-wrapper {
+		height: 100px;
+		img {
+			max-width: 100px;
+			max-height: 100px;
+			display: block;
+			margin: auto;
+		}
+	}
+}
+
+#groups-browser {
+	margin-top: 20px;
+
+	#groups-filter-input {
+		margin-top: 20px;
+	}
+}
+
+.orbit-bullets-container {
+	.orbit-bullets {
+		li {
+			width: 20px;
+			height: 20px;
+			margin-right: 10px;
+		}
+	}
+}

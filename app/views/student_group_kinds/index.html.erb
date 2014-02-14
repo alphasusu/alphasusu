@@ -1,0 +1,29 @@
+<h1>Listing student_group_kinds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @student_group_kinds.each do |student_group_kind| %>
+      <tr>
+        <td><%= student_group_kind.name %></td>
+        <td><%= student_group_kind.description %></td>
+        <td><%= link_to 'Show', student_group_kind %></td>
+        <td><%= link_to 'Edit', edit_student_group_kind_path(student_group_kind) %></td>
+        <td><%= link_to 'Destroy', student_group_kind, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Student group kind', new_student_group_kind_path %>
