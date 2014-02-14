@@ -6,6 +6,16 @@ class ActivitiesController < ApplicationController
     @performing_art_count = StudentGroupKind.groups_of_type(:performing_art).count
     @media_group_count = StudentGroupKind.groups_of_type(:media).count
     @society_count = StudentGroupKind.groups_of_type(:society).count
+
+    @groups_json = StudentGroup.all.joins(:kinds).map {|g| { 
+		name: g.name,
+		description: g.description,
+		logo: g.logo.url(:small),
+		url: student_group_path(g),
+		kinds: g.kinds.map {|k|
+    			k.name.pluralize
+    	}
+    }}.to_json
   end
 
 private

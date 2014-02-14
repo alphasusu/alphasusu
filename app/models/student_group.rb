@@ -9,7 +9,8 @@ class StudentGroup < ActiveRecord::Base
     :logo,
     :styles => { :small => "100x100>", :medium => "200x200>", :large => "300x300" },
     :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension",
-    :url => "/system/:class/:attachment/:id/:style/:basename.:extension"
+    :url => "/system/:class/:attachment/:id/:style/:basename.:extension",
+    :default_url => "/susu_logo.png",
   )
     
   validates_attachment :logo, :size => { :in => 0..5.megabytes } 

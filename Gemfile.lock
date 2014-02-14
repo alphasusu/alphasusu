@@ -94,6 +94,8 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     leaflet-rails (0.7.2)
+    lodash-rails (2.4.1)
+      railties (>= 3.1)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -213,6 +215,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   leaflet-rails
+  lodash-rails
   meta_request
   nokogiri
   paperclip (~> 3.5.2)

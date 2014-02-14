@@ -10,3 +10,32 @@
 	<div class="medium-6 small-12 columns"><h2><strong><%= @performing_art_count %></strong> <%= link_to "Performing Arts", student_groups_path %></h2></div>
 	<div class="medium-6 small-12 columns"><h2><strong><%= @media_group_count %></strong> <%= link_to "Media Groups", student_groups_path %></h2></div>
 </div>
+<script>
+	STUDENT_GROUPS = <%= raw @groups_json %>;
+</script>
+<script type="script/x-template" id="group-template">
+	<div class="large-3 medium-4 small-6 columns left group">
+		<div class="group-logo-wrapper">
+			<a href="{{= url}}"><img src="{{= logo}}" alt="{{= name}}" class="group-logo"/></a>
+		</div>
+		<h5><a href="{{= url}}">{{= name}}</a></h5>
+	</div>
+</script>
+<script type="script/x-template" id="groups-kinds-template">
+	<dl class="sub-nav">
+		<dt>Filter:</dt>
+		{{ _.each(kinds, function(kind) { }}
+			<dd><a>{{= kind }}</a></dd>
+		{{ }); }}
+	</dl>
+</script>
+<hr/>
+<div class="row" id="groups-browser">
+	<div class="large-12 columns">
+		<input type="text" placeholder="Search..." id="groups-filter-input" />
+	</div>
+	<div class="large-12 columns" id="groups-filter">
+	</div>
+</div>
+<div class="row" id="groups-browser-list">
+</div>
