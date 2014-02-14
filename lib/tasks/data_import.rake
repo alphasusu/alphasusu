@@ -264,7 +264,7 @@ namespace "import" do
     CourseRepresentative.destroy_all
 
 
-    CSV.foreach(Rails.root.join('data', 'faculty_academic_officers.csv')) do |row|
+    CSV.parse(Base64.decode64(Octokit.contents("alphasusu/data", :path => "faculty_academic_officers.csv").content)) do |row|
       if row[3] == "Faculty Officer"
         faculty = Faculty.find_or_create_by(name: row[4])
         if row[7].blank?
@@ -293,7 +293,7 @@ namespace "import" do
       end
     end
     
-    CSV.foreach(Rails.root.join('data', 'course_reps.csv'), headers: true) do |row|
+    CSV.parse(Base64.decode64(Octokit.contents("alphasusu/data", :path => "course_reps.csv").content), headers: true) do |row|
       if !row[3].blank?
         user = User.find_or_create_by(email: row[3].split("@")[0])
         user.first_name = row[2].split(' ', 2)[0]
