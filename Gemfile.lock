@@ -85,8 +85,8 @@ GEM
     foundation-rails (5.0.3.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
-    friendly_id (5.0.2)
-      activerecord (~> 4.0.0)
+    friendly_id (5.0.3)
+      activerecord (>= 4.0.0)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -227,12 +227,8 @@ DEPENDENCIES
   lodash-rails
   meta_request
   nokogiri
-<<<<<<< HEAD
-  paperclip
-=======
   octokit
-  paperclip (~> 3.5.2)
->>>>>>> d46ff476f09b71afeac488b85d5e480db8e03ce3
+  paperclip
   pg
   rails (= 4.0.2)
   rails_12factor
