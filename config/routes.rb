@@ -45,6 +45,7 @@ IssueTracker::Application.routes.draw do
 
   scope '/activities' do
     get '/', to: 'activities#index'
+    resources :student_groups
   end
 
   get '/democracy', to: 'democracy#index'
