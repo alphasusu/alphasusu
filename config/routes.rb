@@ -1,5 +1,7 @@
 IssueTracker::Application.routes.draw do
   
+  resources :student_group_kinds
+
   devise_for :ldap_users, :local_users, skip: [ :sessions ]
   
   devise_scope :local_user do

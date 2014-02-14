@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140214141509) do
+ActiveRecord::Schema.define(version: 20140214155542) do
 
   create_table "academic_units", force: true do |t|
     t.datetime "created_at"
@@ -242,6 +242,15 @@ ActiveRecord::Schema.define(version: 20140214141509) do
 
   add_index "societies", ["slug"], name: "index_societies_on_slug", unique: true
 
+  create_table "student_group_kinds", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "student_group_kinds", ["name"], name: "index_student_group_kinds_on_name", unique: true
+
   create_table "student_groups", force: true do |t|
     t.string   "name"
     t.string   "slug"
@@ -254,6 +263,11 @@ ActiveRecord::Schema.define(version: 20140214141509) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.integer  "zone_id"
+  end
+
+  create_table "student_groups_and_kinds", force: true do |t|
+    t.integer "student_group_id"
+    t.integer "student_group_kind_id"
   end
 
   create_table "subcommittees", force: true do |t|

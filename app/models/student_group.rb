@@ -1,6 +1,9 @@
 class StudentGroup < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
+  
+  has_many :student_groups_and_kinds
+  has_many :kinds, class_name: "StudentGroupKind", through: :student_groups_and_kinds
 
   has_attached_file(
     :logo,
