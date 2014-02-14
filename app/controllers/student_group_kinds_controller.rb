@@ -1,4 +1,5 @@
 class StudentGroupKindsController < ApplicationController
+  authorize_resource
   before_action :set_student_group_kind, only: [:show, :edit, :update, :destroy]
 
   # GET /student_group_kinds
@@ -25,30 +26,13 @@ class StudentGroupKindsController < ApplicationController
   # POST /student_group_kinds.json
   def create
     @student_group_kind = StudentGroupKind.new(student_group_kind_params)
-
-    respond_to do |format|
-      if @student_group_kind.save
-        format.html { redirect_to @student_group_kind, notice: 'Student group kind was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @student_group_kind }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @student_group_kind.errors, status: :unprocessable_entity }
-      end
-    end
+    create_resource_response(@student_group_kind)
   end
 
   # PATCH/PUT /student_group_kinds/1
   # PATCH/PUT /student_group_kinds/1.json
   def update
-    respond_to do |format|
-      if @student_group_kind.update(student_group_kind_params)
-        format.html { redirect_to @student_group_kind, notice: 'Student group kind was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @student_group_kind.errors, status: :unprocessable_entity }
-      end
-    end
+    update_resource_response(@student_group_kind, student_group_kind_params)
   end
 
   # DELETE /student_group_kinds/1
