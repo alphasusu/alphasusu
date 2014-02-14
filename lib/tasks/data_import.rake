@@ -322,11 +322,6 @@ namespace "import" do
   desc "Create Student Groups"
   task :groups => :environment do
     puts "== Import Student Groups ======================================================"
-    puts "-- delete existing groups"
-    Society.destroy_all
-    PerformingArt.destroy_all
-    Sport.destroy_all
-    MediaGroup.destroy_all
 
     puts "-- import groups"
     File.open Rails.root.join('data', 'societies.json') do |f|
@@ -343,19 +338,22 @@ namespace "import" do
           klass = Society
         end
 
-        logo = if g['logo'] != "http://www.susu.org/groups/images/nologo.png"
-          open(g['logo'])
+        # Downloading images is expensive, only do it if we are creating a group.
+
+        group = klass.find_or_initialize_by(name: g['name'])
+        if group.new_record?
+          group.description = g['description']
+          logo = if g['logo'] != "http://www.susu.org/groups/images/nologo.png"
+            group.logo = open(g['logo'])
+          else
+            nil
+          end
+          group.save!
+          puts "   -> imported #{g['name']}"
         else
-          nil
+          group.description = g['description']
+          puts "   -> updated #{g['name']}"
         end
-
-        klass.create(
-          name: g['name'],
-          description: g['description'],
-          logo: logo,
-        )
-
-        puts "   -> imported #{g['name']}"
       end
     end
   end

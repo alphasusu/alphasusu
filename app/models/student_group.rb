@@ -9,5 +9,5 @@ class StudentGroup < ActiveRecord::Base
     :url => "/system/:class/:attachment/:id/:style/:basename.:extension"
   )
     
-  validates_attachment :logo, :size => { :in => 0..200.kilobytes } 
+  validates_attachment :logo, :size => { :in => 0..5.megabytes } 
 end
