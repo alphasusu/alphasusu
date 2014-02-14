@@ -240,4 +240,9 @@ FactoryGirl.define do
         sequence(:slug) {|n| "test-issue-#{n}" }
     end
 
+    factory :student_group_kind do
+        sequence(:name) {|n| "Kind-#{n}" }
+        description 'Media groups in SUSU'
+    end
+
 end
