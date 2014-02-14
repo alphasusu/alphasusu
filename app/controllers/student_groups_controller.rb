@@ -1,6 +1,6 @@
-class SocietiesController < ApplicationController
+class StudentGroupsController < ApplicationController
   authorize_resource
-  before_action :set_society, only: [:show, :edit, :update, :destroy]
+  before_action :set_student_group, only: [:show, :edit, :update, :destroy]
   before_action :set_site_area
 
   # GET /societies
@@ -16,7 +16,7 @@ class SocietiesController < ApplicationController
 
   # GET /societies/new
   def new
-    @society = Society.new
+    @student_group = Society.new
   end
 
   # GET /societies/1/edit
@@ -26,20 +26,20 @@ class SocietiesController < ApplicationController
   # POST /societies
   # POST /societies.json
   def create
-    @society = Society.new(society_params)
-    create_resource_response(@society)
+    @student_group = Society.new(student_group_params)
+    create_resource_response(@student_group)
   end
 
   # PATCH/PUT /societies/1
   # PATCH/PUT /societies/1.json
   def update
-    update_resource_response(@society, society_params)
+    update_resource_response(@student_group, student_group_params)
   end
 
   # DELETE /societies/1
   # DELETE /societies/1.json
   def destroy
-    @society.destroy
+    @student_group.destroy
     respond_to do |format|
       format.html { redirect_to societies_url }
       format.json { head :no_content }
@@ -48,13 +48,13 @@ class SocietiesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_society
-      @society = Society.friendly.find(params[:id])
+    def set_student_group
+      @student_group = Society.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def society_params
-      params.require(:society).permit(:name, :description)
+    def student_group_params
+      params.require(:student_group).permit(:name, :description)
     end
     
     def set_site_area
