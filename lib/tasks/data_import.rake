@@ -322,38 +322,46 @@ namespace "import" do
   desc "Create Student Groups"
   task :groups => :environment do
     puts "== Import Student Groups ======================================================"
+    puts "-- creating kinds"
+
+    society = StudentGroupKind.find_or_create_by(name: "Society")
+    sport = StudentGroupKind.find_or_create_by(name: "Sport")
+    media = StudentGroupKind.find_or_create_by(name: "Media")
+    performing_art = StudentGroupKind.find_or_create_by(name: "Performing Art")
 
     puts "-- import groups"
     File.open Rails.root.join('data', 'societies.json') do |f|
       groups = JSON.load(f)
       groups.each do |g|
-        klass = nil
-        if g['zone'] == 7 #sport
-          klass = Sport
-        elsif g['type'] == 'Media'
-          klass = MediaGroup
-        elsif g['type'] == 'Performing Arts'
-          klass = PerformingArt
-        else
-          klass = Society
-        end
-
         # Downloading images is expensive, only do it if we are creating a group.
 
-        group = klass.find_or_initialize_by(name: g['name'])
+        group = StudentGroup.find_or_initialize_by(name: g['name'])
         if group.new_record?
           group.description = g['description']
+          group.zone_id = g['zone']
           logo = if g['logo'] != "http://www.susu.org/groups/images/nologo.png"
             group.logo = open(g['logo'])
           else
             nil
           end
+
+          if g['zone'] == 7 #sport
+            group.kinds << sport
+          elsif g['type'] == 'Media'
+            group.kinds << media
+          elsif g['type'] == 'Performing Arts'
+            group.kinds << performing_art
+          else
+            group.kinds << society
+          end
+
           group.save!
           puts "   -> imported #{g['name']}"
         else
           group.description = g['description']
           puts "   -> updated #{g['name']}"
         end
+
       end
     end
   end
