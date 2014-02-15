@@ -2,6 +2,9 @@ require 'csv'
 require 'nokogiri'
 require 'rss'
 require 'json'
+require 'tempfile'
+require 'uri'
+require 'net/http'
 
 namespace "import" do
   desc "All" 
@@ -339,10 +342,9 @@ namespace "import" do
       if group.new_record?
         group.description = g['description']
         group.zone_id = g['zone']
-        logo = if g['logo'] != "http://www.susu.org/groups/images/nologo.png" && !Rails.env.test?
-          group.logo = open(g['logo'])
-        else
-          nil
+
+        if g['logo'] != "http://www.susu.org/groups/images/nologo.png" && !Rails.env.test?
+          group.logo = save_to_tempfile(g['logo'])
         end
 
         if g['zone'] == 7 #sport
@@ -362,5 +364,18 @@ namespace "import" do
       end
 
     end
+  end
+end
+
+def save_to_tempfile(url)
+  uri = URI.parse(url)
+  Net::HTTP.start(uri.host, uri.port) do |http|
+    resp = http.get(uri.path)
+    name = url.split('/').last.split('.')
+    file = Tempfile.new([name[0], ".#{name[1]}"], Dir.tmpdir, 'wb+')
+    file.binmode
+    file.write(resp.body)
+    file.flush
+    file
   end
 end

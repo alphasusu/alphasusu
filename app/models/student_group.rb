@@ -14,6 +14,6 @@ class StudentGroup < ActiveRecord::Base
   )
     
   validates_attachment :logo, :size => { :in => 0..5.megabytes }
-  validates_attachment_content_type :logo, :content_type => %w(image/jpeg image/jpg image/png)
+  validates_attachment_content_type :logo, :content_type => %w(image/jpeg image/jpg image/png image/gif)
 
 end
