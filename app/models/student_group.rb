@@ -13,5 +13,7 @@ class StudentGroup < ActiveRecord::Base
     :default_url => "/susu_logo.png",
   )
     
-  validates_attachment :logo, :size => { :in => 0..5.megabytes } 
+  validates_attachment :logo, :size => { :in => 0..5.megabytes }
+  validates_attachment_content_type :logo, :content_type => %w(image/jpeg image/jpg image/png)
+
 end
