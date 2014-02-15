@@ -45,3 +45,9 @@ getFilteredKinds = ->
 		return kinds
 	else
 		return $('#groups-filter a').map((i,a) -> $(a).text()).toArray()
+
+
+window.selectKind = (kind) ->
+	$('#groups-filter-input').val('')
+	$("#groups-filter .sub-nav dd").removeClass('active')
+	$("##{kind}-filter").click()
