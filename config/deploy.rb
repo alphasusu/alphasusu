@@ -62,6 +62,7 @@ namespace :deploy do
           execute :rake, 'import:events'
           execute :rake, 'import:blog_posts'
           execute :rake, 'import:course_reps'
+          execute :rake, 'import:groups'
         end
       end
     end
