@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140214155542) do
+ActiveRecord::Schema.define(version: 20140215155415) do
 
   create_table "academic_units", force: true do |t|
     t.datetime "created_at"
@@ -254,7 +254,7 @@ ActiveRecord::Schema.define(version: 20140214155542) do
   create_table "student_groups", force: true do |t|
     t.string   "name"
     t.string   "slug"
-    t.string   "description"
+    t.text     "description"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
