@@ -51,43 +51,43 @@ namespace "import" do
         name: "David Gilani",
         email: "pres@susu.org",
         password: "president",
-        avatar: File.open('resources/sabbs/david-gilani.png'),
+        avatar: File.open("#{Rails.root}/resources/sabbs/david-gilani.png"),
       },
       sports: {
         name: "Evan Whyte",
         email: "sports@susu.org",
         password: "sports",
-        avatar: File.open('resources/sabbs/evan-whyte.png'),
+        avatar: File.open("#{Rails.root}/resources/sabbs/evan-whyte.png"),
       },
       democracy: {
         name: "David Martin",
         email: "democracy@susu.org",
         password: "democracy",
-        avatar: File.open('resources/sabbs/david-martin.png'),
+        avatar: File.open("#{Rails.root}/resources/sabbs/david-martin.png"),
       },
       education: {
         name: "David Mendoza-Wolfson",
         email: "education@susu.org",
         password: "education",
-        avatar: File.open('resources/sabbs/david-mendoza-wolfson.png'),
+        avatar: File.open("#{Rails.root}/resources/sabbs/david-mendoza-wolfson.png"),
       },
       welfare: {
         name: "Beckie Thomas",
         email: "welfare@susu.org",
         password: "welfare",
-        avatar: File.open('resources/sabbs/beckie-thomas.png'),
+        avatar: File.open("#{Rails.root}/resources/sabbs/beckie-thomas.png"),
       },
       engagement: {
         name: "Claire Gilbert",
         email: "engagement@susu.org",
         password: "engagement",
-        avatar: File.open('resources/sabbs/claire-gilbert.png'),
+        avatar: File.open("#{Rails.root}/resources/sabbs/claire-gilbert.png"),
       },
       communities: {
         name: "Oli Coles",
         email: "communities@susu.org",
         password: "communities",
-        avatar: File.open('resources/sabbs/oli-coles.png'),
+        avatar: File.open("#{Rails.root}/resources/sabbs/oli-coles.png"),
       }
     }.map {|key,details| create_user(key, details)}
 
