@@ -1,17 +1,15 @@
 <%= form_for(@menu) do |f| %>
-  <% if @menu.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
-
-      <ul>
-      <% @menu.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="large-12 columns <%= field_error_class @menu, :place_id %>">
+      <%= f.label :place_id %>
+      <%= f.select :place_id, options_from_collection_for_select(Place.all, :id, :name, @menu.place_id), :include_blank => false %>
+      <%= field_error @menu, :place_id, "Place" %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
+    <div class="large-12 columns">
+      <%= f.submit class: "button" %>
+      <% if params[:action] == "edit" %>
+        <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: "button alert" %>
+      <% end %>
+    </div>
   </div>
 <% end %>

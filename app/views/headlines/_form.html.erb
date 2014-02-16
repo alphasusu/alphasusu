@@ -1,25 +1,20 @@
 <%= form_for(@headline) do |f| %>
-  <% if @headline.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@headline.errors.count, "error") %> prohibited this headline from being saved:</h2>
-
-      <ul>
-      <% @headline.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="large-12 columns <%= field_error_class @headline, :title %>">
+      <%= f.label :title %>
+      <%= f.text_area :title %>
+      <%= field_error @headline, :title, "Title" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_area :title %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <div class="large-12 columns <%= field_error_class @headline, :body %>">
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+      <%= field_error @headline, :body, "Subtitle" %>
+    </div>
+    <div class="large-12 columns">
+      <%= f.submit class: "button" %>
+      <% if params[:action] == "edit" %>
+        <%= link_to 'Destroy', @headline, method: :delete, data: { confirm: 'Are you sure?' }, class: "button alert" %>
+      <% end %>
+    </div>
   </div>
 <% end %>

@@ -1,25 +1,35 @@
-<%= form_for(@student_group) do |f| %>
-  <% if @student_group.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@student_group.errors.count, "error") %> prohibited this student_group from being saved:</h2>
-
-      <ul>
-      <% @student_group.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for(@student_group,
+  :html => {
+    :multipart => true
+  }) do |f| %>
+  <div class="row grou-edit">
+    <div class="large-3 columns left">
+      <%= image_tag @student_group.logo.url(:small), size: "100x100", class: "logo", alt: @student_group.name %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_area :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <div class="large-9 columns">
+      <%= f.label :logo %>
+      <%= f.file_field :logo %>
+    </div>
+    <div class="large-12 columns <%= field_error_class @student_group, :name %>">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= field_error @student_group, :name, "name" %>
+    </div>
+    <div class="large-12 columns <%= field_error_class @student_group, :description %>">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+      <%= field_error @student_group, :description, "Post" %>
+    </div>
+    <div class="large-12 columns <%= field_error_class @student_group, :zone_id %>">
+      <%= f.label :zone_id %>
+      <%= f.select :zone_id, options_from_collection_for_select(Zone.all, :id, :name, @student_group.zone_id), :include_blank => true %>
+      <%= field_error @student_group, :zone_id, "Zone" %>
+    </div>
+    <div class="large-12 columns">
+      <%= f.submit class: "button" %>
+      <% if params[:action] == "edit" %>
+        <%= link_to 'Destroy', @student_group, method: :delete, data: { confirm: 'Are you sure?' }, class: "button alert" %>
+      <% end %>
+    </div>
   </div>
 <% end %>

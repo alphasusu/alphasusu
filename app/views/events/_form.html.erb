@@ -1,12 +1,25 @@
-<%= form_for @event do |f| %>
-	<%= f.label :title %>
-	<%= f.text_field :title %>
-
-	<%= f.label :date %>
-	<%= f.datetime_field :date %>
-
-	<%= f.label :description %>
-	<%= f.text_area :description %>
-
-	<%= f.submit %>
+<%= form_for(@event) do |f| %>
+  <div class="row">
+    <div class="large-12 columns <%= field_error_class @event, :title %>">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+      <%= field_error @event, :title, "Title" %>
+    </div>
+    <div class="large-12 columns <%= field_error_class @event, :date %>">
+      <%= f.label :date %>
+      <%= f.datetime_field :date %>
+      <%= field_error @event, :date, "Date" %>
+    </div>
+    <div class="large-12 columns <%= field_error_class @event, :description %>">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+      <%= field_error @event, :description, "Description" %>
+    </div>
+    <div class="large-12 columns">
+      <%= f.submit class: "button" %>
+      <% if params[:action] == "edit" %>
+        <%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' }, class: "button alert" %>
+      <% end %>
+    </div>
+  </div>
 <% end %>

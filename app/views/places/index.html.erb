@@ -17,7 +17,9 @@
         <%= link_to place.name, place_path(place), id: place.slug %>
       </h3>
       <p><%= place.description %></p>
-      <%= render place.schedule %>
+      <% if place.schedule %>
+        <%= render place.schedule %>
+      <% end %>
     </div>
   <% end %>
 </div>

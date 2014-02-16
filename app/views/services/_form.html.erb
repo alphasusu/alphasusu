@@ -1,17 +1,25 @@
 <%= form_for(@service) do |f| %>
-  <% if @service.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
-
-      <ul>
-      <% @service.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="large-12 columns <%= field_error_class @service, :name %>">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= field_error @service, :name, "Name" %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
+    <div class="large-12 columns <%= field_error_class @service, :description %>">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+      <%= field_error @service, :description, "Description" %>
+    </div>
+    <div class="large-12 columns <%= field_error_class @service, :location %>">
+      <%= f.label :location %>
+      <%= f.text_field :location %>
+      <%= field_error @service, :location, "Location" %>
+    </div>
+    <div class="large-12 columns">
+      <%= f.submit class: "button" %>
+      <% if params[:action] == "edit" %>
+        <%= link_to 'Destroy', @service, method: :delete, data: { confirm: 'Are you sure?' }, class: "button alert" %>
+      <% end %>
+    </div>
   </div>
 <% end %>

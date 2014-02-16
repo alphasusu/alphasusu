@@ -1,27 +1,20 @@
 <%= form_for(@help_article) do |f| %>
-  <% if @help_article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@help_article.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-      <ul>
-      <% @help_article.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="large-12 columns <%= field_error_class @help_article, :title %>">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+      <%= field_error @help_article, :title, "Title" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+    <div class="large-12 columns <%= field_error_class @help_article, :body %>">
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+      <%= field_error @help_article, :body, "Body" %>
+    </div>
+    <div class="large-12 columns">
+      <%= f.submit class: "button" %>
+      <% if params[:action] == "edit" %>
+        <%= link_to 'Destroy', @help_article, method: :delete, data: { confirm: 'Are you sure?' }, class: "button alert" %>
+      <% end %>
+    </div>
   </div>
 <% end %>
-

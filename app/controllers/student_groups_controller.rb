@@ -26,6 +26,9 @@ class StudentGroupsController < ApplicationController
   # POST /student_groups
   # POST /student_groups.json
   def create
+    if not student_group_params[:avatar]
+        student_group_params.delete(:avatar)
+    end
     @student_group = StudentGroup.new(student_group_params)
     create_resource_response(@student_group)
   end
@@ -33,6 +36,9 @@ class StudentGroupsController < ApplicationController
   # PATCH/PUT /student_groups/1
   # PATCH/PUT /student_groups/1.json
   def update
+    if not student_group_params[:avatar]
+        student_group_params.delete(:avatar)
+    end
     update_resource_response(@student_group, student_group_params)
   end
 
@@ -54,7 +60,7 @@ class StudentGroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_group_params
-      params.require(:student_group).permit(:name, :description)
+      params.require(:student_group).permit(:name, :description, :logo, :zone_id)
     end
     
     def set_site_area

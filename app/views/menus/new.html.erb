@@ -1,5 +1,3 @@
-<h1>New menu</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', menus_path %>
+<%= render 'shared/admin_form_page', 
+	resource: @menu,
+	resource_list_path: menus_path %>

@@ -1,0 +1,10 @@
+<% if params[:action] == "edit" %>
+  <p>
+    <%= link_to 'View Blog Post', @blog_post %><br/>
+    <%= link_to 'Blog Posts List', blog_posts_path %><br/>
+  </p>
+<% elsif params[:action] == "new" %>
+  <p>
+    <%= link_to 'Blog Posts List', blog_posts_path %><br/>
+  </p>
+<% end %>

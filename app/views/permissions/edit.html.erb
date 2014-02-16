@@ -1,6 +1,3 @@
-<h1>Editing permission</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @permission %> |
-<%= link_to 'Back', permissions_path %>
+<%= render 'shared/admin_form_page', 
+	resource: @permission,
+	resource_list_path: permissions_path %>

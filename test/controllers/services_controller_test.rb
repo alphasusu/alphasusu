@@ -34,21 +34,21 @@ class ServicesControllerTest < ActionController::TestCase
   test "should not create service without auth" do
     as_nobody
     assert_raise(CanCan::AccessDenied) {
-      post :create, service: {  }
+      post :create, service: { name: @service.name, description: @service.description, location: @service.location }
     }
   end
 
   test "should not create service without permission" do
     as_user
     assert_raise(CanCan::AccessDenied) {
-      post :create, service: {  }
+      post :create, service: { name: @service.name, description: @service.description, location: @service.location }
     }
   end
 
   test "should create service" do
     as_admin
     assert_difference('Service.count') do
-      post :create, service: {  }
+      post :create, service: { name: @service.name, description: @service.description, location: @service.location }
     end
 
     assert_redirected_to service_path(assigns(:service))
@@ -82,20 +82,20 @@ class ServicesControllerTest < ActionController::TestCase
   test "should not update service without auth" do
     as_nobody
     assert_raise(CanCan::AccessDenied) {
-      patch :update, id: @service, service: {  }
+      patch :update, id: @service, service: { name: @service.name, description: @service.description, location: @service.location }
     }
   end
 
   test "should not update service without permission" do
     as_user
     assert_raise(CanCan::AccessDenied) {
-      patch :update, id: @service, service: {  }
+      patch :update, id: @service, service: { name: @service.name, description: @service.description, location: @service.location }
     }
   end
 
   test "should update service" do
     as_admin
-    patch :update, id: @service, service: {  }
+    patch :update, id: @service, service: { name: @service.name, description: @service.description, location: @service.location }
     assert_redirected_to service_path(assigns(:service))
   end
 

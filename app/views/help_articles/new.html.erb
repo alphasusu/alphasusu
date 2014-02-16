@@ -1,5 +1,3 @@
-<div class="row">
-     <h1>New article</h1>
-     
-     <%= render 'form' %>
-</div>
+<%= render 'shared/admin_form_page', 
+	resource: @help_article,
+	resource_list_path: help_articles_path %>

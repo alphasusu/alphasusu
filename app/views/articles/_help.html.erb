@@ -1,0 +1,10 @@
+<% if params[:action] == "edit" %>
+	<p>
+		<%= link_to 'View Article', @article %><br/>
+		<%= link_to 'Articles List', articles_path %><br/>
+	</p>
+<% elsif params[:action] == "new" %>
+	<p>
+		<%= link_to 'Articles List', articles_path %><br/>
+	</p>
+<% end %>
