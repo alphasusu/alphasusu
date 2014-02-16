@@ -7,7 +7,7 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @student_group.description %>
+  <%= render_markdown_preview @student_group.description %>
 </p>
 
 <%= link_to 'Edit', edit_student_group_path(@student_group) %> |

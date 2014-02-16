@@ -15,7 +15,7 @@
     <% @student_groups.each do |student_group| %>
       <tr>
         <td><%= student_group.name %></td>
-        <td><%= student_group.description %></td>
+        <td><%= render_markdown_preview student_group.description %></td>
         <td><%= link_to 'Show', student_group %></td>
         <td><%= link_to 'Edit', edit_student_group_path(student_group) %></td>
         <td><%= link_to 'Destroy', student_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
