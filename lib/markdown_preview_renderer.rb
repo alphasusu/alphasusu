@@ -6,7 +6,6 @@ module SUSUFlavouredMarkdown
         :fenced_code_blocks => true,
         :autolink => true,
         :disable_indented_code_blocks => true,
-        :strikethrough => true,
         :superscript => true,
         :highlight => true,
         :footnotes => true,
