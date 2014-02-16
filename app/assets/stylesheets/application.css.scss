@@ -53,8 +53,11 @@ footer {
 .admin-form {
 	margin-top: 20px !important;
 
-	.markdown {
+	textarea {
 		height: 400px;
+	}
+
+	.markdown, .html {
 		font-family: Courier, monospace;
 	}
 }

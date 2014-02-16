@@ -17,7 +17,7 @@
     </div>
     <div class="large-12 columns <%= field_error_class @student_group, :description %>">
       <%= f.label :description %>
-      <%= f.text_area :description %>
+      <%= f.text_area :description, class: "markdown" %>
       <%= field_error @student_group, :description, "Post" %>
     </div>
     <div class="large-12 columns <%= field_error_class @student_group, :zone_id %>">

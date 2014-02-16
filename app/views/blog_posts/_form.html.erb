@@ -7,7 +7,7 @@
     </div>
     <div class="large-12 columns <%= field_error_class @post, :body %>">
       <%= f.label :body %>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, class: "markdown" %>
       <%= field_error @post, :body, "Post" %>
     </div>
     <div class="large-12 columns">
