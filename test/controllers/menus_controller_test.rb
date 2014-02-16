@@ -34,21 +34,21 @@ class MenusControllerTest < ActionController::TestCase
   test "should not create menu without auth" do
     as_nobody
     assert_raise(CanCan::AccessDenied) {
-      post :create, menu: {  }
+      post :create, menu: { place_id: @menu.place_id }
     }
   end
 
   test "should not create menu without permission" do
     as_user
     assert_raise(CanCan::AccessDenied) {
-      post :create, menu: {  }
+      post :create, menu: { place_id: @menu.place_id }
     }
   end
 
   test "should create menu" do
     as_admin
     assert_difference('Menu.count') do
-      post :create, menu: {  }
+      post :create, menu: { place_id: @menu.place_id }
     end
 
     assert_redirected_to menu_path(assigns(:menu))
@@ -82,20 +82,20 @@ class MenusControllerTest < ActionController::TestCase
   test "should not update menu without auth" do
     as_nobody
     assert_raise(CanCan::AccessDenied) {
-      patch :update, id: @menu, menu: {  }
+      patch :update, id: @menu, menu: { place_id: @menu.place_id }
     }
   end
 
   test "should not update menu without permission" do
     as_user
     assert_raise(CanCan::AccessDenied) {
-      patch :update, id: @menu, menu: {  }
+      patch :update, id: @menu, menu: { place_id: @menu.place_id }
     }
   end
 
   test "should update menu" do
     as_admin
-    patch :update, id: @menu, menu: {  }
+    patch :update, id: @menu, menu: { place_id: @menu.place_id }
     assert_redirected_to menu_path(assigns(:menu))
   end
 
