@@ -5,5 +5,5 @@
 	<% else %>
 		<small>Unknown Author</small>
 	<% end %>
-	<p class="show-for-medium-up"><%= preview.body[0,280] %></p>
+	<div class="show-for-medium-up"><%= render_markdown_preview preview.body %></div>
 </div>
