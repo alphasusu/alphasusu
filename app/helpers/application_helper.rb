@@ -49,6 +49,22 @@ module ApplicationHelper
 	def pluralize_without_count(count, string)
 		count == 1 ? string : string.pluralize
 	end
+
+	def render_markdown(content)
+		markdown = Redcarpet::Markdown.new(
+			Redcarpet::Render::HTML,
+			:no_intra_emphasis => true,
+			:tables => true,
+			:fenced_code_blocks => true,
+			:autolink => true,
+			:disable_indented_code_blocks => true,
+			:strikethrough => true,
+			:superscript => true,
+			:highlight => true,
+			:footnotes => true
+		)
+		raw(markdown.render(content))	
+	end
 	
 private
 

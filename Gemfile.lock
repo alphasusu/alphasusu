@@ -153,6 +153,7 @@ GEM
     rake (10.1.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    redcarpet (2.1.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     sass (3.2.14)
@@ -232,6 +233,7 @@ DEPENDENCIES
   pg
   rails (= 4.0.2)
   rails_12factor
+  redcarpet
   sass-rails (~> 4.0.0)
   sdoc
   socket.io-rails

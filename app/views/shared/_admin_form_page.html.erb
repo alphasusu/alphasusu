@@ -42,5 +42,8 @@
 				<%= link_to "#{human_readable_name.pluralize} List", resource_list_path %><br/>
 			</p>
 		<% end %>
+		<% if defined? markdown_help %>
+			<%= render 'shared/markdown_help' %>
+		<% end %>
 	</div>
 </div>
