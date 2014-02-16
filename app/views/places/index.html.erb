@@ -16,7 +16,7 @@
       <h3>
         <%= link_to place.name, place_path(place), id: place.slug %>
       </h3>
-      <p><%= place.description %></p>
+      <p><%= render_markdown place.description %></p>
       <% if place.schedule %>
         <%= render place.schedule %>
       <% end %>

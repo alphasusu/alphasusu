@@ -12,12 +12,12 @@
     </div>
     <div class="large-12 columns <%= field_error_class @place, :latitude %>">
       <%= f.label :latitude %>
-      <%= f.number_field :latitude %>
+      <%= f.text_field :latitude %>
       <%= field_error @place, :latitude, "Latitude" %>
     </div>
     <div class="large-12 columns <%= field_error_class @place, :longitude %>">
       <%= f.label :longitude %>
-      <%= f.number_field :longitude %>
+      <%= f.text_field :longitude %>
       <%= field_error @place, :longitude, "Longitude" %>
     </div>
     <div class="large-12 columns <%= field_error_class @place, :shown %>">

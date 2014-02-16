@@ -1,7 +1,7 @@
 <div class="row place banner-offset">
   <div class="large-6 medium-6 small-12 columns">
     <h2><%= @place.name %></h2>
-    <p><%= @place.description %></p>
+    <p><%= render_markdown @place.description %></p>
     <% if @place.schedule %>
       <%= render @place.schedule %>
     <% end %>
