@@ -1,5 +1,3 @@
-<h1>New article</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', articles_path %>
+<%= render 'shared/admin_form_page', 
+	resource: @article,
+	resource_list_path: articles_path %>

@@ -1,0 +1,46 @@
+<%# 
+	This partial is used for rendering forms in the shared admin form structure.
+
+	Required Parameters:
+	 - resource
+	 - resource_list_path
+
+	Optional Parameters:
+	 - help_text
+	 - edit_help_text
+	 - new_help_text
+
+	The help text parameters can contain HTML, and will be rendered 'raw'. Style guidelines:
+	 - Use the <code> tags when referencing things like HTML elements in help.
+	 - Use <em> to emphasize form field names.
+%>
+<% human_readable_name = resource.class.name.titleize %>
+<div class="row admin-form">
+	<div class="large-12 columns">
+		<h1><%= params[:action].capitalize %> <%= human_readable_name %></h1>
+	</div>
+	<div class="large-6 medium-8 small-12 columns">
+		<%= render 'form' %>
+	</div>
+	<div class="large-6 medium-4 columns show-for-medium-up">
+		<% if defined? help_text %>
+			<p><%= raw help_text %></p>
+		<% end %>
+		<% if params[:action] == "edit" %>
+			<% if defined? edit_help_text %>
+				<%= raw edit_help_text %>
+			<% end %>
+			<p>
+				<%= link_to "View #{human_readable_name}", resource %><br/>
+				<%= link_to "#{human_readable_name.pluralize} List", resource_list_path %><br/>
+			</p>
+		<% elsif params[:action] == "new" %>
+			<% if defined? new_help_text %>
+				<%= raw new_help_text %>
+			<% end %>
+			<p>
+				<%= link_to "#{human_readable_name.pluralize} List", resource_list_path %><br/>
+			</p>
+		<% end %>
+	</div>
+</div>

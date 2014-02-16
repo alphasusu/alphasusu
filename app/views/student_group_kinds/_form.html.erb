@@ -1,25 +1,20 @@
 <%= form_for(@student_group_kind) do |f| %>
-  <% if @student_group_kind.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@student_group_kind.errors.count, "error") %> prohibited this student_group_kind from being saved:</h2>
-
-      <ul>
-      <% @student_group_kind.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="large-12 columns <%= field_error_class @student_group_kind, :name %>">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= field_error @student_group_kind, :name, "name" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <div class="large-12 columns <%= field_error_class @student_group_kind, :description %>">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+      <%= field_error @student_group_kind, :description, "Post" %>
+    </div>
+    <div class="large-12 columns">
+      <%= f.submit class: "button" %>
+      <% if params[:action] == "edit" %>
+        <%= link_to 'Destroy', @student_group_kind, method: :delete, data: { confirm: 'Are you sure?' }, class: "button alert" %>
+      <% end %>
+    </div>
   </div>
 <% end %>

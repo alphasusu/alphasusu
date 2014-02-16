@@ -1,5 +1,3 @@
-<h1>New permission</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', permissions_path %>
+<%= render 'shared/admin_form_page', 
+	resource: @permission,
+	resource_list_path: permissions_path %>

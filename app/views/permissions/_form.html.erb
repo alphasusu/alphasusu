@@ -1,33 +1,34 @@
 <%= form_for(@permission) do |f| %>
-  <% if @permission.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@permission.errors.count, "error") %> prohibited this permission from being saved:</h2>
-
-      <ul>
-      <% @permission.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="large-12 columns <%= field_error_class @permission, :user_id %>">
+      <%= f.label :user_id %>
+      <%= f.number_field :user_id %>
+      <%= field_error @permission, :user_id, "User ID" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :subject_class %><br>
-    <%= f.text_field :subject_class %>
-  </div>
-  <div class="field">
-    <%= f.label :subject_id %><br>
-    <%= f.number_field :subject_id %>
-  </div>
-  <div class="field">
-    <%= f.label :action %><br>
-    <%= f.text_field :action %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <div class="large-12 columns <%= field_error_class @permission, :subject_class %>">
+      <%= f.label :subject_class %>
+      <%= f.text_field :subject_class %>
+      <%= field_error @permission, :subject_class, "Resource" %>
+    </div>
+    <div class="large-12 columns <%= field_error_class @permission, :subject_id %>">
+      <%= f.label :subject_id %>
+      <%= f.number_field :subject_id %>
+      <%= field_error @permission, :subject_id, "Resource ID" %>
+    </div>
+    <div class="large-12 columns <%= field_error_class @permission, :action %>">
+      <%= f.label :action %>
+      <%= f.select :action, [
+        ["Create", :create],
+        ["Update", :update],
+        ["Delete", :destroy],
+      ] %>
+      <%= field_error @permission, :action, "Action" %>
+    </div>
+    <div class="large-12 columns">
+      <%= f.submit class: "button" %>
+      <% if params[:action] == "edit" %>
+        <%= link_to 'Destroy', @permission, method: :delete, data: { confirm: 'Are you sure?' }, class: "button alert" %>
+      <% end %>
+    </div>
   </div>
 <% end %>

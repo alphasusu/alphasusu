@@ -1,5 +1,3 @@
-<h1>New place</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', places_path %>
+<%= render 'shared/admin_form_page', 
+	resource: @place,
+	resource_list_path: places_path %>
