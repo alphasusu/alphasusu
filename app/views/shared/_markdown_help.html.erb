@@ -1,0 +1,84 @@
+<dl class="accordion" data-accordion>
+	<dd>
+		<a href="#markdown">Writing Assistance</a>
+		<div id="markdown" class="content">
+			<h5>Text</h5>
+			<p>You can make text <strong>bold</strong> by putting <code>**</code>asterisks<code>**</code> around it.</p>
+			<p>You can <em>italicise</em> text by putting <code>_</code>underscores<code>_</code> around it.</p>
+
+			<h5>Links</h5>
+			<p>URIs written out in full will automatically become links, like this: <a href="http://susu.org/">http://susu.org/</a>.</p>
+			<p>To use different text for the link, put the text in <code>[</code>square brackets<code>]</code> <code>(</code>and the link in normal brackets<code>)</code>.</p>
+			<p><code>[Click Here](http://susu.org)</code> becomes <a href="http://susu.org/">Click Here</a></p>
+
+			<h5>Images</h5>
+			<p>Inserting images is almost exactly the same as inserting a link, just add an exclamation mark <code>!</code> at the beginning.</p>
+			<p><code>![The SUSU Logo](/susu_bubbles@2x.png)</code> becomes <img src="/susu_bubbles@2x.png" alt="The SUSU Logo"></p>
+
+			<h5>Headers</h5>
+			<p>If you want a big header, put hashes <code>###</code> in front of it. One hash is the largest, five is the smallest.</p>
+			<pre><code># Big Title
+### Smaller Title
+##### Smallest Title
+			</code></pre>
+
+			<h5>Previews</h5>
+			<p>Sometimes we want to show a preview of the article or post. To help us know what to show, add two tildes <code>~~</code> at the end of your introduction or first paragraph &ndash; only content before that will be shown in the preview. We recommend between 40 and 60 words, that will look best on most pages.</p>
+
+			<h5>Tables</h5>
+			<p>To make a table, draw it with pipes <code>|</code> and dashes <code>-</code>, it doesn't have to be perfect. You can use colons <code>:</code> to indicate how you want the text aligned.</p>
+			<pre><code>Item | Price
+:---|---:
+Apple | 0.50
+Banana | 0.60
+Chocolate | 1.20
+			</code></pre>
+			<table>
+				<thead>
+					<tr>
+						<th align="left">Item</th>
+						<th align="right">Price</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td align="left">Apple</td>
+						<td align="right">0.50</td>
+					</tr>
+					<tr>
+						<td align="left">Banana</td>
+						<td align="right">0.60</td>
+					</tr>
+					<tr>
+						<td align="left">Chocolate</td>
+						<td align="right">1.20</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h5>Lists</h5>
+			<p>If you want to write a list, just put numbers at the beginning of each line like this:</p>
+			<code><pre> 1. Buy milk
+ 2. Finish assignment
+ 3. Run for Union President</pre></code><br/>
+			<ol>
+				<li>Buy milk</li>
+				<li>Finish assignment</li>
+				<li>Run for Union President</li>
+			</ol>
+			<p>Or if you want bullets instead of numbers, start each line with a dash <code>-</code>.</p>
+
+			<h5>Blockquotes</h5>
+			<p>Whenever you quote some text from another source, you should use a blockquote.</p>
+			<code><pre> > You want to know how I did it? This is how I did it,
+ > Anton. I never saved anything for the swim back.
+ > &lt;cite&gt;Vincent Freeman&lt;/cite&gt;</pre></code><br/>
+			<blockquote>
+				You want to know how I did it? This is how I did it, Anton. I never saved anything for the swim back. <cite>Vincent Freeman</cite>
+			</blockquote>
+
+			<h5>HTML</h5>
+			<p>You can also use any other HTML you want to use and it will be preserved, but best practice is to use Markdown syntax wherever possible &ndash; it makes changing styles on the site at a later date much easier.</p>
+		</div>
+	</dd>
+</dl>

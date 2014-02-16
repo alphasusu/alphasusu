@@ -1,5 +1,5 @@
 <div class="event-preview">
   <h4><%= link_to preview.title, preview %></h4>
   <h6><%= preview.date.to_formatted_s(:short) %></h6>
-  <p class="show-for-medium-up"><%= preview.description[0,280] %></p>
+  <div class="show-for-medium-up"><%= render_markdown_preview preview.description %></div>
 </div>

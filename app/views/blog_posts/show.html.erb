@@ -1,1 +1,9 @@
-<%= render @post %>
+<div class="row">
+  <h1><%= link_to @post.title, @post %></h1>
+	<% if @post.author %>
+		<small><%= image_tag @post.author.get_avatar_url(:small), class: "avatar" %> By <%= link_to @post.author.name, user_path(@post.author) %></small>
+	<% else %>
+		<small>Unknown Author</small>
+	<% end %>
+	<%= render_markdown @post.body %>
+</div>

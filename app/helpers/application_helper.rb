@@ -49,6 +49,16 @@ module ApplicationHelper
 	def pluralize_without_count(count, string)
 		count == 1 ? string : string.pluralize
 	end
+
+	def render_markdown(content)
+		markdown = SUSUFlavouredMarkdown.body_renderer
+		raw(markdown.render(content))	
+	end
+
+	def render_markdown_preview(content)
+		markdown = SUSUFlavouredMarkdown.preview_renderer
+		raw(markdown.render(content))	
+	end
 	
 private
 
