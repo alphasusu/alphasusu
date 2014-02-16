@@ -51,18 +51,12 @@ module ApplicationHelper
 	end
 
 	def render_markdown(content)
-		markdown = Redcarpet::Markdown.new(
-			Redcarpet::Render::HTML,
-			:no_intra_emphasis => true,
-			:tables => true,
-			:fenced_code_blocks => true,
-			:autolink => true,
-			:disable_indented_code_blocks => true,
-			:strikethrough => true,
-			:superscript => true,
-			:highlight => true,
-			:footnotes => true
-		)
+		markdown = SUSUFlavouredMarkdown.body_renderer
+		raw(markdown.render(content))	
+	end
+
+	def render_markdown_preview(content)
+		markdown = SUSUFlavouredMarkdown.preview_renderer
 		raw(markdown.render(content))	
 	end
 	
