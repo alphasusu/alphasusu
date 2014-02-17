@@ -56,4 +56,8 @@ class HelpArticlesController < ApplicationController
     def help_article_params
       params.require(:help_article).permit(:title, :body, :slug)
     end
+
+    def set_site_area
+      params[:site_area] = :help
+    end
 end

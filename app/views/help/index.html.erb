@@ -69,9 +69,9 @@
         <h1>Help Articles</h1>
 		<div class="row">
 			<% @articles.each do |article| %>
-				<div class="large-6 medium-6 small-12 columns">
+				<div class="large-6 medium-6 small-12 left columns">
 					<h3><%= link_to article.title, article %></h3>
-					<p><%= article.body %></p>
+					<p><%= render_markdown_preview article.body %></p>
 				</div>
 			<% end %>
 		</div>
