@@ -1,0 +1,16 @@
+<% menu.menu_categories.each do |category| %>
+	<div class="large-12 left columns">
+		<h5><%= category.name %></h5>
+		<div class="row">
+			<% category.menu_items.each do |menu_item| %>
+				<div class="large-9 columns">
+					<p><strong><%= menu_item.name %></strong>
+					<br/><%= menu_item.description %></p>
+				</div>
+				<div class="large-3 columns">
+					<%= number_to_currency menu_item.price, unit: "£" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+<% end %>

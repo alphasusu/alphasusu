@@ -5,6 +5,12 @@
     <% if @place.schedule %>
       <%= render @place.schedule %>
     <% end %>
+    <% if @place.menu %>
+    <p>
+      <h3>Menu</h3>
+      <%= render @place.menu %>
+      </p>
+    <% end %>
   </div>
   <div class="large-6 medium-6 small-12 columns">
     <%=
@@ -16,10 +22,5 @@
           :latlng => [@place.latitude, @place.longitude]
       ])
     %>
-    <% if @place.menu %>
-      <div class="menu_link">
-        <h3><%= link_to "View Menu \u2192", menu_path(@place.menu) %></h3>
-      </div>
-    <% end %>
   </div>
 </div>
