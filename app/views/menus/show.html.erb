@@ -1,4 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_menu_path(@menu) %> |
-<%= link_to 'Back', menus_path %>
+<div class="row banner-offset">
+	<div class="large-12 columns">
+		<h1><%= @menu.place.name %> Menu</h1>
+	</div>
+	<%= render @menu %>
+	<div class="large-12 columns">
+		<%= link_to 'Edit', edit_menu_path(@menu) %> |
+		<%= link_to 'Back', menus_path %>
+	</div>
+</div>
