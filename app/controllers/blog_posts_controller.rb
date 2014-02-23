@@ -27,6 +27,7 @@ class BlogPostsController < ApplicationController
   # POST /blog_posts.json
   def create
     @post = BlogPost.new(blog_post_params)
+    @post.author = current_user
     create_resource_response(@post)
   end
 
