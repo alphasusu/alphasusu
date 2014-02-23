@@ -22,5 +22,8 @@ module IssueTracker
     config.i18n.enforce_available_locales = true
     
     config.ldap_email = "@soton.ac.uk"
+    
+    config.github_api_token = ENV["GITHUB_API_TOKEN"]
+    config.github_username = ENV["GITHUB_USERNAME"]
   end
 end
