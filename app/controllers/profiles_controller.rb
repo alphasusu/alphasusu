@@ -5,11 +5,13 @@ class ProfilesController < ApplicationController
     
     def show
         @positions = Officer.where(user: @profile)
+        @blog_posts = BlogPost.where(author: @profile).limit(3).order(:created_at)
     end
         
     def me
         @profile = current_user
         @positions = Officer.where(user: @profile)
+        @blog_posts = BlogPost.where(author: @profile).limit(3).order(:created_at)
         render :show
     end
     

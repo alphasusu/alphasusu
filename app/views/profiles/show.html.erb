@@ -1,16 +1,26 @@
-<div class="row banner-offset">
-	<div class="large-3 columns">
-		<%= image_tag @profile.get_avatar_url(:medium), size: "100x100", class: "avatar", alt: @profile.name %>
-	</div>
-	<div class="large-9 columns">
-		<h1><%= @profile.name %></h1>
-                <% @positions.each do |position| %>
-                  <h3><%= position.position_name %></h3>
-                <% end %>
+<div class="row banner-offset profile">
+	<div class="large-6 medium-6 small-12 columns">
+		<div class="row">
+			<div class="large-12 columns header">
+				<%= image_tag @profile.get_avatar_url(:medium), size: "100x100", class: "profile-picture", alt: @profile.name %>
+				<h1><%= @profile.first_name %></h1>
+				<h3><%= @profile.last_name %></h3>
+			</div>
+		</div>
+		<% @positions.each do |position| %>
+			<h3><%= position.position_name %></h3>
+			<% if !position.description.blank? %>
+				<blockquote>
+					<p><%= position.description %></p>
+				</blockquote>
+			<% end %>
+		<% end %>
 		<% if @profile.course %>
 			<h4><%= @profile.course.name %> <small><%= @profile.get_year %></small></h4>
 		<% end %>
-
+	</div>
+	<div class="large-6 medium-6 small-12 columns">
+		<%= render partial: "blog_posts/preview", collection: @blog_posts %>
 	</div>
 	<div class="large-12 columns">
 		<% if @profile == current_user %>

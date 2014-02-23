@@ -1,9 +1,24 @@
 .edit-profile {
 	margin-top: 40px !important;
+}
 
-	.avatar {
-		margin-bottom: 10px;
-		width: 100px;
-		height: 100px;
-	}
+.profile-picture {
+	margin-bottom: 10px;
+	height: 100px;
+	width: auto;
+	float: left;
+	margin-right: 10px;
+}
+
+.avatar {
+	display:inline-block;
+	margin-right: 5px;
+	border-radius: 16px;
+	width: 32px;
+	height: 32px;
+}
+
+.profile .header {
+	h1 { margin-bottom: 0; }
+	h3 { margin-top: -10px; color: #777; }
 }
