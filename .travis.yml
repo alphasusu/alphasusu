@@ -7,3 +7,8 @@ before_script:
   - bundle exec rake db:test:prepare
   - rake import:all
 script: "bundle exec rake --trace db:migrate test"
+
+env:
+  global:
+    - secure: "ZNhNZfk8KqB/TfM8gabgpCTPczb9BDW5JE8rGskbltQmBU0YLJGsLTftw25L/ng3Cnu1S3vkOLhF1FrfC7mWOuw+mwRXKh5xAS3zhLrQQ5+ptksQ1Gv44ZpPq3aBnJZMzyb0/2DTlfY32CW3Q3PK2Zu+eMIduhrKaKjy8pj29zo="
+    - secure: "vzJYwPh755PTJu5PIF6q0FxTmSkR58KAIvdGjjbYccLEHMior7x6eftB4+IOztn5LRHLpXBYbhIyzzCZS/NLi25ABhAaT0RgROfldVXkPkPdpZQ+K1VNms1ICO0o60DvPVY31NMoNGO+KjaaGFFnpBvF4At+ArgHxenQsjZRWrc="
