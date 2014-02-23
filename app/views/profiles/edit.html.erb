@@ -10,7 +10,7 @@
 								 }) do |f| %>
 			<div class="row">
 				<div class="large-3 columns left">
-					<%= image_tag @profile.get_avatar_url(:medium), size: "100x100", class: "avatar", alt: @profile.name %>
+					<%= image_tag @profile.get_avatar_url(:medium), size: "100x100", class: "profile-picture", alt: @profile.name %>
 				</div>
 				<div class="large-9 columns">
 					<%= f.label :avatar %>
@@ -36,30 +36,32 @@
 					<% years_display = User.years.to_a.map {|y| [y[1], y[0]]} %>
 					<%= f.select :year, options_for_select(years_display, @profile.year), :include_blank => true %>
 				</div>
-				<div class="large-12 columns">
-					<%= f.label :email %>
-					<%= f.email_field :email %>
-				</div>
-				<div class="large-12 columns">
-					<% if @profile.is_a?(LocalUser) && @profile.pending_reconfirmation? %>
-						<p><strong>Currently waiting confirmation for: <%= @profile.unconfirmed_email %></strong></p>
-					<% end %>
-				</div>
-				<div class="large-12 columns <%= field_error_class @profile, :password %>">
-					<label>Password <small>Leave blank if you don't want to change it</small></label>
-					<%= f.password_field :password, :autocomplete => "off" %>
-					<%= field_error @profile, :password, "Password" %>
-				</div>
-				<div class="large-12 columns <%= field_error_class @profile, :password_confirmation %>">
-					<%= f.label :password_confirmation %>
-					<%= f.password_field :password_confirmation %>
-					<%= field_error @profile, :password_confirmation, "Confirmation" %>
-				</div>
-				<div class="large-12 columns <%= field_error_class @profile, :current_password %>">
-					<label>Current Password <small>Needed to change it</small></label>
-					<%= f.password_field :current_password %>
-					<%= field_error @profile, :current_password, "Password" %>
-				</div>
+				<% if @profile.is_a?(LocalUser) %>
+					<div class="large-12 columns">
+							<%= f.label :email %>
+							<%= f.email_field :email %>
+					</div>
+					<div class="large-12 columns">
+						<% if @profile.is_a?(LocalUser) && @profile.pending_reconfirmation? %>
+							<p><strong>Currently waiting confirmation for: <%= @profile.unconfirmed_email %></strong></p>
+						<% end %>
+					</div>
+					<div class="large-12 columns <%= field_error_class @profile, :password %>">
+						<label>Password <small>Leave blank if you don't want to change it</small></label>
+						<%= f.password_field :password, :autocomplete => "off" %>
+						<%= field_error @profile, :password, "Password" %>
+					</div>
+					<div class="large-12 columns <%= field_error_class @profile, :password_confirmation %>">
+						<%= f.label :password_confirmation %>
+						<%= f.password_field :password_confirmation %>
+						<%= field_error @profile, :password_confirmation, "Confirmation" %>
+					</div>
+					<div class="large-12 columns <%= field_error_class @profile, :current_password %>">
+						<label>Current Password <small>Needed to change it</small></label>
+						<%= f.password_field :current_password %>
+						<%= field_error @profile, :current_password, "Password" %>
+					</div>
+				<% end %>
 				<div class="large-12 columns">
 					<%= f.submit "Update", class: "button" %>
 				</div>
