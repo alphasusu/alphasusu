@@ -1,0 +1,44 @@
+<div class="row banner-offset">
+	<div class="large-12 columns">
+		<h1>About Alpha SUSU</h1>
+		<p>Alpha SUSU is those of us within Southampton University Students Union who feel that a website built on modern principles should be a high priority. It was started by <a href="http://danpalmer.me/">Dan Palmer</a> and <a href="http://elliothughes.me">Elliot Hughes</a>. Alpha SUSU is unaffiliated with SUSU, an run only by members.</p>
+		<p>Our goals with this project are to take a User First philosophy. That means that we try to test things with real users. It also means that when we take a feature, our first priority is how we think an average student (who is probably not all that interested in SUSU) will use it.</p>
+	</div>
+	<div class="large-6 medium-6 small-12 columns">
+		<h3>Get Involved</h3>
+		<p>We welcome anyone to open issues on Alpha SUSU, especially students who may or may not have previous experience with software development and project management.</p>
+		<p>Don't be afraid to report an issue, however small it is. Typos, style errors, or missing features are all welcome, as are ways to improve the project process.</p>
+		<p>The only thing we ask that you don't open issues for is security vulnerabilities. These should be reported to the <a href="https://github.com/orgs/alphasusu/members">project maintainers</a> using the emails listed on our GitHub profiles, and messages should be encrypted with PGP if possible.</p>
+		<iframe src="http://ghbtns.com/github-btn.html?user=alphasusu&repo=alphasusu&type=fork&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="80" height="30"></iframe><hr/>
+		<h3>Submit Issue</h3>
+		<p>The best way to submit issues and feature requests for Alpha SUSU is to create a GitHub account and submit through the <a href="https://github.com/alphasusu/alphasusu">project repository</a>. However, we know this might put off students who don't already have a GitHub account, so you can use this form to submit issues directly from the site.</p>
+		<% if current_user %>
+			<%= form_tag(create_issue_path) do %>
+				<%= label_tag(:title, "Title") %>
+				<%= text_field_tag(:title) %>
+				<%= label_tag(:body, "Issue or Feature Request") %>
+				<%= text_area_tag(:body) %>
+				<%= submit_tag("Submit", class: "button") %>
+			<% end %>
+		<% else %>
+			<p>In order to prevent spam, you must be logged in to Alpha SUSU with a SUSU account, or your University account to submit issues.</p>
+		<% end %>
+	</div>
+	<div class="large-6 medium-6 small-12 columns">
+		<h3>Open Issues</h3>
+		<ul class="no-bullet">
+			<% @issues[:in_progress].each do |issue| %>
+				<li><strong><%= link_to "##{issue.number}", issue.rels[:html].href %></strong> <%= issue.title %> <span class="label success right">In Progress</span></li>
+			<% end %>
+			<hr/>
+			<% @issues[:assigned].each do |issue| %>
+				<li><strong><%= link_to "##{issue.number}", issue.rels[:html].href %></strong> <%= issue.title %> <span class="label secondary right">Assigned</span></li>
+			<% end %>
+			<hr/>
+			<% @issues[:other].each do |issue| %>
+				<li><strong><%= link_to "##{issue.number}", issue.rels[:html].href %></strong> <%= issue.title %></li>
+			<% end %>
+		</ul>
+	</div>
+</div>

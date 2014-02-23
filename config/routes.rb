@@ -55,6 +55,9 @@ IssueTracker::Application.routes.draw do
   scope '/admin' do
     get '/' => 'admin#index', :as => :admin
   end
+
+  get '/about' => 'home#about', :as => :about
+  post '/about/issue/' => 'home#create_issue', :as => :create_issue
   
   root 'home#index'
 

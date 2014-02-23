@@ -36,4 +36,7 @@ IssueTracker::Application.configure do
     :user_name => ENV["MANDRILL_USERNAME"],
     :password  => ENV["MANDRILL_API_KEY"]
   }
+
+  config.github_api_token = ENV["GITHUB_API_TOKEN"]
+  config.github_username = ENV["GITHUB_USERNAME"]
 end
