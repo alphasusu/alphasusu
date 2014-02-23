@@ -119,26 +119,40 @@ namespace "import" do
 
     Officer.destroy_all
     president = Officer.create(
-                               :title => "Union President",
-                               :user => @users[:president])
+      :title => "Union President",
+      :user => @users[:president],
+      :description => "Hello everyone, my name is David and I’m your Union President. SUSU is here to make sure that you can get the most out of your time here at Southampton. The Union is run by students, which means that you can represent students on your course, you can lead any of the 300+ student groups we have, you can vote to decide who should run the Union or you can run to lead it yourself. This is your student experience, your Union, and I’m here to make sure that it is as good as can possibly be.",
+    )
     vp_education = Officer.create(
-                                  :title => "Vice-President Education",
-                                  :user => @users[:education])
+      :title => "Vice-President Education",
+      :user => @users[:education],
+      :description => "Hi, I’m David and I’m your Vice President Education. I’m here to represent your educational needs, making sure that the University is providing you with the best education possible, and do so by always being in contact with the University’s main Education staff members. I’m here to help you and to make sure that you’re getting a world class education, with world class facilities.",
+    )
     vp_engagement = Officer.create(
-                                   :title => "Vice-President Engagement",
-                                   :user => @users[:engagement])
+       :title => "Vice-President Engagement",
+       :user => @users[:engagement],
+       :description => "Hi i'm Claire Gilbert your Vice President Engagement for 2013/2014. What that means is I help support enterprise groups, charity work, work with the local community and communicate what the union is to the student body. University is a time of exciting opportunities so go for it! Try something new! If you have any suggestions about any of the above please do get in contact and enjoy your year with SUSU.",
+    )
     vp_sports = Officer.create(
-                               :title => "Vice-President Sports Development",
-                               :user => @users[:sports])
+      :title => "Vice-President Sports Development",
+      :user => @users[:sports],
+      :description => "Hi my name is Evan and I’m your Vice-President Sports Development. Over the next year I will head up the Sports Zone, which will shape your sporting experience here at Southampton. Whether you are interested in competing for the University or playing a sport recreationally, it does not matter. We cater to the needs of every student and allow you to develop your sporting skills, whatever your ability.",
+    )
     vp_welfare = Officer.create(
-                                :title => "Vice-President Welfare",
-                                :user => @users[:welfare])
+      :title => "Vice-President Welfare",
+      :user => @users[:welfare],
+      :description => "Hi, I’m Beckie, your new Vice President for Welfare 2013/14. I’m here to make sure that you are healthy, safe and happy during your time at Southampton. There will be many exciting events and projects that you can get stuck into this year, giving you a chance to shout about the issues you care about, so I really hope you GET INVOLVED! :) It’s vital that you know that your union is here to support you every step of the way through your degree, so please don’t hesitate to contact The Advice Centre if you have any worries! -“How wonderful it is that nobody need wait a single moment before starting to improve the world.”- Anne Frank",
+    )
     vp_community = Officer.create(
-                                  :title => "Vice-President Student Communities",
-                                  :user => @users[:communities])
+      :title => "Vice-President Student Communities",
+      :user => @users[:communities],
+      :description => "Hi, My name is Oli, and I am your Vice President Student Communities. As part of my role, I look after all International students, all Post Grad students, all students who study at Winchester, the National Oceanography Centre and Southampton General Hospital, as well as every student who lives in halls. I also work with other members of staff to make sure that all our decision making and activities we do are as diverse as possible. Along with the rest of the Sabbatical team, I’m here to make sure that you have a fantastic time at University, and thoroughly enjoy your time at Southampton.",
+    )
     vp_democracy = Officer.create(
-                                  :title => "Vice-President Democracy & Creative Industries",
-                                  :user => @users[:democracy])
+      :title => "Vice-President Democracy & Creative Industries",
+      :user => @users[:democracy],
+      :description => "Hi I’m David and I’m honoured to be your VP Democracy and Creative Industries for the coming year! My remit includes three key areas; ensuring we’ve got strong democratic processes, including exciting elections throughout the year, strengthening our already award-winning Union Films, Media and Performing Arts groups and helping student groups to develop further. There’s so much to do within the Union and hopefully I can help you to achieve some of your aims!",
+    )
     
     Zone.destroy_all
     trustee = Zone.create(:name => "Trustee",

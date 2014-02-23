@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140215155415) do
+ActiveRecord::Schema.define(version: 20140223155656) do
 
   create_table "academic_units", force: true do |t|
     t.datetime "created_at"
@@ -172,6 +172,7 @@ ActiveRecord::Schema.define(version: 20140215155415) do
     t.string   "year"
     t.integer  "faculty_id"
     t.integer  "academic_unit_id"
+    t.text     "description"
   end
 
   add_index "officers", ["academic_unit_id"], name: "index_officers_on_academic_unit_id"
