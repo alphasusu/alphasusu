@@ -37,7 +37,7 @@ class AdminController < ApplicationController
                 :event,
             ],
             :activities => [
-                :society,
+                :student_groups,
             ],
             :services => [
                 :service,
